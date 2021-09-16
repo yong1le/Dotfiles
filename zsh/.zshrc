@@ -4,6 +4,7 @@ export TRIVIAL="/Users/yonglehe/Documents/Code/Trivial"
 
 # Alias
 alias ls="exa"
+alias cat="bat"
 
 # Prompt
 eval "$(starship init zsh)"
