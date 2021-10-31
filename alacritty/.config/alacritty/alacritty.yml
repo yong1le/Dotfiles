@@ -52,7 +52,7 @@ font:
 
 colors:
   primary:
-    background: "#232731"
+    background: "#282a36"
     foreground: "#D8DEE9"
 
   normal:
@@ -79,7 +79,7 @@ colors:
     text: CellBackground
     cursor: CellForeground
 
-background_opacity: 0.7
+background_opacity: 0.90
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
