@@ -1,8 +1,8 @@
 window:
 
   dimensions:
-   columns: 120
-   lines: 30
+   columns: 132
+   lines: 40
 
   position:
     x: 0

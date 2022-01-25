@@ -94,14 +94,6 @@ lvim.builtin.terminal.close_on_exit = false
 -- Nvimtree
 lvim.builtin.nvimtree.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
-lvim.builtin.nvimtree.ignore = {
-	".git",
-	"node_modules",
-	".cache",
-	"*.exe",
-	"*.o",
-	".class",
-}
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {}
@@ -114,16 +106,6 @@ lvim.builtin.lualine.style = "lvim"
 lvim.builtin.lualine.sections.lualine_x = { "location", "encoding", "fileformat", "filetype" }
 lvim.builtin.lualine.options.component_separators = { "", "" }
 lvim.builtin.lualine.options.section_separators = { "", "" }
-
-lvim.lang.javascript.formatters = { { exe = "prettier" }, { exe = "eslint" } }
-lvim.lang.javascriptreact.formatters = { { exe = "prettier" }, { exe = "eslint" } }
-lvim.lang.json.formatters = { { exe = "prettier" }, { exe = "eslint" } }
-lvim.lang.html.formatters = { { exe = "prettier" }, { exe = "eslint" } }
-lvim.lang.css.formatters = { { exe = "prettier" }, { exe = "eslint" } }
-
-lvim.lang.python.formatters = { { exe = "black" } }
-lvim.lang.lua.formatters = { { exe = "stylua" } }
-lvim.lang.cpp.formatters = { { exe = "clang_format" } }
 
 -- Additional Plugins
 lvim.plugins = {
@@ -185,9 +167,4 @@ lvim.plugins = {
 			})
 		end,
 	},
-}
-
--- Autocommands (https://neovim.io/doc/user/autocmd.html)
-lvim.autocommands.custom_groups = {
-  {"ColorScheme", "*", "hi CursorLine guibg=NONE"}
 }

@@ -16,4 +16,3 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # IgnoreCase
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
