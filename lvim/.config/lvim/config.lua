@@ -1,30 +1,24 @@
--- Options
-vim.o.sidescrolloff = 8
 vim.o.relativenumber = true
 
 -- general
-lvim.format_on_save = false
-lvim.lint_on_save = true
-lvim.transparent_window = true
-lvim.colorscheme = "darkplus"
+lvim.log.level = "warn"
+lvim.format_on_save = true
+lvim.colorscheme = "onedarker"
 
+-- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
+-- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
--- Terminal Navigation
+--Terminal navigation
 lvim.keys.term_mode["jk"] = "<C-\\><C-n>"
-lvim.keys.term_mode["<space>t"] = "<C-c><C-\\><C-n>:ToggleTerm<cr>"
-lvim.keys.normal_mode["<space>t"] = ":ToggleTerm<cr>"
+lvim.keys.term_mode["``"] = "<C-\\><C-n>:ToggleTerm<cr>"
+lvim.keys.normal_mode["``"] = ":ToggleTerm<cr>"
 
 -- Buffer Switching
 lvim.keys.normal_mode["<TAB>"] = ":BufferNext<cr>"
 lvim.keys.normal_mode["<S-TAB>"] = ":BufferPrevious<cr>"
 
--- Lsp
-lvim.keys.normal_mode["ca"] = ":Lspsaga code_action<cr>"
-lvim.keys.normal_mode["K"] = ":Lspsaga hover_doc<cr>"
-lvim.keys.normal_mode["gr"] = ":Telescope lsp_references<cr>"
-lvim.keys.normal_mode["gi"] = ":Telescope lsp_implementations<cr>"
 
 -- Running code
 _G.run_code = function()
@@ -50,30 +44,8 @@ end
 
 vim.api.nvim_set_keymap("n", "<space>r", "v:lua.run_code()", { expr = true })
 
-lvim.builtin.terminal.close_on_exit = true
 -- Whichkey
-lvim.builtin.which_key.mappings["b"] = {
-	name = "+Buffers",
-	d = { "<cmd>BufferDelete<cr>", "Delete Buffer" },
-}
 lvim.builtin.which_key.mappings["G"] = {"<cmd>TermExec cmd=\"lazygit\"<cr>", "Lazygit"}
-lvim.builtin.which_key.mappings["l"] = {
-	name = "+LSP",
-	a = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
-	A = { "<cmd>Lspsaga range_code_action<cr>", "Selected Action" },
-	d = { "<cmd>Telescope lsp_document_diagnostics<cr>", "Document Diagnostics" },
-	D = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics" },
-	f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "format" },
-	I = { "<cmd>LspInfo<cr>", "Lsp Info" },
-	L = { "<cmd>Lspsaga lsp_finder<cr>", "Lsp Finder" },
-	l = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Line Diagnostics" },
-	p = { "<cmd>Lspsaga preview_definition<cr>", "Preview Definition" },
-	r = { "<cmd>Lspsaga rename<cr>", "Rename" },
-	R = { "<cmd>LspRestart<cr>", "Restart" },
-	s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-	S = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols" },
-}
-lvim.builtin.which_key.mappings[","] = { "<cmd>call emmet#expandAbbr(3,'')<cr>", "Emmet" }
 
 -- Dashboard
 lvim.builtin.dashboard.active = true
@@ -87,84 +59,161 @@ lvim.builtin.dashboard.custom_header = {
 	"                        ▐             ",
 }
 
--- Terminal
+lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
-lvim.builtin.terminal.close_on_exit = false
 
--- Nvimtree
-lvim.builtin.nvimtree.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
+-- Nvim Tree
+local tree_cb = require "nvim-tree.config".nvim_tree_callback
+lvim.builtin.nvimtree.setup.view.side = "left"
+lvim.builtin.nvimtree.show_icons.git = 1
+lvim.builtin.nvimtree.setup = {
+ disable_netrw = true,
+  hijack_netrw = true,
+  open_on_setup = false,
+  ignore_ft_on_setup = {},
+  auto_close = true,
+  open_on_tab = false,
+  hijack_cursor = false,
+  update_cwd = true,
+  update_to_buf_dir = {
+    enable = true,
+    auto_open = true
+  },
+  diagnostics = {
+    enable = false,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = ""
+    }
+  },
+  update_focused_file = {
+    enable = true,
+    update_cwd = true,
+    ignore_list = {}
+  },
+  system_open = {
+    cmd = nil,
+    args = {}
+  },
+  filters = {
+    dotfiles = true,
+    custom = {"*.exe", "*.o", "*.out"}
+  },
+  git = {
+    enable = true,
+    ignore = true,
+    timeout = 500
+  },
+  view = {
+    width = 30,
+    height = 30,
+    hide_root_folder = false,
+    side = "left",
+    auto_resize = false,
+    mappings = {
+      custom_only = false,
+      list = {
+        {key = {"<2-RightMouse>", "<C-}>", "e"}, cb = tree_cb("cd")}
+      }
+    },
+    number = false,
+    relativenumber = false,
+    signcolumn = "yes"
+  },
+  trash = {
+    cmd = "trash",
+    require_confirm = true
+  }
+}
 
--- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = {}
-lvim.builtin.treesitter.ignore_install = { "haskell" }
+-- Treesitter
+lvim.builtin.treesitter.ensure_installed = {
+  "bash",
+  "c",
+  "javascript",
+  "json",
+  "lua",
+  "python",
+  "typescript",
+  "css",
+  "java",
+}
+
 lvim.builtin.treesitter.highlight.enabled = true
-lvim.builtin.treesitter.indent.enable = false
 
-lvim.builtin.lualine.enabled = false
+-- Lualine
+lvim.builtin.lualine.enabled = true
 lvim.builtin.lualine.style = "lvim"
-lvim.builtin.lualine.sections.lualine_x = { "location", "encoding", "fileformat", "filetype" }
-lvim.builtin.lualine.options.component_separators = { "", "" }
-lvim.builtin.lualine.options.section_separators = { "", "" }
 
 -- Additional Plugins
 lvim.plugins = {
-	{ "yong1le/darkplus.nvim" },
-	{
-		"tpope/vim-surround",
-		keys = { { "n", "cs" }, { "n", "ys" }, { "n", "ds" }, { "v", "S" } },
-	},
-	{
-		"glepnir/lspsaga.nvim",
-		config = function()
-			require("lspsaga").init_lsp_saga({
-				code_action_icon = "",
-				error_sign = "",
-				warn_sign = "",
-				hint_sign = "",
-				infor_sign = "",
-				border_style = "round",
-			})
-		end,
-		event = "BufReadPre",
-	},
-	{
-		"folke/todo-comments.nvim",
-		event = "BufReadPre",
-		config = function()
-			require("todo-comments").setup({})
-		end,
-	},
-	{
-		"turbio/bracey.vim",
-		cmd = { "Bracey", "BracyStop", "BraceyReload", "BraceyEval" },
-		run = "npm install --prefix server",
-	},
-	{
-		"mattn/emmet-vim",
-		ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact" },
-	},
-	{
-		"tamton-aquib/staline.nvim",
-		config = function()
-			require("staline").setup({
-				sections = {
-					left = { "  ", "mode", " ", "branch", " ", "lsp" },
-					mid = {"file_name"},
-					right = { "lsp_name", "  ", "line_column" },
-				},
-				mode_colors = {
-					i = "#d4be98",
-					n = "#84a598",
-					c = "#8fbf7f",
-					v = "#fc802d",
-				},
-				defaults = {
-					true_colors = true,
-					line_column = " [%l/%L] :%c  ",
-					branch_symbol = " ",
-				},
-			})
-		end,
-	},
+    {
+      "tpope/vim-surround",
+      keys = {"c", "d", "y"}
+    }
 }
+
+-- Autocommands (https://neovim.io/doc/user/autocmd.html)
+-- lvim.autocommands.custom_groups = {
+--   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
+-- }
+
+
+-- generic LSP settings
+
+-- ---@usage disable automatic installation of servers
+-- lvim.lsp.automatic_servers_installation = false
+
+-- ---@usage Select which servers should be configured manually. Requires `:LvimCacheRest` to take effect.
+-- See the full default list `:lua print(vim.inspect(lvim.lsp.override))`
+-- vim.list_extend(lvim.lsp.override, { "pyright" })
+
+-- ---@usage setup a server -- see: https://www.lunarvim.org/languages/#overriding-the-default-configuration
+-- local opts = {} -- check the lspconfig documentation for a list of all possible options
+-- require("lvim.lsp.manager").setup("pylsp", opts)
+
+-- -- you can set a custom on_attach function that will be used for all the language servers
+-- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
+-- lvim.lsp.on_attach_callback = function(client, bufnr)
+--   local function buf_set_option(...)
+--     vim.api.nvim_buf_set_option(bufnr, ...)
+--   end
+--   --Enable completion triggered by <c-x><c-o>
+--   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+-- end
+
+-- -- set a formatter, this will override the language server formatting capabilities (if it exists)
+-- local formatters = require "lvim.lsp.null-ls.formatters"
+-- formatters.setup {
+--   { command = "black", filetypes = { "python" } },
+--   { command = "isort", filetypes = { "python" } },
+--   {
+--     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
+--     command = "prettier",
+--     ---@usage arguments to pass to the formatter
+--     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
+--     extra_args = { "--print-with", "100" },
+--     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+--     filetypes = { "typescript", "typescriptreact" },
+--   },
+-- }
+
+-- -- set additional linters
+-- local linters = require "lvim.lsp.null-ls.linters"
+-- linters.setup {
+--   { command = "flake8", filetypes = { "python" } },
+--   {
+--     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
+--     command = "shellcheck",
+--     ---@usage arguments to pass to the formatter
+--     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
+--     extra_args = { "--severity", "warning" },
+--   },
+--   {
+--     command = "codespell",
+--     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+--     filetypes = { "javascript", "python" },
+--   },
+-- }
