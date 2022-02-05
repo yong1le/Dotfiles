@@ -2,6 +2,8 @@
 export PROJECTS="/Users/yonglehe/Documents/Code/Projects"
 export TRIVIAL="/Users/yonglehe/Documents/Code/Trivial"
 
+# PATH
+export PATH="$HOME/.local/bin/:$PATH"
 # Alias
 alias ls="exa"
 alias cat="bat"
