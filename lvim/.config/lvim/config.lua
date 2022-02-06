@@ -1,9 +1,10 @@
 vim.o.relativenumber = true
+vim.o.timeoutlen = 300
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = true
-lvim.colorscheme = "onedarker"
+lvim.format_on_save = false
+lvim.colorscheme = "darkplus"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -68,7 +69,7 @@ lvim.builtin.nvimtree.show_icons.git = 1
 lvim.builtin.nvimtree.setup = {
 	disable_netrw = true,
 	hijack_netrw = true,
-	open_on_setup = false,
+	open_on_setup = true,
 	ignore_ft_on_setup = {},
 	auto_close = true,
 	open_on_tab = false,
@@ -144,13 +145,69 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Lualine
 lvim.builtin.lualine.enabled = true
-lvim.builtin.lualine.style = "lvim"
+lvim.builtin.lualine.style = "default"
+lvim.builtin.lualine.options = {
+	theme = "darkplus",
+	disabled_filetypes = { "startify", "nerdtree", "term", "fugitive", "NvimTree", "toggleterm", "dashboard" },
+	section_separators = { right = "", left = " " },
+	component_separators = { left = "", right = "" },
+}
+
+local darkplus = {
+	bg = "#282a36",
+	bg1 = "#31353f",
+	fg0 = "#000000",
+	fg = "#abb2bf",
+	blue = "#61afef",
+	red = "#e86671",
+	purple = "#c678dd",
+	yellow = "#93691d",
+}
+
+lvim.builtin.lualine.options.theme = {
+	normal = {
+		b = { fg = darkplus.fg, bg = darkplus.bg1 },
+		c = { fg = darkplus.fg, bg = darkplus.bg },
+		a = { fg = darkplus.fg0, bg = darkplus.blue, gui = "bold" },
+	},
+	insert = {
+		b = { fg = darkplus.fg, bg = darkplus.bg1 },
+		c = { fg = darkplus.fg, bg = darkplus.bg },
+		a = { fg = darkplus.fg0, bg = darkplus.red, gui = "bold" },
+	},
+	visual = {
+		b = { fg = darkplus.fg, bg = darkplus.bg1 },
+		c = { fg = darkplus.fg, bg = darkplus.bg },
+		a = { fg = darkplus.fg0, bg = darkplus.purple, gui = "bold" },
+	},
+	replace = {
+		b = { fg = darkplus.fg, bg = darkplus.bg1 },
+		c = { fg = darkplus.fg, bg = darkplus.bg },
+		a = { fg = darkplus.fg0, bg = darkplus.yellow, gui = "bold" },
+	},
+	inactive = {
+		a = { fg = "NONE", bg = "NONE" },
+		b = { fg = "NONE", bg = "NONE" },
+		c = { fg = "NONE", bg = "NONE" },
+	},
+}
+
+local components = require("lvim.core.lualine.components")
+lvim.builtin.lualine.sections.lualine_a = { "mode" }
+lvim.builtin.lualine.sections.lualine_b = { components.filename }
+lvim.builtin.lualine.sections.lualine_c = { components.diff, components.python_env }
+lvim.builtin.lualine.sections.lualine_x = { components.diagnostics, components.lsp }
+lvim.builtin.lualine.sections.lualine_y = { components.branch, components.progress }
+lvim.builtin.lualine.sections.lualine_z = { components.location }
 
 -- Additional Plugins
 lvim.plugins = {
 	{
 		"tpope/vim-surround",
-		keys = { "c", "d", "y" },
+		-- keys = { "c", "d", "y" },
+	},
+	{
+		"yong1le/darkplus.nvim",
 	},
 }
 
@@ -160,6 +217,7 @@ lvim.plugins = {
 -- }
 
 -- generic LSP settings
+lvim.lsp.automatic_servers_installation = true
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require("lvim.lsp.null-ls.formatters")
