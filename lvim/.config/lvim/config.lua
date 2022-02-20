@@ -13,12 +13,12 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 --Terminal navigation
 lvim.keys.term_mode["jk"] = "<C-\\><C-n>"
-lvim.keys.term_mode["``"] = "<C-\\><C-n>:ToggleTerm<cr>"
+lvim.keys.term_mode["``"] = "<C-c><C-\\><C-n>:ToggleTerm<cr>"
 lvim.keys.normal_mode["``"] = ":ToggleTerm<cr>"
 
 -- Buffer Switching
-lvim.keys.normal_mode["<TAB>"] = ":BufferNext<cr>"
-lvim.keys.normal_mode["<S-TAB>"] = ":BufferPrevious<cr>"
+lvim.keys.normal_mode["<TAB>"] = ":BufferLineCycleNext<cr>"
+lvim.keys.normal_mode["<S-TAB>"] = ":BufferLineCyclePrev<cr>"
 
 -- Running code
 _G.run_code = function()
@@ -28,15 +28,17 @@ _G.run_code = function()
 		return vim.api.nvim_replace_termcodes(str, true, true, true)
 	end
 	if ft == "python" then
-		return ":w | TermExec cmd='python3 %'" .. t("<CR>")
+		return ":w | TermExec cmd='python3 \"%:p\"' go_back=0" .. t("<CR>")
 	elseif ft == "java" then
-		return ":w | TermExec cmd='javac % && java %'" .. t("<CR>")
+		return ":w | TermExec cmd='javac \"%:p\" && java \"%:p\"' go_back=0" .. t("<CR>")
 	elseif ft == "javascript" then
-		return ":w | TermExec cmd='node %'" .. t("<CR>")
+		return ":w | TermExec cmd='node \"%:p\"' go_back=0" .. t("<CR>")
 	elseif ft == "cpp" then
-		return ":w | TermExec cmd='g++ -o %:r.o % && %:r.o'" .. t("<CR>")
+		return ":w | TermExec cmd='g++ -o \"%:p:r.o\" \"%:p\" && \"%:p:r.o\"' go_back=0" .. t("<CR>")
 	elseif ft == "lua" then
-		return ":w | luafile %" .. t("<CR>")
+		return ":w | luafile \"%\"" .. t("<CR>")
+  elseif ft == "html" then
+    return ':TermExec cmd=\'browser-sync start --server --files "*.js, *.html, *.css"\'' .. t("<CR>")
 	else
 		return ":w" .. t("<CR>")
 	end
@@ -44,8 +46,13 @@ end
 
 vim.api.nvim_set_keymap("n", "<space>r", "v:lua.run_code()", { expr = true })
 
+lvim.builtin.terminal.direction = "horizontal"
+lvim.builtin.terminal.shading_factor = 1
+lvim.builtin.terminal.size = 15
 -- Whichkey
 lvim.builtin.which_key.mappings["G"] = { '<cmd>TermExec cmd="lazygit"<cr>', "Lazygit" }
+lvim.builtin.which_key.mappings[","] = {"<cmd>call emmet#expandAbbr(3,'')<cr>", "Emmet"}
+-- lvim.builtin.which_key.mappings[","] = {'<cmd>!browser-sync start --server --files "*.js, *.html, *.css"<CR>', "Preview"}
 
 -- Dashboard
 lvim.builtin.dashboard.active = true
@@ -99,7 +106,7 @@ lvim.builtin.nvimtree.setup = {
 	},
 	filters = {
 		dotfiles = true,
-		custom = { "*.exe", "*.o", "*.out" },
+		custom = { "*.exe", "*.o", "*.out" , "*.class"},
 	},
 	git = {
 		enable = true,
@@ -142,6 +149,7 @@ lvim.builtin.treesitter.ensure_installed = {
 }
 
 lvim.builtin.treesitter.highlight.enabled = true
+lvim.builtin.treesitter.indent.disable = {"python"}
 
 -- Lualine
 lvim.builtin.lualine.enabled = true
@@ -199,6 +207,14 @@ lvim.builtin.lualine.sections.lualine_c = { components.diff, components.python_e
 lvim.builtin.lualine.sections.lualine_x = { components.diagnostics, components.lsp }
 lvim.builtin.lualine.sections.lualine_y = { components.branch, components.progress }
 lvim.builtin.lualine.sections.lualine_z = { components.location }
+-- lvim.builtin.lualine.tabline = {
+--   lualine_a = {{ "tabs", mode = 1 }}
+-- }
+lvim.builtin.bufferline.options = {
+  always_show_bufferline = true,
+  enforce_regular_tabs = false,
+
+}
 
 -- Additional Plugins
 lvim.plugins = {
@@ -209,6 +225,9 @@ lvim.plugins = {
 	{
 		"yong1le/darkplus.nvim",
 	},
+  {
+    "mattn/emmet-vim",
+  }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -217,7 +236,7 @@ lvim.plugins = {
 -- }
 
 -- generic LSP settings
-lvim.lsp.automatic_servers_installation = true
+lvim.lsp.automatic_servers_installation = false
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require("lvim.lsp.null-ls.formatters")
