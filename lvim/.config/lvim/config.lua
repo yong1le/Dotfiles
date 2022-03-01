@@ -56,6 +56,7 @@ lvim.builtin.which_key.mappings[","] = {"<cmd>call emmet#expandAbbr(3,'')<cr>", 
 
 -- Dashboard
 lvim.builtin.dashboard.active = true
+lvim.builtin.dashboard.footer = {"🐲"}
 lvim.builtin.dashboard.custom_header = {
 	"   ▄   ▄███▄   ████▄     ▄   ▄█ █▀▄▀█",
 	"    █  █▀     ▀  █   █      █  ██ █ █ █",

@@ -4,10 +4,13 @@ export TRIVIAL="/Users/yonglehe/Documents/Code/Trivial"
 
 # PATH
 export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$HOME/.emacs.d/bin/:$PATH"
+
 # Alias
 alias ls="exa"
 alias cat="bat"
 alias python="python3"
+alias emacs="emacs -nw"
 
 # Prompt
 eval "$(starship init zsh)"
