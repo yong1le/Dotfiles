@@ -1,6 +1,9 @@
 # Quickly jump to common folders
 export PROJECTS="/Users/yonglehe/Documents/Code/Projects"
 export TRIVIAL="/Users/yonglehe/Documents/Code/Trivial"
+export XDG_CONFIG_PATH="/Users/yonglehe/.config/"
+export NEOVIDE_MULTIGRID=1
+export NEOVIDE_FRAMELESS=1
 
 # PATH
 export PATH="$HOME/.local/bin/:$PATH"

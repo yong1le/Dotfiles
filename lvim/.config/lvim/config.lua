@@ -1,10 +1,24 @@
 vim.o.relativenumber = true
 vim.o.timeoutlen = 300
+vim.o.guifont = "FiraCode Nerd Font:h16"
+
+vim.g.neovide_cursor_vfx_mode = "railgun"
+vim.g.neovide_remember_window_size = true
 
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.colorscheme = "darkplus"
+
+vim.api.nvim_set_keymap('n', '˚', ':resize -2<CR>', {silent=true})
+vim.api.nvim_set_keymap('n', '∆', ':resize +2<CR>', {silent=true})
+vim.api.nvim_set_keymap('n', '˙', ':vertical resize -2<CR>', {silent=true})
+vim.api.nvim_set_keymap('n', '¬', ':vertical resize +2<CR>', {silent=true})
+
+vim.api.nvim_set_keymap('t', '˚', '<C-\\><C-n>:resize -2<CR>', {silent=true})
+vim.api.nvim_set_keymap('t', '∆', '<C-\\><C-n>:resize +2<CR>', {silent=true})
+vim.api.nvim_set_keymap('t', '˙', '<C-\\><C-n>:vertical resize -2<CR>', {silent=true})
+vim.api.nvim_set_keymap('t', '¬', '<C-\\><C-n>:vertical resize +2<CR>', {silent=true})
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -46,7 +60,7 @@ end
 
 vim.api.nvim_set_keymap("n", "<space>r", "v:lua.run_code()", { expr = true })
 
-lvim.builtin.terminal.direction = "horizontal"
+-- lvim.builtin.terminal.direction = "horizontal"
 lvim.builtin.terminal.shading_factor = 1
 lvim.builtin.terminal.size = 15
 -- Whichkey
@@ -55,6 +69,7 @@ lvim.builtin.which_key.mappings[","] = {"<cmd>call emmet#expandAbbr(3,'')<cr>", 
 -- lvim.builtin.which_key.mappings[","] = {'<cmd>!browser-sync start --server --files "*.js, *.html, *.css"<CR>', "Preview"}
 
 -- Dashboard
+lvim.builtin.dashboard.custom_section.f = {description = {"  Settings           "}, command = ":e ~/Dotfiles/lvim/.config/lvim/config.lua"}
 lvim.builtin.dashboard.active = true
 lvim.builtin.dashboard.footer = {"🐲"}
 lvim.builtin.dashboard.custom_header = {
