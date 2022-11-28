@@ -2,8 +2,6 @@
 export PROJECTS="/Users/yonglehe/Documents/Code/Projects"
 export TRIVIAL="/Users/yonglehe/Documents/Code/Trivial"
 export XDG_CONFIG_PATH="/Users/yonglehe/.config/"
-export NEOVIDE_MULTIGRID=1
-export NEOVIDE_FRAMELESS=1
 
 # PATH
 export PATH="$HOME/.local/bin/:$PATH"
@@ -14,6 +12,8 @@ alias ls="exa"
 alias cat="bat"
 alias python="python3"
 alias emacs="emacs -nw"
+alias gp="cd ~/Documents/Note_Vault/ && git pull"
+alias gc="cd ~/Documents/Note_Vault/ && git add -A && git commit -m 'mac upload' && git push"
 
 # Prompt
 eval "$(starship init zsh)"
