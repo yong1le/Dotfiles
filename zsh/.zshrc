@@ -1,6 +1,6 @@
 # Quickly jump to common folders
 export PROJECTS="/Users/yonglehe/Documents/Code/Projects"
-export TRIVIAL="/Users/yonglehe/Documents/Code/Trivial"
+export UNI="/Users/yonglehe/Documents/Uni"
 export XDG_CONFIG_PATH="/Users/yonglehe/.config/"
 
 # PATH
