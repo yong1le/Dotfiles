@@ -8,12 +8,12 @@
 
 ;; Theme
 (setq doom-theme 'doom-gruvbox)
-(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 16 :weight 'medium))
+(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 15 :weight 'medium))
 (setq display-line-numbers-type 'relative)
-(setq scroll-margin 15)
+(setq scroll-margin 20)
 
 ;;GUI
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (define-key global-map [menu-bar options] nil)
 (define-key global-map [menu-bar help-menu] nil)
 (define-key global-map [menu-bar file] nil)
@@ -21,6 +21,7 @@
 
 ;; General Options
 (setq confirm-kill-emacs nil)
+(desktop-save-mode 1)
 
 ;;; Keybindings
 ;; (global-set-key (kbd "C-e") 'emmet-expand-line)
@@ -47,6 +48,7 @@
         neo-window-fixed-size nil))
 (after! doom-themes
   (setq doom-neotree-enable-variable-pitch t))
+(setq neo-theme 'icons)
 ;; emmet
 ;; (add-to-list 'load-path "~/emacs.d/emmet-mode")
 ;; (require 'emmet-mode)
