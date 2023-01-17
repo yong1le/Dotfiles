@@ -53,6 +53,8 @@ _G.run_code = function()
     return ":w | TermExec cmd='g++ -o \"%:p:r.o\" \"%:p\" && \"%:p:r.o\"' go_back=0" .. t("<CR>")
   elseif ft == "c" then
     return ":w | TermExec cmd='gcc -o \"%:p:r.o\" \"%:p\" && \"%:p:r.o\"' go_back=0" .. t("<CR>")
+  elseif ft == "tex" then
+    return ":w | VimtexCompile" .. t("<CR>")
   else
     return ":w" .. t("<CR>")
   end
@@ -176,13 +178,21 @@ linters.setup {
 lvim.plugins = {
   {
     "kylechui/nvim-surround",
-    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    -- tag = "*", -- Use for stability; omit to use `main` branch for the latest features
     config = function()
       require("nvim-surround").setup({
         -- Configuration here, or leave empty to use defaults
       })
     end
   },
+  -- {
+  --   'jakewvincent/texmagic.nvim',
+  --   config = function()
+  --     require('texmagic').setup({
+  --       -- Config goes here; leave blank for defaults
+  --     })
+  --   end
+  -- }
   -- {
   --   "andweeb/presence.nvim",
   -- },
