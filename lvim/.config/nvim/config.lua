@@ -31,8 +31,9 @@ lvim.keys.term_mode["<M-k>"] = "<C-\\><C-n>:resize +2<CR>"
 lvim.keys.term_mode["<M-l>"] = "<C-\\><C-n>:vertical resize +2<CR>"
 
 lvim.keys.term_mode["jk"] = "<C-\\><C-n>esc"
-lvim.keys.term_mode["``"] = "<C-c><C-\\><C-n>:ToggleTerm<cr>"
-lvim.keys.normal_mode["``"] = ":ToggleTerm<cr>"
+lvim.keys.term_mode["<C-`>"] = "<C-c><C-\\><C-n>:ToggleTerm<cr>"
+lvim.keys.term_mode["<C-l>"] = "<C-l>"
+lvim.keys.normal_mode["<C-`>"] = ":ToggleTerm<cr>"
 
 
 -- VimTex
@@ -52,9 +53,11 @@ _G.run_code = function()
   elseif ft == "cpp" then
     return ":w | TermExec cmd='g++ -o \"%:p:r.o\" \"%:p\" && \"%:p:r.o\"' go_back=0" .. t("<CR>")
   elseif ft == "c" then
-    return ":w | TermExec cmd='gcc -o \"%:p:r.o\" \"%:p\" && \"%:p:r.o\"' go_back=0" .. t("<CR>")
+    return ":w | TermExec cmd='gcc -Wall -std=c99 -o \"%:p:r.o\" \"%:p\" && \"%:p:r.o\"' go_back=0" .. t("<CR>")
   elseif ft == "tex" then
     return ":w | VimtexCompile" .. t("<CR>")
+  elseif ft == "sql" then
+    return ":w | cd %:h | TermExec cmd='sqlite3 Test.db < \"%\"' go_back=0" .. t("<CR>") .. "rm Test.db" .. t("<CR>")
   else
     return ":w" .. t("<CR>")
   end
@@ -96,6 +99,9 @@ lvim.builtin.which_key.mappings["t"] = {
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
+lvim.builtin.alpha.dashboard.section.header.val = {"Neovim"}
+
+lvim.builtin.alpha.dashboard.section.footer.val = {"Hello"}
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
@@ -103,6 +109,7 @@ lvim.builtin.nvimtree.setup.view.mappings.list = {
   { key = "u", action = "dir_up" },
   { key = "e", action = "cd" },
 }
+lvim.builtin.nvimtree.setup.filters.custom = {"*.out", "*.o", ".DS_Store", "*.class", ".vscode", "__pycache__", ".school"}
 lvim.builtin.project.patterns = { ".school" }
 
 -- if you don't want all the parsers change this to a table of the ones you want
