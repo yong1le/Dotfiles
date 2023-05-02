@@ -1,6 +1,7 @@
 # Quickly jump to common folders
-export PROJECTS="/Users/yonglehe/Documents/Code/Projects"
-export UNI="/Users/yonglehe/Documents/Uni"
+export UNI="/Users/yonglehe/Documents/Notes/notes/assets/uni/"
+export PROJECTS="/Users/yonglehe/Documents/Code/Projects/"
+export ASTRO="/Users/yonglehe/.config/nvim/lua/user/"
 
 export XDG_CONFIG_PATH="/Users/yonglehe/.config/"
 
@@ -25,3 +26,9 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # IgnoreCase
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/yonglehe/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yonglehe/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/yonglehe/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yonglehe/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
