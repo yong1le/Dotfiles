@@ -9,8 +9,8 @@ window:
     y: 0
 
   padding:
-    x: 0
-    y: 0
+    x: 2
+    y: 10
 
   dynamic_padding: false
 
@@ -23,32 +23,30 @@ scrolling:
 
 font:
   normal:
-    family: FiraCode Nerd Font
+    family: Hack Nerd Font
     style: Regular
 
   bold:
-    family: FiraCode Nerd Font
+    family: Hack Nerd Font
     style: Bold
 
   italic:
-    family: FiraCode Nerd Font
+    family: Hack Nerd Font
     style: Italic
 
   bold_italic:
-    family: FiraCode Nerd Font
+    family: Hack Nerd Font
     style: Bold Italic
 
-  size: 18
+  size: 14
 
   offset:
     x: 0
-    y: 0
+    y: 5
 
   glyph_offset:
     x: 0
     y: 0
-
-  use_thin_strokes: true
 
 colors:
   primary:
@@ -79,8 +77,6 @@ colors:
     text: CellBackground
     cursor: CellForeground
 
-background_opacity: 0.90
-
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
@@ -88,7 +84,7 @@ selection:
 
 cursor:
   style:
-    #shape: Beam
+    shape: Beam
 
     blinking: On
 
