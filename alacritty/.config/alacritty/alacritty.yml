@@ -1,4 +1,5 @@
 window:
+  option_as_alt: Both
 
   dimensions:
    columns: 132
@@ -9,8 +10,8 @@ window:
     y: 0
 
   padding:
-    x: 2
-    y: 10
+    x: 20
+    y: 20
 
   dynamic_padding: false
 
@@ -50,7 +51,7 @@ font:
 
 colors:
   primary:
-    background: "#282a36"
+    background: "#1e1e28"
     foreground: "#D8DEE9"
 
   normal:
