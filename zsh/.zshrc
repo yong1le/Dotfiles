@@ -1,5 +1,5 @@
 # Quickly jump to common folders
-export UNI="/Users/yonglehe/Documents/Notes/notes/assets/uni/"
+export UNI="/Users/yonglehe/Documents/notes/uni/"
 export PROJECTS="/Users/yonglehe/Documents/Code/Projects/"
 export ASTRO="/Users/yonglehe/.config/nvim/lua/user/"
 
