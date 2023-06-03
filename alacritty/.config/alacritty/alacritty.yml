@@ -10,12 +10,12 @@ window:
     y: 0
 
   padding:
-    x: 20
-    y: 20
+    x: 10
+    y: 10
 
   dynamic_padding: false
 
-  decorations: buttonless
+  # decorations: buttonless
 
   dynamic_title: true
 
@@ -39,7 +39,7 @@ font:
     family: Hack Nerd Font
     style: Bold Italic
 
-  size: 14
+  size: 8
 
   offset:
     x: 0
