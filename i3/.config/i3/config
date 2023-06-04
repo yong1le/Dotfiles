@@ -183,7 +183,7 @@ bindsym $mod+p exec --no-startup-id maim --format=png --select | xclip -selectio
 ## DISPLAY SETTINGS
 
 # Start feh to set wallpaper
-exec_always --no-startup-id feh --bg-center --no-xinerama $HOME/Pictures/Wallpapers/1.png
+exec_always --no-startup-id nitrogen --random --set-zoom-fill
 
 # Start Picom Compositor for Effects
 exec --no-startup-id picom --no-vsync
