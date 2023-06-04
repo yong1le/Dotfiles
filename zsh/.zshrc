@@ -1,20 +1,25 @@
-# Quickly jump to common folders
-export UNI="/Users/yonglehe/Documents/notes/uni/"
-export PROJECTS="/Users/yonglehe/Documents/Code/Projects/"
-export ASTRO="/Users/yonglehe/.config/nvim/lua/user/"
+# Autostart X at Login
+if [ -z "${DISPLAY}"  ] && [ "${XDG_VTNR}" -eq 1 ]; then
+    exec startx
+fi
 
-export XDG_CONFIG_PATH="/Users/yonglehe/.config/"
+# Quickly jump to common folders
+export UNI="$HOME/Documents/notes/uni/"
+export PROJECTS="$HOME/Documents/Code/Projects/"
+export ASTRO="$HOME/.config/nvim/lua/user/"
+
+export XDG_CONFIG_PATH="$HOME/.config/"
 
 # PATH
-export PATH="/opt/homebrew/opt/python@3.10/libexec/bin:$PATH"
-export PATH="$HOME/.local/bin/:$PATH"
-export PATH="$HOME/.emacs.d/bin/:$PATH"
+# export PATH="/opt/homebrew/opt/python@3.10/libexec/bin:$PATH"
+# export PATH="$HOME/.local/bin/:$PATH"
+# export PATH="$HOME/.emacs.d/bin/:$PATH"
 
 # Alias
-alias ls="exa"
-alias cat="bat"
+# alias ls="exa"
+# alias cat="bat"
 # alias python="python3"
-alias emacs="emacs -nw"
+# alias emacs="emacs -nw"
 
 # Prompt
 eval "$(starship init zsh)"
@@ -26,9 +31,3 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # IgnoreCase
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/yonglehe/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yonglehe/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/yonglehe/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yonglehe/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
