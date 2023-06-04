@@ -1,4 +1,4 @@
-export UNI="$HOME/Documents/notes/uni/"
+export UNI="$HOME/Documents/uni/"
 export PROJECTS="$HOME/Documents/Code/Projects/"
 export ASTRO="$HOME/.config/nvim/lua/user/"
 
