@@ -30,10 +30,10 @@ ahead = "[](bold green) ×${count} "
 behind = "[](bold green) ×${count} "
 diverged = "[](bold green) ×${ahead_count} [](bold green) ×${behind_count} "
 untracked = "[](bold yellow) ×${count} "
-stashed = "[﯊](bold yellow) "
+stashed = "[](bold yellow) "
 modified = "[](bold yellow) ×${count} "
 staged = "[](bold green) ×${count} "
-renamed = "[凜](bold green) ×${count} "
+renamed = "[](bold green) ×${count} "
 deleted = "[](bold red) ×${count} "
 style = "bright-white"
 format = "$all_status$ahead_behind"
@@ -54,6 +54,11 @@ style = "bold green"
 
 [rust]
 format = "[$symbol$version]($style) "
+style = "bold green"
+
+[lua]
+format = "[$symbol$version]($style) "
+symbol = "[](bold yellow)"
 style = "bold green"
 
 [time]
