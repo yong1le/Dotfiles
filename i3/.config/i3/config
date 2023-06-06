@@ -4,7 +4,7 @@ set $mod Mod1
 ## APPEARANCE
 
 # Gap Size
-gaps inner 10
+gaps inner 5
 gaps outer 5
 
 # Hide Title Bar
