@@ -16,8 +16,6 @@ export XDG_CONFIG_PATH="$HOME/.config/"
 # export PATH="$HOME/.emacs.d/bin/:$PATH"
 
 # Alias
-alias ex="xrandr --output Virtual-1 --mode 1920x1080" # external monitor
-alias int="xrandr --output Virtual-1 --mode 1680x1050"
 alias sh="dash" # for cscb09
 
 # Prompt
@@ -30,3 +28,5 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # IgnoreCase
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+
+spice-vdagent

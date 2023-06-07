@@ -194,3 +194,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Start Redshift to adjust display temperature
 exec --no-startup-id redshift -l 47.5:9.4 -t 5700:3600 -g 0.9 -m randr -v
 
+## Resize resolution
+bindsym $mod+m exec xrandr --output Virtual-1 --mode 1920x1080
+bindsym $mod+n exec xrandr --output Virtual-1 --mode 1680x1050
