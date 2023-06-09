@@ -15,7 +15,7 @@ window:
 
   dynamic_padding: false
 
-  # decorations: buttonless
+  decorations: buttonless
 
   dynamic_title: true
 
@@ -39,7 +39,7 @@ font:
     family: FiraCode Nerd Font
     style: Bold Italic
 
-  size: 11.5
+  size: 15
 
   offset:
     x: 0
