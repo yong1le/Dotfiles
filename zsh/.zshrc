@@ -30,3 +30,4 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
 spice-vdagent
+xset r rate 200 30
