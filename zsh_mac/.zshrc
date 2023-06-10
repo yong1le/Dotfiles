@@ -17,11 +17,11 @@ if type "${BREW_BIN}" &> /dev/null; then
         for bindir in "${BREW_PREFIX}/opt/$p/bin"; do export PATH=$bindir:$PATH; done
         for mandir in "${BREW_PREFIX}/opt/$p/libexec/gnuman"; do export MANPATH=$mandir:$MANPATH; done
         for mandir in "${BREW_PREFIX}/opt/$p/share/man"; do export MANPATH=$mandir:$MANPATH; done
-    echo hello
     done
 fi
 
 # export PATH="/opt/homebrew/opt/python@3.10/libexec/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
 # Aliases
 alias python="python3"
