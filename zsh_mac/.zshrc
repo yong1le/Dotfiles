@@ -25,6 +25,7 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
 # Aliases
 alias python="python3"
+alias scl="scp -r cscb09 scp://heyong4@mathlab.utsc.utoronto.ca/~/cscb09s23_space"
 
 
 # Auto-Suggestions
