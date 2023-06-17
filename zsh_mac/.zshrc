@@ -1,13 +1,9 @@
 export UNI="$HOME/Documents/uni/"
 export PROJECTS="$HOME/Documents/Code/Projects/"
-export ASTRO="$HOME/.config/nvim/lua/user/"
 
 export XDG_CONFIG_PATH="$HOME/.config/"
 
-
-# PATH
-
-## GNU UTILS
+# GNU UTILS
 BREW_BIN="/opt/homebrew/bin/brew"
 INSTALLED_GNU="coreutils binutils diffutils findutils gnu-tar gnu-which gnu-sed gnu-indent grep gcc"
 if type "${BREW_BIN}" &> /dev/null; then
@@ -19,13 +15,17 @@ if type "${BREW_BIN}" &> /dev/null; then
         for mandir in "${BREW_PREFIX}/opt/$p/share/man"; do export MANPATH=$mandir:$MANPATH; done
     done
 fi
-
-# export PATH="/opt/homebrew/opt/python@3.10/libexec/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
+
+
 # Aliases
 alias python="python3"
 alias scl="scp -r $UNI/cscb09 scp://heyong4@mathlab.utsc.utoronto.ca/~/cscb09s23_space"
+
+## Java Stuff
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+
+# export CLASSPATH="$HOME/junit-platform-console-standalone-1.10.0-M1.jar"
 
 
 # Auto-Suggestions
