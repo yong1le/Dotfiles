@@ -3,22 +3,11 @@ export PROJECTS="$HOME/Documents/Code/Projects/"
 
 export XDG_CONFIG_PATH="$HOME/.config/"
 
-# GNU UTILS
-BREW_BIN="/opt/homebrew/bin/brew"
-INSTALLED_GNU="coreutils binutils diffutils findutils gnu-tar gnu-which gnu-sed gnu-indent grep sqlite gcc make node@14"
-if type "${BREW_BIN}" &> /dev/null; then
-    export BREW_PREFIX="$("${BREW_BIN}" --prefix)"
-    for p in $(echo $INSTALLED_GNU | cat); do
-        for bindir in "${BREW_PREFIX}/opt/$p/libexec/gnubin"; do export PATH=$bindir:$PATH; done
-        for bindir in "${BREW_PREFIX}/opt/$p/bin"; do export PATH=$bindir:$PATH; done
-        for mandir in "${BREW_PREFIX}/opt/$p/libexec/gnuman"; do export MANPATH=$mandir:$MANPATH; done
-        for mandir in "${BREW_PREFIX}/opt/$p/share/man"; do export MANPATH=$mandir:$MANPATH; done
-    done
-fi
 export PATH="$HOME/.local/bin/:$PATH"
 
 # Aliases
-alias scl="scp -r $UNI/cscb09 scp://heyong4@mathlab.utsc.utoronto.ca/~/cscb09s23_space"
+alias scl="scp -r $UNI/20235/cscb09 scp://heyong4@mathlab.utsc.utoronto.ca/~/cscb09s23_space"
+alias nix-i="nvim ~/.config/home-manager/home.nix"
 
 # Auto-Suggestions
 if [ ! -e ~/.zsh/zsh-syntax-highlighting ]; then
@@ -36,12 +25,17 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
 # Python Env
-eval "$(pyenv init -)"
-export WORKON_HOME=~/.virtualenvs
-mkdir -p $WORKON_HOME
-. ~/.pyenv/versions/3.10.12/bin/virtualenvwrapper.sh &> /dev/null
-alias mkv="mkvirtualenv $(basename $(pwd))"
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# export WORKON_HOME=~/.virtualenvs
+# alias mkv="mkvirtualenv $(basename $(pwd))"
+# eval "$(pyenv init -)"
+
+# Node Env
+eval "$(nodenv init -)"
 
 # Prompt
 eval "$(starship init zsh)"
 
+# Nix
+source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
