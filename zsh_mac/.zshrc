@@ -8,6 +8,8 @@ export PATH="$HOME/.local/bin/:$PATH"
 # Aliases
 alias scl="scp -r $UNI/20235/cscb09 scp://heyong4@mathlab.utsc.utoronto.ca/~/cscb09s23_space"
 alias nix-i="nvim ~/.config/home-manager/home.nix"
+alias s="kitty +kitten ssh"
+alias man="/usr/bin/man"
 
 # Auto-Suggestions
 if [ ! -e ~/.zsh/zsh-syntax-highlighting ]; then
