@@ -16,7 +16,7 @@ config.colors = astrodark.colors()
 config.window_frame = astrodark.window_frame()
 
 -- Fonts
-config.font = wezterm.font "Iosevka Nerd Font Mono"
+config.font = wezterm.font "IosevkaTerm Nerd Font Mono"
 config.font_size = 16
 
 -- Right clicking '+' button
