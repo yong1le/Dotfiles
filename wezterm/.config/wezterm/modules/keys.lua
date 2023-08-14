@@ -9,11 +9,6 @@ function modules.apply_to_config(config)
 
   config.keys = {
     {
-      key = "m",
-      mods = "CMD",
-      action = act.DisableDefaultAssignment,
-    },
-    {
       key = "h",
       mods = "CMD",
       action = act.DisableDefaultAssignment,
