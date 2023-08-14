@@ -7,7 +7,8 @@
 
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept.
-(setq doom-font (font-spec :family "Iosevka SS04" :size 16 :weight 'regular)
+(setq doom-font (font-spec :family "IosevkaTerm Nerd Font" :size 16 :weight 'regular)
+      ;; doom-variable-pitch-font (font-spec :family "Academy Engraved LET" :size 16 :weight 'regular)
       ;; doom-big-font
       ;; doom-unicode-font
       ;; doom-serif-font
@@ -26,9 +27,14 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+;; UI
+(menu-bar-mode -1)
+
+;; ORG
+(setq org-directory "~/Documents/notes/")
+(after! org
+  (setq org-roam-directory "~/Documents/notes/notes/")
+  (setq org-roam-index-file "~/Documents/notes/notes/index.org"))
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -65,6 +71,3 @@
 
 
 ;; MY CONFIG STUFF ;;
-(map! :leader
-      :desc "Toggle File Explorer"
-      "e" #'neotree-toggle)
