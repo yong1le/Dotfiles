@@ -17,7 +17,7 @@ config.window_frame = astrodark.window_frame()
 
 -- Fonts
 config.font = wezterm.font "IosevkaTerm Nerd Font Mono"
-config.font_size = 16
+config.font_size = 17
 
 -- Right clicking '+' button
 launch_menu.apply_to_config(config)

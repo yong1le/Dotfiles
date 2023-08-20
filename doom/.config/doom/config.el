@@ -28,14 +28,15 @@
 (setq display-line-numbers-type 'relative)
 
 ;; UI
-(menu-bar-mode -1)
 
 ;; ORG
-(setq org-directory "~/Documents/notes/")
+(setq org-directory "~/Documents/notes/org")
 (after! org
+  (setq org-hide-emphasis-markers 't)
   (setq org-roam-directory "~/Documents/notes/notes/")
-  (setq org-roam-index-file "~/Documents/notes/notes/index.org"))
-
+  (setq org-roam-index-file "~/Documents/notes/notes/index.org")
+  (setq org-agenda-files '("~/Documents/notes/notes/index.org"))
+  )
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -71,3 +72,4 @@
 
 
 ;; MY CONFIG STUFF ;;
+(setq confirm-kill-emacs nil)
