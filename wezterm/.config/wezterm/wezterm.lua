@@ -1,6 +1,6 @@
 -- Pull in the wezterm API
 local wezterm = require "wezterm"
-local astrodark = require "colors.astrodark"
+local kanagawa = require "colors.kanagawa"
 local launch_menu = require "modules.launch_menu"
 local keys = require "modules.keys"
 
@@ -12,8 +12,8 @@ local config = {}
 if wezterm.config_builder then config = wezterm.config_builder() end
 
 -- Theming
-config.colors = astrodark.colors()
-config.window_frame = astrodark.window_frame()
+config.colors = kanagawa.colors()
+config.window_frame = kanagawa.window_frame()
 
 -- Fonts
 config.font = wezterm.font "IosevkaTerm Nerd Font Mono"
