@@ -14,6 +14,11 @@ function modules.apply_to_config(config)
       action = act.DisableDefaultAssignment,
     },
     {
+      key = "Enter",
+      mods = "ALT",
+      action = act.DisableDefaultAssignment,
+    },
+    {
       key = "w",
       mods = "CMD",
       action = act.CloseCurrentPane { confirm = true },
