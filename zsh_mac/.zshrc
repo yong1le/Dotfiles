@@ -1,4 +1,4 @@
-export UNI="$HOME/Documents/uni/"
+export UNI="$HOME/Documents/notes/uni/files"
 export PROJECTS="$HOME/Documents/Code/Projects/"
 export XDG_CONFIG_PATH="$HOME/.config/"
 export PATH="$HOME/.local/bin/:$PATH"
