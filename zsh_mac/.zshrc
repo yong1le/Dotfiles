@@ -3,6 +3,7 @@ export PROJECTS="$HOME/Documents/Code/Projects/"
 export XDG_CONFIG_PATH="$HOME/.config/"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/.config/emacs/bin/:$PATH"
+export PATH="$HOME/go/bin/:$PATH"
 
 # Aliases
 alias scl="scp -r $UNI/20235/cscb09 scp://heyong4@mathlab.utsc.utoronto.ca/~/cscb09s23_space"
