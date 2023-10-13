@@ -1,4 +1,4 @@
-theme = "catppuccin_mocha"
+theme = "kanabox_default"
 
 [editor]
 line-number = "relative"
