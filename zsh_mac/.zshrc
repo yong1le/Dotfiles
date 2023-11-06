@@ -1,10 +1,3 @@
-export UNI="$HOME/Documents/notes/uni/files"
-export PROJECTS="$HOME/Documents/Code/Projects/"
-export XDG_CONFIG_PATH="$HOME/.config/"
-export PATH="$HOME/.local/bin/:$PATH"
-export PATH="$HOME/.config/emacs/bin/:$PATH"
-export PATH="$HOME/go/bin/:$PATH"
-
 # Aliases
 alias scl="scp -r $UNI/20235/cscb09 scp://heyong4@mathlab.utsc.utoronto.ca/~/cscb09s23_space"
 
@@ -23,12 +16,5 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
-# Python Env
-eval "$(pyenv init -)"
-
-# Node Env
-eval "$(nodenv init -)"
-
 # Prompt
 eval "$(starship init zsh)"
-
