@@ -27,5 +27,14 @@ keys.apply_to_config(config)
 
 -- Menu bar
 config.window_decorations = "INTEGRATED_BUTTONS"
+config.enable_tab_bar = false
+
+-- Padding
+config.window_padding = {
+  left = 10,
+  right = 10,
+  top = 60,
+  bottom = 0
+}
 
 return config

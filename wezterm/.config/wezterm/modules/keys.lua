@@ -19,102 +19,29 @@ function modules.apply_to_config(config)
       action = act.DisableDefaultAssignment,
     },
     {
-      key = "w",
-      mods = "CMD",
-      action = act.CloseCurrentPane { confirm = true },
+      key = "Tab",
+      mods = "CTRL",
+      action = act.DisableDefaultAssignment,
+    },
+    {
+      key = "Tab",
+      mods = "CTRL|SHIFT",
+      action = act.DisableDefaultAssignment,
     },
     {
       key = "w",
-      mods = "CMD|SHIFT",
-      action = act.CloseCurrentTab { confirm = true },
+      mods = "CMD",
+      action = act.DisableDefaultAssignment,
     },
-
-    -- Pane/Tab Creation
+    {
+      key = "w",
+      mods = "CMD|SHIFT",
+      action = act.DisableDefaultAssignment,
+    },
     {
       key = "t",
       mods = "CMD",
-      action = act.SpawnCommandInNewTab {
-        cwd = "$HOME",
-      },
-    },
-    {
-      key = "t",
-      mods = "CMD|SHIFT",
-      action = act.ShowLauncher,
-    },
-    {
-      key = "Enter",
-      mods = "CMD",
-      action = act.SplitHorizontal {
-        domain = "CurrentPaneDomain",
-      },
-    },
-    {
-      key = "Enter",
-      mods = "CMD|SHIFT",
-      action = act.SplitVertical {
-        domain = "CurrentPaneDomain",
-      },
-    },
-    -- Split Window Movement
-    {
-      key = "a",
-      mods = "CMD",
-      action = act.TogglePaneZoomState,
-    },
-    {
-      key = "s",
-      mods = "CMD",
-      action = act.PaneSelect {
-        mode = "Activate",
-      },
-    },
-    {
-      key = "s",
-      mods = "CMD|SHIFT",
-      action = act.PaneSelect {
-        mode = "SwapWithActive",
-      },
-    },
-    {
-      key = "h",
-      mods = "CMD",
-      action = act.ActivatePaneDirection "Left",
-    },
-    {
-      key = "l",
-      mods = "CMD",
-      action = act.ActivatePaneDirection "Right",
-    },
-    {
-      key = "j",
-      mods = "CMD",
-      action = act.ActivatePaneDirection "Down",
-    },
-    {
-      key = "k",
-      mods = "CMD",
-      action = act.ActivatePaneDirection "Up",
-    },
-    {
-      key = "h",
-      mods = "CMD|SHIFT",
-      action = act.AdjustPaneSize { "Left", 1 },
-    },
-    {
-      key = "l",
-      mods = "CMD|SHIFT",
-      action = act.AdjustPaneSize { "Right", 1 },
-    },
-    {
-      key = "k",
-      mods = "CMD|SHIFT",
-      action = act.AdjustPaneSize { "Up", 1 },
-    },
-    {
-      key = "j",
-      mods = "CMD|SHIFT",
-      action = act.AdjustPaneSize { "Down", 1 },
+      action = act.DisableDefaultAssignment,
     },
   }
 end
