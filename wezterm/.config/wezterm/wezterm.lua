@@ -1,7 +1,6 @@
 -- Pull in the wezterm API
 local wezterm = require "wezterm"
 local kanagawa = require "colors.kanagawa"
-local launch_menu = require "modules.launch_menu"
 local keys = require "modules.keys"
 
 -- This table will hold the configuration.
@@ -19,9 +18,6 @@ config.window_frame = kanagawa.window_frame()
 config.font = wezterm.font "IosevkaTerm Nerd Font Mono"
 config.font_size = 17
 
--- Right clicking '+' button
-launch_menu.apply_to_config(config)
-
 -- Keys
 keys.apply_to_config(config)
 
@@ -33,7 +29,7 @@ config.enable_tab_bar = false
 config.window_padding = {
   left = 10,
   right = 10,
-  top = 60,
+  top = 30,
   bottom = 0
 }
 
