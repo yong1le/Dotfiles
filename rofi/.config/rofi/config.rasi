@@ -1,7 +1,0 @@
-configuration {
-  modi: "window,drun,filebrowser,run";
-  terminal: "alacritty";
-  drun-match-fields: "name";
-  sidebar-mode: true;
-}
-@theme "~/.config/rofi/fall"
