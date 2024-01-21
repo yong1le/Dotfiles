@@ -13,7 +13,8 @@ else
   selected=$(
   (
   find ~/Documents/code -mindepth 2 -maxdepth 2 -type d &&
-  find ~/Documents/uni  -mindepth 2 -maxdepth 2 -type d -not -path "*/.git/*"
+  find ~/Documents/uni  -mindepth 2 -maxdepth 2 -type d -not -path "*/.git/*" &&
+  find ~/Documents/notes -mindepth 1 -maxdepth 1 -type d
   ) | fzf)
 fi
 
