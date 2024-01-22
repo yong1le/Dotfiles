@@ -5,26 +5,6 @@ export PATH="$HOME/.config/emacs/bin/:$PATH"
 export PATH="$HOME/go/bin/:$PATH"
 export PATH="$HOME/.cargo/bin/:$PATH"
 
-# Env Configuration
-if which pyenv > /dev/null; then
-  eval "$(pyenv init - zsh --no-rehash)"
-fi
-if which nodenv > /dev/null; then
-  eval "$(nodenv init - zsh --no-rehash)"
-fi
-__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-
 # ZSH options (ignore-case)
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
@@ -51,5 +31,3 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
       exec tmux attach-session
     fi
 fi
-
-
