@@ -15,7 +15,7 @@ config.colors = kanagawa.colors()
 config.window_frame = kanagawa.window_frame()
 
 -- Fonts
-config.font = wezterm.font "IosevkaTerm Nerd Font Mono"
+config.font = wezterm.font "SauceCodePro Nerd Font"
 config.font_size = 17
 
 -- Keys

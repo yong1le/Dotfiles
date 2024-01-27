@@ -1,0 +1,30 @@
+import = [
+    "~/.config/alacritty/themes/kanagawa-wave.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+TERM_PROGRAM = "alacritty"
+
+[cursor]
+blink_interval = 750
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "On"
+shape = "Beam"
+
+[font]
+size = 17
+
+[font.normal]
+family = "SauceCodePro Nerd Font"
+
+[window]
+decorations = "buttonless"
+dynamic_title = true
+option_as_alt = "Both"
+
+[window.padding]
+x = 10
+y = 10
