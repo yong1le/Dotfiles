@@ -1,14 +1,19 @@
 # PATH
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/.local/scripts/:$PATH"
-export PATH="$HOME/.config/emacs/bin/:$PATH"
 export PATH="$HOME/go/bin/:$PATH"
-export PATH="$HOME/.cargo/bin/:$PATH"
 
 # Env Configuration
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 
+if which pyenv > /dev/null; then
+  eval "$(pyenv init - zsh --no-rehash)"
+fi
+
+if which rbenv > /dev/null; then
+eval "$(rbenv init - zsh)"
+fi
 
 # ZSH options (ignore-case)
 autoload -Uz compinit && compinit
@@ -27,8 +32,10 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Prompt Config
 eval "$(starship init zsh)"
 
-# Start Tmux
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+# Start Tmux, change $TERM_PROGRAM to whichever terminal emulator
+if command -v tmux &> /dev/null && \
+  ([ "$TERM_PROGRAM" = "WezTerm" ] || [ "$TERM_PROGRAM" = "alacritty" ])  && \
+  [ -z "$TMUX" ] && [ -n "$PS1" ]; then
     tmux has-session 2> /dev/null
     if [ $? != 0 ]; then
       exec tmux
