@@ -28,3 +28,19 @@ option_as_alt = "Both"
 [window.padding]
 x = 10
 y = 10
+
+[[keyboard.bindings]]
+action = "None"
+key = "w"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "None"
+key = "t"
+mods = "Super"
+
+
+[[keyboard.bindings]]
+action = "None"
+key = "h"
+mods = "Super"
