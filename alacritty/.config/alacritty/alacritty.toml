@@ -38,9 +38,3 @@ mods = "Super"
 action = "None"
 key = "t"
 mods = "Super"
-
-
-[[keyboard.bindings]]
-action = "None"
-key = "h"
-mods = "Super"
