@@ -3,17 +3,13 @@ export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/.local/scripts/:$PATH"
 export PATH="$HOME/go/bin/:$PATH"
 
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 # Env Configuration
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-
-if which pyenv > /dev/null; then
-  eval "$(pyenv init - zsh --no-rehash)"
-fi
-
-if which rbenv > /dev/null; then
-eval "$(rbenv init - zsh)"
-fi
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # ZSH options (ignore-case)
 autoload -Uz compinit && compinit

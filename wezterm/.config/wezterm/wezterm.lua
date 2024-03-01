@@ -15,21 +15,21 @@ config.colors = kanagawa.colors()
 config.window_frame = kanagawa.window_frame()
 
 -- Fonts
-config.font = wezterm.font "SauceCodePro Nerd Font"
-config.font_size = 17
+config.font = wezterm.font "SauceCodePro Nerd Font Mono"
+config.font_size = 14
 
 -- Keys
 keys.apply_to_config(config)
 
 -- Menu bar
-config.window_decorations = "INTEGRATED_BUTTONS"
+-- config.window_decorations = "INTEGRATED_BUTTONS"
 config.enable_tab_bar = false
 
 -- Padding
 config.window_padding = {
   left = 10,
   right = 10,
-  top = 50,
+  top = 0,
   bottom = 0
 }
 
