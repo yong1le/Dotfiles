@@ -11,8 +11,9 @@ local config = {}
 if wezterm.config_builder then config = wezterm.config_builder() end
 
 -- Theming
-config.colors = kanagawa.colors()
-config.window_frame = kanagawa.window_frame()
+config.color_scheme = "Catppuccin Mocha"
+-- config.colors = kanagawa.colors()
+-- config.window_frame = kanagawa.window_frame()
 
 -- Fonts
 config.font = wezterm.font "SauceCodePro Nerd Font Mono"
