@@ -25,6 +25,7 @@ keys.apply_to_config(config)
 -- Menu bar
 -- config.window_decorations = "INTEGRATED_BUTTONS"
 config.enable_tab_bar = false
+config.window_close_confirmation = 'NeverPrompt'
 
 -- Padding
 config.window_padding = {
