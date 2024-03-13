@@ -27,6 +27,7 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Prompt Config
 eval "$(starship init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
 # Start Tmux, change $TERM_PROGRAM to whichever terminal emulator
 if command -v tmux &> /dev/null && \
@@ -54,4 +55,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
