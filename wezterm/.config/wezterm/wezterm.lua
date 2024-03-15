@@ -18,6 +18,10 @@ config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font "SauceCodePro Nerd Font Mono"
 config.font_size = 12
 
+-- Size
+config.initial_rows = 40
+config.initial_cols = 100
+
 -- Keys
 keys.apply_to_config(config)
 
