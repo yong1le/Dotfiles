@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cp $HOME/Documents/latex/notes/main.tex "$1"
