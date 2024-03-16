@@ -6,16 +6,17 @@
 # Usage
 # tms [session]
 
+
 # If the name of an active session is given, switch to it, otherwise fuzzy find
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
   selected=$(
   (
+  tmux ls -F \#S &&
   find ~/Documents/code -mindepth 2 -maxdepth 2 -type d &&
-  find ~/Documents/uni  -mindepth 2 -maxdepth 2 -type d -not -path "*/.git/*" &&
-  find ~/Documents/notes -mindepth 1 -maxdepth 1 -type d
-  ) | fzf)
+  find ~/Documents/uni  -mindepth 2 -maxdepth 2 -type d -not -path "*/.git/*"
+  ) | fzf )
 fi
 
 # If nothing is selected, simply exit
