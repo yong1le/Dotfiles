@@ -1,6 +1,6 @@
 * {
 	border: none;
-	border-radius: 10;
+	border-radius: 10px;
     font-family: "SauceCodePro Nerd Font" ;
 	font-size: 12px;
 	min-height: 10px;
@@ -42,13 +42,6 @@ window#waybar.hidden {
 	border-radius: 2px;
 }
 
-#workspaces button.active {
-	transition: none;
-	color: #D98324;
-	background: transparent;
-	font-size: 4px;
-}
-
 #workspaces button:hover {
 	transition: none;
 	box-shadow: inherit;
@@ -68,7 +61,7 @@ window#waybar.hidden {
 	border-radius: 10px;
 	transition: none;
 	color: #1A1826;
-	background: #D98324;
+	background: #E28C8C;
 }
 
 #pulseaudio {

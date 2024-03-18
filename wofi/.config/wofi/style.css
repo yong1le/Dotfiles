@@ -1,0 +1,36 @@
+*{
+    font-size: 16px;
+}
+ 
+window {
+    background:#1A1C27;
+    border-radius: 20px;
+}
+ 
+#input {
+    margin-bottom: 15px;
+    padding:3px;
+    border-radius: 5px;
+    border: none;
+    color: @primary_blue;
+}
+
+ 
+#outer-box {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+#text {
+    padding: 5px;
+    color: white;
+}
+ 
+#entry {
+    padding: 10px;
+}
+ 
+#entry:selected {
+    background-color: #D98324aa;
+}

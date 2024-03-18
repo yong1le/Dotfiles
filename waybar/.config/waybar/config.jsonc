@@ -64,24 +64,23 @@
     },
   },
 
+  "clock": {
+    "format": "󱑇  {:%b %d, %Y   %I:%M %p} ",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>"
+  },
+
   "battery": {
     "states": {
-      "good": 95,
       "warning": 30,
       "critical": 20,
     },
     "format": "{icon}  {capacity}%",
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
-    "format-alt": "{time} {icon}",
     "format-icons": ["", "", "", "", ""],
+    "tooltip-format": "Wattage draw: {power} W\nTime remaining: {time}",
+    "tooltip-format-charging": "Time to full: {time}"
   },
-
-  "clock": {
-    "format": "󱑇  {:%b %d, %Y   %I:%M %p} ",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>"
-  },
-  
 
   // "custom/media": {
   //   "interval": 30,
