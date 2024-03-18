@@ -1,0 +1,8 @@
+#!/bin/bash
+
+tmux has-session 2> /dev/null
+if [ $? != 0 ]; then
+  exec tmux
+else
+  exec tmux attach-session
+fi

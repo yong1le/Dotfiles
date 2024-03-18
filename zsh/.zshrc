@@ -31,15 +31,3 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Prompt Config
 eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-
-# Start Tmux, change $TERM_PROGRAM to whichever terminal emulator
-if command -v tmux &> /dev/null && \
-  ([ "$TERM_PROGRAM" = "WezTerm" ] || [ "$TERM" = "xterm-kitty" ])  && \
-  [ -z "$TMUX" ] && [ -n "$PS1" ]; then
-    tmux has-session 2> /dev/null
-    if [ $? != 0 ]; then
-      exec tmux
-    else
-      exec tmux attach-session
-    fi
-fi
