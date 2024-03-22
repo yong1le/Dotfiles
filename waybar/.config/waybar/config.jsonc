@@ -1,8 +1,9 @@
 {
   "layer": "top",
-  "modules-left": ["custom/launcher", "cpu", "memory", "custom/gpu", "tray"],
+  "modules-left": ["custom/launcher", "tray"],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
+    "power-profiles-daemon",
     "backlight",
     "pulseaudio",
     "clock",
