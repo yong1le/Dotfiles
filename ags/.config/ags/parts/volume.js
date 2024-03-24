@@ -33,7 +33,6 @@ export const VolumeLabel = () => {
     children: [
       Widget.Icon({
         icon: volumeIcon,
-        size: 24,
       }),
       Widget.Label({
         label: volume,

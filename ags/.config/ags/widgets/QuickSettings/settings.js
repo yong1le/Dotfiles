@@ -7,8 +7,7 @@ import {
 } from "../../parts/power.js";
 import { VolumeLabel, VolumeSlider } from "../../parts/volume.js";
 import { BacklightLabel, BacklightSlider } from "../../parts/backlight.js";
-
-const WINDOW_NAME = "quicksettings";
+import PopupWindow from "../../parts/popup.js";
 
 function Battery() {
   return Widget.Box({
@@ -21,11 +20,11 @@ function Battery() {
         children: [BatteryLabel(), BatterySlider()],
       }),
       Widget.Box({
-        spacing: 16,
+        spacing: 32,
         children: [
-          PowerProfilesButton(),
           BatteryDrawLabel(),
           BatteryRemainingLabel(),
+          PowerProfilesButton(),
         ],
       }),
     ],
@@ -51,23 +50,16 @@ function Volume() {
 function Settings() {
   return Widget.Box({
     spacing: 32,
-    class_name: "quicksettings-inner",
+    class_names: ["quicksettings", "popup-inner"],
     vertical: true,
     children: [Volume(), Backlight(), Battery()],
   });
 }
 
 export default function QuickSettings() {
-  return Widget.Window({
-    class_name: "quicksettings",
-    name: WINDOW_NAME,
+  return PopupWindow({
+    name: "quicksettings",
     anchor: ["top", "right"],
-    setup: (self) =>
-      self.keybind("Escape", () => {
-        App.closeWindow(WINDOW_NAME);
-      }),
-    visible: false,
-    keymode: "exclusive",
     child: Settings(),
   });
 }

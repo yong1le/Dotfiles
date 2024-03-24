@@ -24,7 +24,7 @@ export const BatteryLabel = () => {
     visible: battery.bind("available"),
     spacing: 8,
     children: [
-      Widget.Icon({ icon, size:18 }),
+      Widget.Icon({ icon }),
       Widget.Label({
         label: value.as((p) => `${p} %`),
       }),
@@ -53,7 +53,9 @@ export const BatteryDrawLabel = () => {
 export const BatteryRemainingLabel = () => {
   return Widget.Label({
     class_name: "battery-remaining",
-    label: battery.bind("time_remaining").as((p) => `Remaining: ${secondsToTime(p)}`),
+    label: battery
+      .bind("time_remaining")
+      .as((p) => `Remaining: ${secondsToTime(p)}`),
   });
 };
 
@@ -82,7 +84,8 @@ export const PowerProfilesButton = () => {
       spacing: 8,
       children: [
         Widget.Icon({
-          icon, size: 18
+          icon,
+          size: 18,
         }),
         Widget.Label({
           label: profile,

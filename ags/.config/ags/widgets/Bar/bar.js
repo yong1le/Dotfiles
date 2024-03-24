@@ -1,10 +1,10 @@
 const hyprland = await Service.import("hyprland");
 const mpris = await Service.import("mpris");
-const systemtray = await Service.import("systemtray");
 
 import { VolumeLabel } from "../../parts/volume.js";
 import { BatteryLabel } from "../../parts/power.js";
 import { BacklightLabel } from "../../parts/backlight.js";
+import { SysTray } from "../../parts/systray.js";
 
 const date = Variable("", {
   poll: [1000, 'date "+%b %e.   %I:%M %p"'],
@@ -44,52 +44,30 @@ function Clock() {
   });
 }
 
-function Media() {
-  const label = Utils.watch("", mpris, "player-changed", () => {
-    if (mpris.players[0]) {
-      const { track_artists, track_title } = mpris.players[0];
-      return `${track_artists.join(", ")} - ${track_title}`;
-    } else {
-      return "Nothing is playing";
-    }
+function SystemTrayLabel() {
+  const mediaButton = Widget.Button({
+    on_primary_click: () => App.ToggleWindow("mediaplayer"),
+    child: Widget.Icon({
+      icon: "media-playback-start-symbolic",
+    }),
   });
 
-  return Widget.Button({
-    class_name: "media",
-    on_primary_click: () => mpris.getPlayer("")?.playPause(),
-    on_scroll_up: () => mpris.getPlayer("")?.next(),
-    on_scroll_down: () => mpris.getPlayer("")?.previous(),
-    child: Widget.Label({ label }),
+  return Widget.Box({
+    class_name: "systemtray-label",
+    children: [SysTray(), mediaButton],
   });
 }
 
 function QuickSettingsLabel() {
   return Widget.Button({
+    class_name: "quicksettings-label",
     on_clicked: () => App.ToggleWindow("quicksettings"),
     on_scroll_up: () => false,
     on_scroll_down: () => false,
     child: Widget.Box({
-      class_name: "quicksettings-label",
       spacing: 16,
       children: [VolumeLabel(), BacklightLabel(), BatteryLabel()],
     }),
-  });
-}
-
-function SysTray() {
-  const items = systemtray.bind("items").as((items) =>
-    items.map((item) =>
-      Widget.Button({
-        child: Widget.Icon({ icon: item.bind("icon"), size: 22 }),
-        on_primary_click: (_, event) => item.activate(event),
-        on_secondary_click: (_, event) => item.openMenu(event),
-        tooltip_markup: item.bind("tooltip_markup"),
-      }),
-    ),
-  );
-
-  return Widget.Box({
-    children: items,
   });
 }
 
@@ -97,14 +75,13 @@ function SysTray() {
 function Left() {
   return Widget.Box({
     spacing: 8,
-    children: [SysTray(), Media()],
+    children: [SystemTrayLabel()],
   });
 }
 
 function Right() {
   return Widget.Box({
     hpack: "end",
-    spacing: 16,
     children: [QuickSettingsLabel(), Clock()],
   });
 }
