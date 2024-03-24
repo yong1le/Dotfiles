@@ -1,31 +1,13 @@
 #!/bin/bash
 
-# Directories containing icon themes
-ICONS_DIRS=(
-    "/usr/share/icons"
-    "$HOME/.local/share/icons"
-)
+selected=$(
+(
+find /usr/share/icons -type f \( -iname "*.svg" -o -iname "*.png" \) &&
+find ~/.local/share/icons -type f \( -iname "*.svg" -o -iname "*.png" \)
+) | wofi --show dmenu -I -i)
 
-# Initialize an empty array to store icon files
-icon_files=()
-
-# Loop through each directory and list icon files
-for dir in "${ICONS_DIRS[@]}"; do
-    while IFS= read -r -d '' file; do
-        icon_files+=("$file")
-    done < <(find "$dir" -type f \( -name "*.png" -o -name "*.svg" \) -print0 | sort -z)
-done
-
-# Extract icon names from file paths
-icons=$(printf "%s\n" "${icon_files[@]}" | awk -F '/' '{print $NF}')
-
-# Display icons using Rofi and show selected icon name
-selected_icon=$(echo "$icons" | wofi --show dmenu -i)
-
-# If icon is selected, show its path
-if [ ! -z "$selected_icon" ]; then
-    icon_path=$(printf "%s\n" "${icon_files[@]}" | grep "/$selected_icon$")
-    /usr/bin/thunar "$icon_path"
-
-    echo "$selected_icon" | wl-copy
+if [ ! -z "$selected" ]; then
+    echo "$selected" | wl-copy
+    /usr/bin/thunar "$selected"
 fi
+

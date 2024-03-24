@@ -10,6 +10,6 @@ export default function PopupWindow({ name, anchor, child }) {
       });
     },
     visible: false,
-    keymode: "exclusive",
+    keymode: "on-demand",
   });
 }
