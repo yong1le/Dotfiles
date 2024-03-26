@@ -1,7 +1,7 @@
 always_parse_args=true
 show_all=false
 term=kitty
-hide_scroll=true
+hide_scroll=false
 print_command=true
 insensitive=true
 prompt=
