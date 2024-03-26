@@ -1,14 +1,15 @@
 const audio = await Service.import("audio");
 
-const icons = {
-  101: "overamplified",
-  67: "high",
-  34: "medium",
-  1: "low",
-  0: "muted",
-};
-
 function getVolumeIcon() {
+  
+  const icons = {
+    101: "overamplified",
+    67: "high",
+    34: "medium",
+    1: "low",
+    0: "muted",
+  };
+
   const icon = audio.speaker.stream?.is_muted
     ? 0
     : [101, 67, 34, 1, 0].find(
@@ -32,6 +33,7 @@ export const VolumeLabel = () => {
     spacing: 8,
     children: [
       Widget.Icon({
+        class_name: "icon",
         icon: volumeIcon,
       }),
       Widget.Label({

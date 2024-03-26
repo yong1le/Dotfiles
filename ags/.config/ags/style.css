@@ -5,6 +5,10 @@
   color: @theme_fg_color;
 }
 
+.icon {
+  font-size: 22px
+}
+
 .bar button {
   min-width: 0;
   padding-bottom: 0;

@@ -24,7 +24,10 @@ export const BatteryLabel = () => {
     visible: battery.bind("available"),
     spacing: 8,
     children: [
-      Widget.Icon({ icon }),
+      Widget.Icon({
+        icon,
+        class_name: "icon",
+      }),
       Widget.Label({
         label: value.as((p) => `${p} %`),
       }),
@@ -85,7 +88,7 @@ export const PowerProfilesButton = () => {
       children: [
         Widget.Icon({
           icon,
-          size: 18,
+          class_name: "icon",
         }),
         Widget.Label({
           label: profile,

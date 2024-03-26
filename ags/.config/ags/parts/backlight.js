@@ -10,13 +10,15 @@ export const BacklightSlider = () => {
   });
 };
 
+
 export const BacklightLabel = () => {
   return Widget.Box({
     class_name: "backlight-label",
     spacing: 8,
     children: [
       Widget.Icon({
-        icon: "screen-shared-symbolic",
+        class_name: "icon",
+        icon: "display-brightness-symbolic",
       }),
       Widget.Label({
         label: brightness
