@@ -1,5 +1,4 @@
 const hyprland = await Service.import("hyprland");
-const mpris = await Service.import("mpris");
 
 import { VolumeLabel } from "../../parts/volume.js";
 import { BatteryLabel } from "../../parts/power.js";
@@ -7,7 +6,7 @@ import { BacklightLabel } from "../../parts/backlight.js";
 import { SysTray } from "../../parts/systray.js";
 
 const date = Variable("", {
-  poll: [1000, 'date "+%b %e.   %I:%M %p"'],
+  poll: [1000, 'date "+%A, %b. %e, %I:%M %p"'],
 });
 
 /**
