@@ -1,7 +1,12 @@
 @define-color hover_color #30303E;
 
+* {
+  font-family: 'SauceCodePro Nerd Font';
+}
+
 .bar {
   background-color: @theme_bg_color;
+  opacity: 0.9;
   color: @theme_fg_color;
 }
 

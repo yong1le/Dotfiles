@@ -36,7 +36,10 @@ function Workspaces(monitor) {
 
 function Clock() {
   return Widget.Button({
-    on_clicked: () => App.ToggleWindow("popupcalendar"),
+    on_clicked: () => {
+      App.ToggleWindow("fullscreenclose")
+      App.ToggleWindow("popupcalendar")
+    },
     class_name: "clock",
     child: Widget.Label({
       label: date.bind(),
@@ -46,7 +49,11 @@ function Clock() {
 
 function SystemTrayLabel() {
   const mediaButton = Widget.Button({
-    on_primary_click: () => App.ToggleWindow("mediaplayer"),
+    on_primary_click: () => {
+      App.ToggleWindow("mediaplayer")
+      App.ToggleWindow("fullscreenclose")
+    }
+    ,
     child: Widget.Icon({
       icon: "media-playback-start-symbolic",
     }),
@@ -61,7 +68,10 @@ function SystemTrayLabel() {
 function QuickSettingsLabel() {
   return Widget.Button({
     class_name: "quicksettings-label",
-    on_clicked: () => App.ToggleWindow("quicksettings"),
+    on_clicked: () => {
+      App.ToggleWindow("fullscreenclose")
+      App.ToggleWindow("quicksettings")
+    },
     on_scroll_up: () => false,
     on_scroll_down: () => false,
     child: Widget.Box({
