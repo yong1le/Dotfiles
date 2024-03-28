@@ -1,7 +1,6 @@
 const audio = await Service.import("audio");
 
 function getVolumeIcon() {
-  
   const icons = {
     101: "overamplified",
     67: "high",
@@ -28,18 +27,23 @@ export const VolumeLabel = () => {
   const volumeIcon = Utils.watch(getVolumeIcon(), audio.speaker, getVolumeIcon);
   const volume = Utils.watch(getVolume(), audio.speaker, getVolume);
 
-  return Widget.Box({
-    class_name: "volume-label",
-    spacing: 8,
-    children: [
-      Widget.Icon({
-        class_name: "icon",
-        icon: volumeIcon,
-      }),
-      Widget.Label({
-        label: volume,
-      }),
-    ],
+  return Widget.EventBox({
+    on_primary_click: () => Utils.subprocess(['pamixer', '-t']),
+    on_scroll_up: () => audio.speaker.volume += 0.05,
+    on_scroll_down: () => audio.speaker.volume -= 0.05,
+    child: Widget.Box({
+      class_name: "volume-label",
+      spacing: 8,
+      children: [
+        Widget.Icon({
+          class_name: "icon",
+          icon: volumeIcon,
+        }),
+        Widget.Label({
+          label: volume,
+        }),
+      ],
+    }),
   });
 };
 
