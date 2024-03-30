@@ -1,4 +1,5 @@
 window {
+  opacity: 0.9;
   margin: 0px;
   padding: 10px;
   border: 0.16em solid @theme_selected_bg_color;
