@@ -63,7 +63,7 @@
 .quicksettings .backlight-label,
 .quicksettings .battery-label,
 .quicksettings .volume-label {
-  min-width: 80px
+  min-width: 100px
 }
 
 

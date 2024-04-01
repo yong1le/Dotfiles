@@ -8,6 +8,6 @@ find ~/.local/share/icons -type f \( -iname "*.svg" -o -iname "*.png" \)
 
 if [ ! -z "$selected" ]; then
     echo "$selected" | wl-copy
-    /usr/bin/thunar "$selected"
+    /usr/bin/nemo "$selected"
 fi
 

@@ -23,18 +23,29 @@ function getVolume() {
   return `${Math.round(audio.speaker.volume * 100)} %`;
 }
 
+function getMicIcon() {
+  return audio.microphone.is_muted
+    ? "microphone-disabled-symbolic"
+    : "audio-input-microphone-symbolic";
+}
+
 export const VolumeLabel = () => {
   const volumeIcon = Utils.watch(getVolumeIcon(), audio.speaker, getVolumeIcon);
   const volume = Utils.watch(getVolume(), audio.speaker, getVolume);
+  const micIcon = Utils.watch(getMicIcon(), audio.microphone, getMicIcon);
 
   return Widget.EventBox({
-    on_primary_click: () => Utils.subprocess(['pamixer', '-t']),
-    on_scroll_up: () => audio.speaker.volume += 0.05,
-    on_scroll_down: () => audio.speaker.volume -= 0.05,
+    on_primary_click: () => Utils.subprocess(["pamixer", "-t"], () => {}),
+    on_secondary_click: () => Utils.subprocess(["pamixer", "--default-source", "-t"], () => {}),
+    on_scroll_up: () => (audio.speaker.volume += 0.05),
+    on_scroll_down: () => (audio.speaker.volume -= 0.05),
     child: Widget.Box({
       class_name: "volume-label",
       spacing: 8,
       children: [
+        Widget.Icon({
+          icon: micIcon,
+        }),
         Widget.Icon({
           class_name: "icon",
           icon: volumeIcon,
