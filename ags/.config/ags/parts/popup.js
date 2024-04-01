@@ -1,29 +1,36 @@
 export default function PopupWindow({ name, anchor, child }) {
+  const popup = Widget.Window({
+    anchor,
+    class_names: ["popup"],
+    child: child,
+    layer: "top",
+  });
+
   const close = Widget.Window({
-    anchor: ["top", "right", "left", "bottom"],
     css: "background-color: transparent",
+    anchor: ["top", "left", "right", "bottom"],
     child: Widget.EventBox({
       on_primary_click: () => {
         App.closeWindow(name);
       },
     }),
+    layer: "top",
   });
 
   const window = Widget.Window({
-    class_names: ["popup"],
     name,
-    anchor,
+    css: "background-color: transparent",
     child: Widget.Box({
-      children: [child, close],
+      children: [close, popup],
     }),
     setup: (self) => {
       self.keybind("Escape", () => {
         App.closeWindow(name);
       });
     },
-    layer: "top",
     visible: false,
     keymode: "on-demand",
+    layer: "background",
   });
 
   return window;
