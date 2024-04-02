@@ -1,24 +1,23 @@
+import PopupWindow from "../../parts/popup.js";
+
 const WINDOW_NAME = "popupcalendar";
 
 const Calendar = () => {
-  return Widget.Calendar({
-    showDayNames: true,
-    showDetails: true,
-    showHeading: true,
-    showWeekNumbers: true,
+  return Widget.Box({
+    className: "popup-inner",
+    child: Widget.Calendar({
+      showDayNames: true,
+      showDetails: true,
+      showHeading: true,
+      showWeekNumbers: false,
+    }),
   });
 };
 
 export default function PopupCalendar() {
-  return Widget.Window({
+  return PopupWindow({
     name: WINDOW_NAME,
     anchor: ["top", "right"],
-    setup: (self) =>
-      self.keybind("Escape", () => {
-        App.closeWindow(WINDOW_NAME);
-      }),
-    visible: false,
-    keymode: "exclusive",
     child: Calendar(),
   });
 }

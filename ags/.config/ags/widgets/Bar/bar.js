@@ -16,7 +16,7 @@ function Workspaces(monitor) {
   const activeId = hyprland.active.workspace.bind("id");
   const workspaces = hyprland.bind("workspaces").as((ws) =>
     ws
-      .filter((e) => e.monitorID === monitor)
+      .filter((e) => e.monitorID === monitor && e.id > 0)
       .sort((a, b) => a.id - b.id)
       .map(({ id }) =>
         Widget.Button({

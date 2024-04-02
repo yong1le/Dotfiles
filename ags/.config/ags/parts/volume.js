@@ -25,7 +25,7 @@ function getVolume() {
 
 function getMicIcon() {
   return audio.microphone.is_muted
-    ? "microphone-disabled-symbolic"
+    ? "microphone-sensitivity-muted-symbolic"
     : "audio-input-microphone-symbolic";
 }
 
@@ -45,6 +45,7 @@ export const VolumeLabel = () => {
       children: [
         Widget.Icon({
           icon: micIcon,
+          class_name: "icon"
         }),
         Widget.Icon({
           class_name: "icon",
