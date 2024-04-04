@@ -15,3 +15,4 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Prompt Config
 eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+

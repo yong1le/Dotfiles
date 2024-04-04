@@ -24,9 +24,9 @@ function getVolume() {
 }
 
 function getMicIcon() {
-  return audio.microphone.is_muted
-    ? "microphone-sensitivity-muted-symbolic"
-    : "audio-input-microphone-symbolic";
+  return audio.microphone.stream?.is_muted
+    ? "microphone-sensitivity-muted"
+    : "microphone-sensitivity-high";
 }
 
 export const VolumeLabel = () => {
