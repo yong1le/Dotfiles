@@ -5,9 +5,9 @@ window {
   opacity: 0.9;
   margin: 0px;
   padding: 10px;
-  border: 0.16em solid @theme_selected_bg_color;
+  border: 0.16em solid @accent_bg_color;
   border-radius: 10px;
-  background-color: @theme_bg_color;
+  background-color: @bg_color;
 }
 
 /* Inner Box */
@@ -62,5 +62,5 @@ window {
 
 /* Selected Entry */
 #entry:selected {
-  border: 0.11em solid @theme_selected_bg_color;
+  border: 0.11em solid @accent_bg_color;
 }

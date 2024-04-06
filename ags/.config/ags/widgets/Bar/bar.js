@@ -5,9 +5,17 @@ import { BatteryLabel } from "../../parts/power.js";
 import { BacklightLabel } from "../../parts/backlight.js";
 import { SysTray } from "../../parts/systray.js";
 
-const date = Variable("", {
-  poll: [1000, 'date "+%A, %b. %e, %I:%M %p"'],
-});
+function LauncherLabel() {
+  return Widget.Button({
+    on_primary_click: () =>
+      Utils.subprocess(["wofi", "--show", "drun"], () => {}),
+    on_secondary_click: () => Utils.subprocess(["killall", "wofi"], () => {}),
+    child: Widget.Icon({
+      class_name: "icon",
+      icon: "deepin-launcher",
+    }),
+  });
+}
 
 /**
  * @param {number} monitor
@@ -34,10 +42,14 @@ function Workspaces(monitor) {
 }
 
 function Clock() {
+  const date = Variable("", {
+    poll: [1000, 'date "+%A, %b.%e, %I:%M %p"'],
+  });
+
   return Widget.Button({
     on_clicked: () => {
-      App.ToggleWindow("fullscreenclose")
-      App.ToggleWindow("popupcalendar")
+      App.ToggleWindow("fullscreenclose");
+      App.ToggleWindow("popupcalendar");
     },
     class_name: "clock",
     child: Widget.Label({
@@ -47,20 +59,9 @@ function Clock() {
 }
 
 function SystemTrayLabel() {
-  const mediaButton = Widget.Button({
-    on_primary_click: () => {
-      App.ToggleWindow("mediaplayer")
-      App.ToggleWindow("fullscreenclose")
-    }
-    ,
-    child: Widget.Icon({
-      icon: "media-playback-start-symbolic",
-    }),
-  });
-
   return Widget.Box({
     class_name: "systemtray-label",
-    children: [SysTray(), mediaButton],
+    children: [SysTray()],
   });
 }
 
@@ -68,8 +69,8 @@ function QuickSettingsLabel() {
   return Widget.Button({
     class_name: "quicksettings-label",
     on_clicked: () => {
-      App.ToggleWindow("fullscreenclose")
-      App.ToggleWindow("quicksettings")
+      App.ToggleWindow("fullscreenclose");
+      App.ToggleWindow("quicksettings");
     },
     on_scroll_up: () => false,
     on_scroll_down: () => false,
@@ -80,18 +81,25 @@ function QuickSettingsLabel() {
   });
 }
 
-// layout of the bar
-function Left() {
+function Left(monitor) {
   return Widget.Box({
-    spacing: 8,
-    children: [SystemTrayLabel()],
+    hpack: "start",
+    children: [LauncherLabel(), Workspaces(monitor)],
   });
 }
 
-function Right() {
+// layout of the bar
+function Center(monitor) {
+  return Widget.Box({
+    spacing: 8,
+    children: [Clock()],
+  });
+}
+
+function Right(monitor) {
   return Widget.Box({
     hpack: "end",
-    children: [QuickSettingsLabel(), Clock()],
+    children: [QuickSettingsLabel(), SystemTrayLabel()],
   });
 }
 
@@ -103,9 +111,9 @@ export default function Bar(monitor = 0) {
     anchor: ["top", "left", "right"],
     exclusivity: "exclusive",
     child: Widget.CenterBox({
-      start_widget: Left(),
-      center_widget: Workspaces(monitor),
-      end_widget: Right(),
+      center_widget: Center(monitor),
+      start_widget: Left(monitor),
+      end_widget: Right(monitor),
     }),
   });
 }

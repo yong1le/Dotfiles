@@ -1,7 +1,9 @@
 always_parse_args=true
 show_all=false
+matching=fuzzy
 term=kitty
 hide_scroll=false
 print_command=true
 insensitive=true
+allow_images=true
 prompt=

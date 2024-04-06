@@ -17,7 +17,7 @@ const Calendar = () => {
 export default function PopupCalendar() {
   return PopupWindow({
     name: WINDOW_NAME,
-    anchor: ["top", "right"],
+    anchor: ["top"],
     child: Calendar(),
   });
 }

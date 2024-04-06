@@ -1,8 +1,6 @@
 const mpris = await Service.import("mpris");
 const players = mpris.bind("players");
 
-import PopupWindow from "../../parts/popup.js";
-
 const FALLBACK_ICON = "audio-x-generic-symbolic";
 const PLAY_ICON = "media-playback-start-symbolic";
 const PAUSE_ICON = "media-playback-pause-symbolic";
@@ -144,14 +142,10 @@ function Player(player) {
   );
 }
 
-export default function MediaPlayer() {
-  return PopupWindow({
-    name: "mediaplayer",
-    anchor: ["top", "left"],
-    child: Widget.Box({
-      class_names: ["popup-inner", "mediaplayer"],
-      vertical: true,
-      children: players.as((p) => p.map(Player)),
-    }),
+export function MediaPlayer() {
+  return Widget.Box({
+    class_names: ["mediaplayer"],
+    vertical: true,
+    children: players.as((p) => p.map(Player)),
   });
 }
