@@ -6,4 +6,6 @@ hide_scroll=false
 print_command=true
 insensitive=true
 allow_images=true
+height=400
+width=800
 prompt=

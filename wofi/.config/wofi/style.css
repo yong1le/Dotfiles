@@ -1,11 +1,12 @@
 * {
-   font-family: "SauceCodePro Nerd Font"
+  font-family: "SauceCodePro Nerd Font"
 }
+
 window {
   opacity: 0.9;
   margin: 0px;
   padding: 10px;
-  border: 3px solid @accent_bg_color;
+  border: 3px solid @accent_color;
   border-radius: 5px;
   background-color: @theme_bg_color;
 }
@@ -38,22 +39,26 @@ window {
 #input {
   margin: 5px 20px;
   padding: 10px;
-  border: none;
-  border-radius: 0.1em;
-  color: @text;
+  border: 3px solid @accent_color;
+  border-radius: 5px;
+  color: @accent_color;
   background-color: @theme_bg_color;
 }
 
+#input:selected {
+  border: none
+}
+
 #input image {
-    border: none;
-    color: @red;
+  border: none;
+  color: @accent_color;
 }
 
 /* Text */
 #text {
   margin: 5px;
   border: none;
-  color: @text;
+  color: @accent_color;
 }
 
 #entry {
@@ -62,5 +67,9 @@ window {
 
 /* Selected Entry */
 #entry:selected {
-  border: 0.11em solid @accent_bg_color;
+  background-color: @accent_color;
+}
+
+#entry:selected #text {
+  color: @theme_bg_color;
 }
