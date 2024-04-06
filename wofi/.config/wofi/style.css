@@ -5,9 +5,9 @@ window {
   opacity: 0.9;
   margin: 0px;
   padding: 10px;
-  border: 0.16em solid @accent_bg_color;
-  border-radius: 10px;
-  background-color: @bg_color;
+  border: 3px solid @accent_bg_color;
+  border-radius: 5px;
+  background-color: @theme_bg_color;
 }
 
 /* Inner Box */

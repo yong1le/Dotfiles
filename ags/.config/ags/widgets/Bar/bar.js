@@ -26,11 +26,11 @@ function Workspaces(monitor) {
     ws
       .filter((e) => e.monitorID === monitor && e.id > 0)
       .sort((a, b) => a.id - b.id)
-      .map(({ id }) =>
+      .map((e) =>
         Widget.Button({
-          on_clicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
-          child: Widget.Label(`${id}`),
-          class_name: activeId.as((i) => `${i === id ? "focused" : ""}`),
+          on_clicked: () => hyprland.messageAsync(`dispatch workspace ${e.id}`),
+          child: Widget.Label(e.id == e.name ? `${e.id}`: `${e.id} ${e.name}`),
+          class_name: activeId.as((i) => `${i === e.id ? "focused" : ""}`),
         }),
       ),
   );
