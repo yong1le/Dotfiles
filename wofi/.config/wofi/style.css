@@ -41,7 +41,7 @@ window {
   padding: 10px;
   border: 3px solid @accent_color;
   border-radius: 5px;
-  color: @accent_color;
+  color: @accent_fg_color;
   background-color: @theme_bg_color;
 }
 
@@ -51,14 +51,14 @@ window {
 
 #input image {
   border: none;
-  color: @accent_color;
+  color: @accent_fg_color;
 }
 
 /* Text */
 #text {
   margin: 5px;
   border: none;
-  color: @accent_color;
+  color: @accent_fg_color;
 }
 
 #entry {
@@ -70,6 +70,3 @@ window {
   background-color: @accent_color;
 }
 
-#entry:selected #text {
-  color: @theme_bg_color;
-}
