@@ -32,5 +32,7 @@ export const getVolumeIcon = (
 };
 
 export const getMicIcon = (/** @type {any} */ muted) => {
-  return muted ? "microphone-sensitivity-muted" : "microphone-sensitivity-high";
+  return muted
+    ? "microphone-sensitivity-muted-symbolic"
+    : "microphone-sensitivity-high-symbolic";
 };

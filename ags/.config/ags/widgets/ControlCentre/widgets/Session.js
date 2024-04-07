@@ -29,7 +29,7 @@ function Suspend() {
   return Widget.Button({
     on_clicked: () => Utils.exec("systemctl suspend"),
     child: Widget.Icon({
-      icon: "media-playback-stop",
+      icon: "media-playback-stop-symbolic",
     }),
   });
 }
