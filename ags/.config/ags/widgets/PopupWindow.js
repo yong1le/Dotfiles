@@ -1,4 +1,4 @@
-export default function PopupWindow({ name, anchor, child }) {
+export default function PopupWindow({ name, anchor, child, childSetup }) {
   const popup = Widget.Window({
     anchor,
     class_names: ["popup"],
@@ -27,6 +27,9 @@ export default function PopupWindow({ name, anchor, child }) {
       self.keybind("Escape", () => {
         App.closeWindow(name);
       });
+
+      App.applyCss(`${App.configDir}/widgets/style.css`)
+      childSetup()
     },
     visible: false,
     keymode: "on-demand",

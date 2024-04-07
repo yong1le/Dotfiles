@@ -8,7 +8,7 @@ const PREV_ICON = "media-skip-backward-symbolic";
 const NEXT_ICON = "media-skip-forward-symbolic";
 
 /** @param {number} length */
-function lengthStr(length) {
+function durationStr(length) {
   const min = Math.floor(length / 60);
   const sec = Math.floor(length % 60);
   const sec0 = sec < 10 ? "0" : "";
@@ -61,7 +61,7 @@ function Player(player) {
     hpack: "start",
     setup: (self) => {
       const update = (_, time) => {
-        self.label = lengthStr(time || player.position);
+        self.label = durationStr(time || player.position);
         self.visible = player.length > 0;
       };
 
@@ -74,7 +74,7 @@ function Player(player) {
     class_name: "length",
     hpack: "end",
     visible: player.bind("length").transform((l) => l > 0),
-    label: player.bind("length").transform(lengthStr),
+    label: player.bind("length").transform(durationStr),
   });
 
   const icon = Widget.Icon({
@@ -90,7 +90,6 @@ function Player(player) {
   });
 
   const playPause = Widget.Button({
-    class_name: "play-pause",
     on_clicked: () => player.playPause(),
     visible: player.bind("can_play"),
     child: Widget.Icon({
@@ -125,6 +124,7 @@ function Player(player) {
       {
         vertical: true,
         hexpand: true,
+        spacing: 4
       },
       Widget.Box([title, icon]),
       artist,
@@ -132,10 +132,7 @@ function Player(player) {
       positionSlider,
       Widget.CenterBox({
         start_widget: positionLabel,
-        center_widget: Widget.Box({
-          spacing: 8,
-          children: [prev, playPause, next],
-        }),
+        center_widget: Widget.Box([prev, playPause, next]),
         end_widget: lengthLabel,
       }),
     ),
@@ -144,7 +141,6 @@ function Player(player) {
 
 export function MediaPlayer() {
   return Widget.Box({
-    class_names: ["mediaplayer"],
     vertical: true,
     children: players.as((p) => p.map(Player)),
   });

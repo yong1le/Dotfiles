@@ -69,8 +69,7 @@ function QuickSettingsLabel() {
   return Widget.Button({
     class_name: "quicksettings-label",
     on_clicked: () => {
-      App.ToggleWindow("fullscreenclose");
-      App.ToggleWindow("quicksettings");
+      App.ToggleWindow("controlcentre");
     },
     on_scroll_up: () => false,
     on_scroll_down: () => false,

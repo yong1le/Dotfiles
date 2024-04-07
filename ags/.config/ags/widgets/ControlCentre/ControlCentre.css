@@ -1,0 +1,87 @@
+.controlcentre {
+  min-width: 400px
+}
+
+.controlcentre image {
+  font-size: 22px
+}
+
+.system-buttons-container {
+}
+
+.slider-controls-container {
+  border-radius: 10px;
+  padding: 10px 20px;
+  background-color: #282634;
+}
+
+.slider-controls slider {
+  padding: 3px;
+  outline-style: none
+}
+
+.slider-controls trough,
+.slider-controls highlight {
+  border-radius: 10px
+}
+
+
+.control-button {
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.control-button.active {
+  background-color: @accent_color;
+  color: @accent_fg_color
+}
+
+.player {
+  padding: 10px;
+  min-width: 350px;
+}
+
+.player .img {
+  min-width: 100px;
+  min-height: 100px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 13px;
+  margin-right: 1em;
+}
+
+.player .title {
+  font-size: 1.2em;
+}
+
+.player .artist {
+  font-size: 1.1em;
+  color: @insensitive_fg_color;
+}
+
+.player scale.position {
+  padding: 0;
+  margin-bottom: .3em;
+}
+
+.player scale.position trough {
+  min-height: 8px;
+  border-radius: 10px
+}
+
+.player scale.position highlight {
+  background-color: @accent_color;
+  border-radius: 10px
+}
+
+.player scale.position slider {
+  all: unset;
+}
+
+.player button {
+  min-height: 1em;
+  min-width: 1em;
+  padding: .5em;
+  background: transparent
+}

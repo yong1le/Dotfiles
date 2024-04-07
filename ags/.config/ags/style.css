@@ -1,4 +1,3 @@
-
 * {
   font-family: 'SauceCodePro Nerd Font';
 }
@@ -35,45 +34,4 @@
 
 .workspaces button.focused {
   background-color: @headerbar_bg_color;
-}
-
-/* All Popups */
-
-.popup {
-  background-color: transparent
-}
-
-.popup-inner {
-  opacity: 0.95;
-  border-radius: 5px;
-  margin: 10px;
-  padding: 20px;
-
-  background-color: @theme_bg_color;
-  border: 3px solid @accent_color;
-}
-
-/* Quick Settings Popup */
-
-.quicksettings {
-  min-width: 400px;
-}
-
-.quicksettings .backlight-label,
-.quicksettings .battery-label,
-.quicksettings .volume-label {
-  min-width: 100px
-}
-
-
-levelbar block,
-highlight,
-fill {
-  min-height: 20px;
-}
-
-/* Media Player Popup */
-
-.mediaplayer {
-  min-width: 400px
 }
