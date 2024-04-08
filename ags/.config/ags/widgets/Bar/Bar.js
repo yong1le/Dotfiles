@@ -1,5 +1,5 @@
 import { LaunchButton } from "./buttons/Launch.js";
-import { Workspaces } from "./buttons/Workspaces.js";
+import { Title, Workspaces } from "./buttons/Workspaces.js";
 import { Volume, Battery, SysTray, Mic } from "./buttons/Tray.js";
 import { Clock } from "./buttons/Date.js";
 
@@ -35,15 +35,16 @@ export default function Bar(monitor = 0) {
       class_name: "bar-inner",
       start_widget: Widget.Box({
         hpack: "start",
-        children: [LaunchButton(), Workspaces(monitor)],
+        children: [Workspaces(monitor)],
       }),
       center_widget: Widget.Box({
+        hpack: "center",
         spacing: 8,
-        children: [Clock()],
+        children: [Title()],
       }),
       end_widget: Widget.Box({
         hpack: "end",
-        children: [SystemTrayLabel()],
+        children: [Clock(), SystemTrayLabel()],
       }),
     }),
   });

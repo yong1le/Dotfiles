@@ -26,7 +26,9 @@ function BatteryDraw() {
     spacing: 8,
     children: [
       Widget.Icon({
-        icon: "go-down-symbolic",
+        icon: battery
+          .bind("charging")
+          .as((p) => (p ? "go-up-symbolic" : "go-down-symbolic")),
       }),
       Widget.Label({
         visible: battery.bind("available"),

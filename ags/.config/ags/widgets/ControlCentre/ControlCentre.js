@@ -6,6 +6,7 @@ import { Battery, PowerProfiles } from "./widgets/Battery.js";
 import { Session } from "./widgets/Session.js";
 import { Bluetooh, Wifi } from "./widgets/Wireless.js";
 import {
+  Clipboard,
   ColorPicker,
   ScreenshotClipboard,
   ScreenshotSave,
@@ -73,7 +74,7 @@ function Utilities() {
     spacing: 16,
     homogeneous: true,
     class_name: "utilities-container",
-    children: [ColorPicker(), ScreenshotClipboard(), ScreenshotSave()],
+    children: [ColorPicker(), ScreenshotClipboard(), ScreenshotSave(), Clipboard()],
   });
 }
 
