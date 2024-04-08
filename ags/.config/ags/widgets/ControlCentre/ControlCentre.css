@@ -1,5 +1,5 @@
 .controlcentre {
-  min-width: 400px
+  min-width: 400px;
 }
 
 .controlcentre image {
@@ -7,16 +7,14 @@
 }
 
 .controlcentre button:hover {
-  background-color: @accent_color;
-  color: @theme_bg_color;
+  background-color: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
 }
-
-/* .system-buttons-container {} */
 
 .slider-controls-container {
   border-radius: 10px;
   padding: 10px 20px;
-  background-color: #282634;
+  background-color: @hover_color;
 }
 
 .slider-controls slider {
@@ -29,7 +27,6 @@
   border-radius: 10px
 }
 
-
 .control-button {
   border-radius: 10px;
   font-weight: bold;
@@ -37,14 +34,14 @@
 }
 
 .control-button.active {
-  background-color: @accent_color;
-  color: @theme_bg_color
+  background-color: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
 }
 
 .utilities-container {
-  background-color: #282634;
   border-radius: 10px;
   padding: 20px 20px;
+  background-color: @hover_color;
 }
 
 .utilities-container .utility {
@@ -98,7 +95,7 @@
 }
 
 .player scale.position highlight {
-  background-color: @accent_color;
+  background-color: @theme_selected_bg_color;
   border-radius: 10px
 }
 

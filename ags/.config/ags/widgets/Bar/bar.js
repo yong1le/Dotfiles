@@ -110,6 +110,7 @@ export default function Bar(monitor = 0) {
     anchor: ["top", "left", "right"],
     exclusivity: "exclusive",
     child: Widget.CenterBox({
+      class_name: "bar-inner",
       center_widget: Center(monitor),
       start_widget: Left(monitor),
       end_widget: Right(monitor),

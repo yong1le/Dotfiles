@@ -1,3 +1,5 @@
+@define-color hover_color rgba(255, 255, 255, 0.08);
+
 * {
   font-family: 'SauceCodePro Nerd Font';
 }
@@ -6,6 +8,11 @@
   background-color: @theme_bg_color;
   opacity: 0.9;
   color: @theme_fg_color;
+  border-radius: 0px 0px 15px 15px;
+}
+
+.bar-inner {
+  padding: 0 15px;
 }
 
 .icon {
@@ -22,10 +29,15 @@
   margin: 5px;
 }
 
+.bar button:hover {
+  background-color: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
 .systemtray-label {
   border-radius: 10px;
   margin: 5px;
-  background-color: @headerbar_bg_color
+  background-color: @hover_color;
 }
 
 .systemtray-label button {
@@ -33,5 +45,6 @@
 }
 
 .workspaces button.focused {
-  background-color: @headerbar_bg_color;
+  background-color: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
 }

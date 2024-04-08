@@ -3,13 +3,13 @@
 }
 
 .popup-inner {
-  opacity: 0.95;
+  /* opacity: 0.95; */
   border-radius: 20px;
   margin: 20px;
   margin-bottom: 0px;
   padding: 15px;
 
   background-color: @theme_bg_color;
-  border: 1px solid @accent_color;
+  border: 2px solid @borders;
 }
 

@@ -6,9 +6,9 @@ window {
   opacity: 0.9;
   margin: 0px;
   padding: 10px;
-  border: 3px solid @accent_color;
+  border: 3px solid @theme_selected_bg_color;
   border-radius: 5px;
-  background-color: @theme_bg_color;
+  background-color: @theme_selected_bg_color;
 }
 
 /* Inner Box */
@@ -39,9 +39,7 @@ window {
 #input {
   margin: 5px 20px;
   padding: 10px;
-  border: 3px solid @accent_color;
-  border-radius: 5px;
-  color: @accent_fg_color;
+  color: @theme_fg_color;
   background-color: @theme_bg_color;
 }
 
@@ -51,14 +49,14 @@ window {
 
 #input image {
   border: none;
-  color: @accent_fg_color;
+  color: @theme_fg_color;
 }
 
 /* Text */
 #text {
   margin: 5px;
   border: none;
-  color: @accent_fg_color;
+  color: @theme_fg_color;
 }
 
 #entry {
@@ -67,6 +65,10 @@ window {
 
 /* Selected Entry */
 #entry:selected {
-  background-color: @accent_color;
+  background-color: @theme_selected_bg_color;
+  border: none;
 }
 
+#entry:selected #text {
+  color: @theme_selected_fg_color;
+}
