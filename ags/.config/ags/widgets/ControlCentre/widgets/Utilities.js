@@ -1,16 +1,16 @@
 export const ColorPicker = () =>
-  Widget.EventBox({
+  Widget.Button({
     on_primary_click: () =>
       Utils.execAsync(["bash", "-c", "hyprpicker -n -f hex | wl-copy"]),
     hexpand: true,
     class_name: "utility",
     child: Widget.Icon({
-      icon: "raindrop",
+      icon: "preferences-color-symbolic",
     }),
   });
 
 export const ScreenshotClipboard = () =>
-  Widget.EventBox({
+  Widget.Button({
     on_primary_click: () =>
       Utils.execAsync(["hyprshot", "-m", "region", "--clipboard-only"]),
     hexpand: true,
@@ -21,7 +21,7 @@ export const ScreenshotClipboard = () =>
   });
 
 export const ScreenshotSave = () =>
-  Widget.EventBox({
+  Widget.Button({
     on_primary_click: () => Utils.execAsync(["hyprshot", "-m", "region"]),
     hexpand: true,
     class_name: "utility",

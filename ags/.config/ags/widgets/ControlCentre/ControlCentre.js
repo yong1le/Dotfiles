@@ -21,10 +21,17 @@ const notifications = await Service.import("notifications");
 function SystemButtons() {
   return Widget.Box({
     class_name: "system-buttons-container",
+    spacing: 8,
     children: [
-      Widget.Label({
-        css: "font-size: 70px; font-weight: bold; margin-right: 20px",
-        label: "YL",
+      Widget.Box({
+        css:
+          `background-image: url("${App.configDir}/widgets/ControlCentre/images/profile.jpg");` +
+          "min-width: 100px;" +
+          "min-height: 100px;" +
+          "background-size: contain;" +
+          "background-repeat: no-repeat;" +
+          "background-position: center;" +
+          "border-radius: 50%",
       }),
       Battery(),
       Session(),
