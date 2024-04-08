@@ -3,7 +3,7 @@
 }
 
 .controlcentre image {
-  font-size: 22px
+  font-size: 20px
 }
 
 .controlcentre button:hover {
@@ -40,7 +40,7 @@
 
 .utilities-container {
   border-radius: 10px;
-  padding: 20px 20px;
+  padding: 10px 20px;
   background-color: @hover_color;
 }
 
@@ -49,7 +49,7 @@
 }
 
 .notifications-container {
-  min-height: 250px;
+  min-height: 200px;
 }
 
 .notifications-container .label {
