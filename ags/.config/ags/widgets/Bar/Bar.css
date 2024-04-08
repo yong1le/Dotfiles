@@ -1,0 +1,42 @@
+.bar {
+  background-color: transparent
+}
+
+.bar-inner {
+  opacity: 0.8;
+  margin: 0px 10px;
+  border-radius: 0px 0px 15px 15px;
+  padding: 0px 10px;
+  background-color: @theme_bg_color;
+  color: @theme_fg_color;
+}
+
+.bar button {
+  min-width: 0;
+  padding-bottom: 0;
+  padding-top: 0;
+  background-color: transparent;
+  min-height: 30px;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.bar button:hover {
+  background-color: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
+
+.systemtray-label {
+  border-radius: 10px;
+  margin: 5px;
+  background-color: @hover_color;
+}
+
+.systemtray-label button {
+  margin: 0;
+}
+
+.workspaces button.focused {
+  background-color: @theme_selected_bg_color;
+  color: @theme_selected_fg_color;
+}
