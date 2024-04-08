@@ -1,3 +1,4 @@
+import {BrightnessFloatingIndicator, VolumeFloatingIndicator} from "./widgets/FloatingIndicator/FloatingIndicator.js";
 import Bar from "./widgets/Bar/Bar.js";
 import ControlCentre from "./widgets/ControlCentre/ControlCentre.js";
 import NotificationPopups from "./widgets/Notification/Notification.js";
@@ -10,6 +11,8 @@ App.config({
     Bar(1),
     ControlCentre(),
     NotificationPopups(),
+    VolumeFloatingIndicator(),
+    BrightnessFloatingIndicator()
     // PopupCalendar(),
   ],
 });

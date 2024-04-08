@@ -28,8 +28,8 @@ export default function PopupWindow({ name, anchor, child, childSetup }) {
         App.closeWindow(name);
       });
 
-      App.applyCss(`${App.configDir}/widgets/style.css`)
-      childSetup()
+      App.applyCss(`${App.configDir}/widgets/PopupWindow/PopupWindow.css`)
+      childSetup(self)
     },
     visible: false,
     keymode: "on-demand",

@@ -1,4 +1,4 @@
-import PopupWindow from "../PopupWindow.js";
+import PopupWindow from "../PopupWindow/PopupWindow.js";
 import { Brightness } from "./widgets/Brightness.js";
 import { MediaPlayer } from "./widgets/Media.js";
 import { Volume, Mic } from "./widgets/Volume.js";

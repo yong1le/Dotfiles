@@ -12,6 +12,7 @@ export function Workspaces(monitor) {
       .sort((a, b) => a.id - b.id)
       .map((e) =>
         Widget.Button({
+          cursor: "pointer",
           on_clicked: () => hyprland.messageAsync(`dispatch workspace ${e.id}`),
           child: Widget.Label(e.id == e.name ? `${e.id}` : `${e.id} ${e.name}`),
           class_name: activeId.as((i) => `${i === e.id ? "focused" : ""}`),
