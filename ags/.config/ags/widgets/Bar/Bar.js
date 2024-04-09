@@ -35,7 +35,7 @@ export default function Bar(monitor = 0) {
       class_name: "bar-inner",
       start_widget: Widget.Box({
         hpack: "start",
-        children: [Workspaces(monitor)],
+        children: [LaunchButton(), Workspaces(monitor)],
       }),
       center_widget: Widget.Box({
         hpack: "center",

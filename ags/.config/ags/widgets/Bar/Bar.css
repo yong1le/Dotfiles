@@ -7,7 +7,7 @@
   margin: 0px 10px;
   border-radius: 0px 0px 15px 15px;
   padding: 0px 10px;
-  background-color: @theme_bg_color;
+  background-color: @insensitive_base_color;
   color: @theme_fg_color;
 }
 

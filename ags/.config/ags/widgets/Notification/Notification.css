@@ -27,7 +27,7 @@ window.notification-popups box.notifications {
     padding: 1em;
     margin: .5em;
     border: 1px solid @borders;
-    background-color: @theme_bg_color;
+    background-color: @insensitive_base_color;
 }
 
 .notification.critical {

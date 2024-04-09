@@ -7,7 +7,8 @@
   border-radius: 20px;
   margin: 30px;
   padding: 20px 20px;
-  background-color: @theme_bg_color;
+  background-color: @insensitive_base_color;
+  color: @theme_fg_color;
   border: 2px solid @borders;
 }
 
@@ -20,11 +21,18 @@
   border-radius: 20px;
   margin: 120px;
   padding: 20px 20px;
-  background-color: @theme_bg_color;
+  background-color: @insensitive_base_color;
+  color: @theme_fg_color;
   border: 2px solid @borders;
 }
 
 
-.f-i-slider  highlight {
+.f-i-slider highlight {
+  padding: 3px;
+  border-radius: 10px;
   background-color: @theme_selected_bg_color
+}
+
+.f-i-slider trough {
+  border-radius: 10px;
 }
