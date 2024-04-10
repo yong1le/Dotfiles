@@ -10,7 +10,7 @@ export function SysTray() {
       Widget.Button({
         cursor: "pointer",
         child: Widget.Icon({
-          icon: item.bind("icon").as((i) => `${i}-symbolic`),
+          icon: item.bind("icon").as((i) => `${i}`),
         }),
         on_primary_click: (_, event) => item.activate(event),
         on_secondary_click: (_, event) => item.openMenu(event),

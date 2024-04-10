@@ -43,7 +43,7 @@ function BatteryRemaining() {
     spacing: 8,
     children: [
       Widget.Icon({
-        icon: "clock",
+        icon: "preferences-system-time-symbolic",
       }),
       Widget.Label({
         visible: battery.bind("available"),

@@ -40,11 +40,11 @@ export default function Bar(monitor = 0) {
       center_widget: Widget.Box({
         hpack: "center",
         spacing: 8,
-        children: [Title()],
+        children: [Clock()],
       }),
       end_widget: Widget.Box({
         hpack: "end",
-        children: [Clock(), SystemTrayLabel()],
+        children: [SystemTrayLabel()],
       }),
     }),
   });
