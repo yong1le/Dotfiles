@@ -20,11 +20,12 @@ function Player(player) {
   const img = Widget.Box({
     class_name: "img",
     vpack: "start",
-    css: player.bind("cover_path").transform(
-      (p) => `
-            background-image: url('${p}');
-        `,
-    ),
+    css: player.bind("cover_path").transform((p) => {
+      if (p) {
+        return `background-image: url('${p}');`;
+      }
+      return `background-image: url("${App.configDir}/widgets/ControlCentre/images/music.jpg");`;
+    }),
   });
 
   const title = Widget.Label({
@@ -124,7 +125,7 @@ function Player(player) {
       {
         vertical: true,
         hexpand: true,
-        spacing: 4
+        spacing: 4,
       },
       Widget.Box([title, icon]),
       artist,

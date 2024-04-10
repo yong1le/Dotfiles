@@ -10,7 +10,9 @@ export function SysTray() {
       Widget.Button({
         cursor: "pointer",
         child: Widget.Icon({
-          icon: item.bind("icon").as((i) => `${i}`),
+          icon: item.bind("icon").as((i) => {
+            return i
+          }),
         }),
         on_primary_click: (_, event) => item.activate(event),
         on_secondary_click: (_, event) => item.openMenu(event),
@@ -28,7 +30,7 @@ export function Volume() {
   return Widget.Button({
     cursor: "pointer",
     on_primary_click: () => Utils.subprocess(["pamixer", "-t"], () => {}),
-    on_secondary_click: () => App.ToggleWindow("controlcentre"),
+    on_secondary_click: () => Utils.subprocess(["pavucontrol"], () => {}),
     on_scroll_up: () => (audio.speaker.volume += 0.05),
     on_scroll_down: () => (audio.speaker.volume -= 0.05),
     child: Widget.Icon({

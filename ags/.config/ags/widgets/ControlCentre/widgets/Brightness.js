@@ -13,7 +13,7 @@ const BrightnessLabel = () => {
   return Widget.Label({
     label: brightness
       .bind("screen_value")
-      .as((v) => `${Math.round(v * 100)} %`),
+      .as((v) => `${Math.round(v * 100)}%`),
   });
 };
 

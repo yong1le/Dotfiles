@@ -6,18 +6,7 @@ import { Clock } from "./buttons/Date.js";
 function SystemTrayLabel() {
   return Widget.Box({
     class_name: "systemtray-label",
-    children: [
-      SysTray(),
-      Mic(),
-      Volume(),
-      Battery(),
-      Widget.Button({
-        on_primary_click: () => App.ToggleWindow("controlcentre"),
-        child: Widget.Icon({
-          icon: "view-more-horizontal-symbolic",
-        }),
-      }),
-    ],
+    children: [SysTray(), Mic(), Volume(), Battery()],
   });
 }
 
