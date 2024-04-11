@@ -1,4 +1,4 @@
-import PopupWindow from "../../parts/popup.js";
+import PopupWindow from "../PopupWindow/PopupWindow.js";
 
 const WINDOW_NAME = "popupcalendar";
 
@@ -19,5 +19,6 @@ export default function PopupCalendar() {
     name: WINDOW_NAME,
     anchor: ["top"],
     child: Calendar(),
+    childSetup: () => {},
   });
 }

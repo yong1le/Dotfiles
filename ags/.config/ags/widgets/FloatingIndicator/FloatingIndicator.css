@@ -33,6 +33,11 @@
   background-color: @theme_selected_bg_color
 }
 
+.f-i-slider slider {
+  all: unset;
+}
+
 .f-i-slider trough {
   border-radius: 10px;
 }
+
