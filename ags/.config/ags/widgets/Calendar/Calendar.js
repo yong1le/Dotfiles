@@ -4,7 +4,7 @@ const WINDOW_NAME = "popupcalendar";
 
 const Calendar = () => {
   return Widget.Box({
-    className: "popup-inner",
+    class_name: "popup-inner calendar",
     child: Widget.Calendar({
       showDayNames: true,
       showDetails: true,
@@ -19,6 +19,8 @@ export default function PopupCalendar() {
     name: WINDOW_NAME,
     anchor: ["top"],
     child: Calendar(),
-    childSetup: () => {},
+    childSetup: () => {
+      App.applyCss(`${App.configDir}/widgets/Calendar/Calendar.css`);
+    },
   });
 }

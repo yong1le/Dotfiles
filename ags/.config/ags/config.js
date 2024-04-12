@@ -2,7 +2,7 @@ import {BrightnessFloatingIndicator, VolumeFloatingIndicator} from "./widgets/Fl
 import Bar from "./widgets/Bar/Bar.js";
 import ControlCentre from "./widgets/ControlCentre/ControlCentre.js";
 import NotificationPopups from "./widgets/Notification/Notification.js";
-import PopupCalendar from "./widgets/Calendar/calendar.js";
+import PopupCalendar from "./widgets/Calendar/Calendar.js";
 
 App.config({
   style: "./style.css",

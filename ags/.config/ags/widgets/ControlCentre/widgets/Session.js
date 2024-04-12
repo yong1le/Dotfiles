@@ -1,7 +1,7 @@
 function Poweroff() {
   return Widget.Button({
     cursor: "pointer",
-    on_clicked: () => Utils.exec("poweroff"),
+    on_clicked: () => Utils.exec("systemctl poweroff"),
     child: Widget.Icon({
       icon: "system-shutdown-symbolic",
     }),
@@ -11,7 +11,7 @@ function Poweroff() {
 function Restart() {
   return Widget.Button({
     cursor: "pointer",
-    on_clicked: () => Utils.exec("reboot"),
+    on_clicked: () => Utils.exec("systemctl reboot"),
     child: Widget.Icon({
       icon: "system-reboot-symbolic",
     }),
