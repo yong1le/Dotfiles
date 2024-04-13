@@ -33,8 +33,17 @@ export const Wifi = () => {
   });
 };
 
-export const Bluetooh = () =>
-  Widget.Button({
+export const Bluetooh = () => {
+  const bluetoothLabel = Utils.merge(
+    [bluetooth.bind("enabled"), bluetooth.bind("connected_devices")],
+    (on, connected) => {
+      if (!on) return "Disabled";
+      if (!connected || connected.length === 0) return "Active";
+      return `${connected[0].name}`;
+    },
+  );
+
+  return Widget.Button({
     on_primary_click: () => bluetooth.toggle(),
     on_secondary_click: () => Utils.subprocess("blueman-manager", () => {}),
     class_names: ["control-button"],
@@ -52,10 +61,9 @@ export const Bluetooh = () =>
             .as((on) => `bluetooth-${on ? "active" : "disabled"}-symbolic`),
         }),
         Widget.Label({
-          label: bluetooth
-            .bind("enabled")
-            .as((on) => (on ? "Active" : "Disabled")),
+          label: bluetoothLabel,
         }),
       ],
     }),
   });
+};
