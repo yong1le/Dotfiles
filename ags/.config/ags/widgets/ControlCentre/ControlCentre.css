@@ -1,5 +1,6 @@
 .controlcentre {
   min-width: 400px;
+  color: @theme_fg_color;
 }
 
 .controlcentre image {
