@@ -25,7 +25,6 @@ const VolumeLabel = () =>
 
 const VolumeIcon = () =>
   Widget.EventBox({
-    cursor: "pointer",
     vpack: "center",
     on_primary_click: () => Utils.subprocess(["pamixer", "-t"], () => {}),
     on_scroll_up: () => (audio.speaker.volume += 0.05),

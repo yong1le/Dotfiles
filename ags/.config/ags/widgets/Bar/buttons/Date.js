@@ -4,7 +4,6 @@ export function Clock() {
   });
 
   return Widget.Button({
-    cursor: "pointer",
     on_clicked: () => {
       App.ToggleWindow("popupcalendar");
     },

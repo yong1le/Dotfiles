@@ -1,6 +1,5 @@
 function Poweroff() {
   return Widget.Button({
-    cursor: "pointer",
     on_clicked: () => Utils.exec("systemctl poweroff"),
     child: Widget.Icon({
       icon: "system-shutdown-symbolic",
@@ -10,7 +9,6 @@ function Poweroff() {
 
 function Restart() {
   return Widget.Button({
-    cursor: "pointer",
     on_clicked: () => Utils.exec("systemctl reboot"),
     child: Widget.Icon({
       icon: "system-reboot-symbolic",
@@ -20,7 +18,6 @@ function Restart() {
 
 function Logout() {
   return Widget.Button({
-    cursor: "pointer",
     on_clicked: () => Utils.exec("loginctl lock-session"),
     child: Widget.Icon({
       icon: "system-log-out-symbolic",
@@ -30,7 +27,6 @@ function Logout() {
 
 function Suspend() {
   return Widget.Button({
-    cursor: "pointer",
     on_clicked: () => Utils.exec("systemctl suspend"),
     child: Widget.Icon({
       icon: "media-playback-stop-symbolic",

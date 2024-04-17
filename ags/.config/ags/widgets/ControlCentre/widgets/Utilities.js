@@ -1,6 +1,5 @@
 export const ColorPicker = () =>
   Widget.Button({
-    cursor: "pointer",
     on_primary_click: () =>
       Utils.execAsync(["bash", "-c", "hyprpicker -n -f hex | wl-copy"]),
     hexpand: true,
@@ -12,7 +11,6 @@ export const ColorPicker = () =>
 
 export const ScreenshotClipboard = () =>
   Widget.Button({
-    cursor: "pointer",
     on_primary_click: () =>
       Utils.execAsync(["hyprshot", "-m", "region", "--clipboard-only"]),
     hexpand: true,
@@ -24,7 +22,6 @@ export const ScreenshotClipboard = () =>
 
 export const ScreenshotSave = () =>
   Widget.Button({
-    cursor: "pointer",
     on_primary_click: () => Utils.execAsync(["hyprshot", "-m", "region"]),
     hexpand: true,
     class_name: "utility",
@@ -35,7 +32,6 @@ export const ScreenshotSave = () =>
 
 export const Clipboard = () =>
   Widget.Button({
-    cursor: "pointer",
     on_primary_click: () =>
       Utils.execAsync([
         "bash",

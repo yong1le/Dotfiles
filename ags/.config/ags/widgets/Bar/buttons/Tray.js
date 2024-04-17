@@ -8,7 +8,6 @@ export function SysTray() {
   const items = systemtray.bind("items").as((items) =>
     items.map((item) =>
       Widget.Button({
-        cursor: "pointer",
         child: Widget.Icon({
           icon: item.bind("icon").as((i) => {
             return i
@@ -28,7 +27,7 @@ export function SysTray() {
 
 export function Volume() {
   return Widget.Button({
-    cursor: "pointer",
+    tooltip_text: audio.speaker.bind("volume").as((v) => `${Math.round(v * 100)} %`),
     on_primary_click: () => Utils.subprocess(["pamixer", "-t"], () => {}),
     on_secondary_click: () => Utils.subprocess(["pavucontrol"], () => {}),
     on_scroll_up: () => (audio.speaker.volume += 0.05),
@@ -46,7 +45,6 @@ export function Volume() {
 
 export function Mic() {
   return Widget.Button({
-    cursor: "pointer",
     on_primary_click: () =>
       Utils.subprocess(["pamixer", "--default-source", "-t"], () => {}),
     on_secondary_click: () => App.ToggleWindow("controlcentre"),
@@ -62,7 +60,7 @@ export function Mic() {
 
 export function Battery() {
   return Widget.Button({
-    cursor: "pointer",
+    tooltip_text: battery.bind("percent").as(p => `${p} %`),
     on_primary_click: () => App.ToggleWindow("controlcentre"),
     child: Widget.Icon({
       icon: battery.bind("icon_name"),
