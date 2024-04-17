@@ -1,8 +1,13 @@
-import {BrightnessFloatingIndicator, VolumeFloatingIndicator} from "./widgets/FloatingIndicator/FloatingIndicator.js";
+import {
+  BrightnessFloatingIndicator,
+  VolumeFloatingIndicator,
+} from "./widgets/FloatingIndicator/FloatingIndicator.js";
 import Bar from "./widgets/Bar/Bar.js";
 import ControlCentre from "./widgets/ControlCentre/ControlCentre.js";
 import NotificationPopups from "./widgets/Notification/Notification.js";
 import PopupCalendar from "./widgets/Calendar/Calendar.js";
+import AppLauncher from "./widgets/AppLauncher/AppLauncher.js";
+import ClipboardLauncher from "./widgets/ClipboardLauncher/ClipboardLauncher.js";
 
 App.config({
   style: "./style.css",
@@ -14,5 +19,7 @@ App.config({
     VolumeFloatingIndicator(),
     BrightnessFloatingIndicator(),
     PopupCalendar(),
+    AppLauncher(),
+    ClipboardLauncher(),
   ],
 });

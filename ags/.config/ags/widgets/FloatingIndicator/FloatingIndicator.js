@@ -59,6 +59,7 @@ export function VolumeFloatingIndicator() {
     name: "volumefloatingindicator",
     class_name: "volume-floating-indicator",
     anchor: ["bottom"],
+    layer: "overlay",
     setup: (self) => {
       App.applyCss(
         `${App.configDir}/widgets/FloatingIndicator/FloatingIndicator.css`,
@@ -89,6 +90,7 @@ export function BrightnessFloatingIndicator() {
     name: "brightnessfloatingindicator",
     class_name: "brightness-floating-indicator",
     anchor: ["bottom"],
+    layer: "overlay",
     setup: (self) => {
       self.hook(
         brightness,
