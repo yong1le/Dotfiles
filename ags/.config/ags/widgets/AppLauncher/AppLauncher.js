@@ -1,4 +1,4 @@
-const { query } = await Service.import("applications");
+const applications = await Service.import("applications");
 const WINDOW_NAME = "applauncher";
 
 /** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
@@ -31,7 +31,7 @@ const AppItem = (app) =>
 
 const LauncherWindow = () => {
   // list of application buttons
-  let items = query("").map(AppItem);
+  let items = applications.query("").map(AppItem);
 
   // container holding the buttons
   const list = Widget.Box({
@@ -42,7 +42,7 @@ const LauncherWindow = () => {
 
   // repopulate the box, so the most frequent apps are on top of the list
   function repopulate() {
-    items = query("").map(AppItem);
+    items = applications.query("").map(AppItem);
     list.children = items;
   }
 
