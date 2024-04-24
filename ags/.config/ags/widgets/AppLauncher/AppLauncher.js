@@ -43,7 +43,7 @@ const LauncherWindow = () => {
 
   // repopulate the box, so the most frequent apps are on top of the list
   function repopulate() {
-    applications.reload()
+    applications.reload();
     items = applications.query("").map(AppItem);
     list.children = items;
   }
@@ -81,15 +81,17 @@ const LauncherWindow = () => {
       }),
     ],
     setup: (self) =>
-      self.hook(App, (_, windowName, visible) => {
-        if (windowName !== WINDOW_NAME) return;
-        // when the applauncher shows up
-        if (visible) {
+      self.hook(
+        App,
+        (_, windowName, visible) => {
+          if (windowName !== WINDOW_NAME || !visible) return;
+          // when the applauncher shows up
           repopulate();
           entry.text = "";
           entry.grab_focus();
-        }
-      }),
+        },
+        "window-toggled",
+      ),
   });
 };
 

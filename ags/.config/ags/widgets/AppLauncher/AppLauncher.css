@@ -13,6 +13,11 @@
   background-color: transparent
 }
 
+.launcher-container button:focus {
+  background-color: @theme_selected_bg_color;
+  color: @theme_selected_fg_color
+}
+
 .launcher-container image {
   font-size: 42px
 }
