@@ -9,7 +9,8 @@ const AppItem = (app) =>
       app.launch();
     },
     attribute: {
-      match: (text) => app.name.match(text ?? ""),
+      /** @param {string} text */
+      match: (text) => app.match(text ?? ""),
       action: app.launch,
     },
     child: Widget.Box({
@@ -42,6 +43,7 @@ const LauncherWindow = () => {
 
   // repopulate the box, so the most frequent apps are on top of the list
   function repopulate() {
+    applications.reload()
     items = applications.query("").map(AppItem);
     list.children = items;
   }
