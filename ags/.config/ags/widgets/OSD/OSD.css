@@ -1,0 +1,29 @@
+.osd {
+  background: transparent
+}
+
+.osd-inner {
+  opacity: 0.7;
+  min-width: 300px;
+  border-radius: 20px;
+  margin: 30px;
+  padding: 20px 20px;
+  background-color: @insensitive_base_color;
+  color: @theme_fg_color;
+  border: 2px solid @borders;
+}
+
+.osd-slider highlight {
+  padding: 3px;
+  border-radius: 10px;
+  background-color: @theme_selected_bg_color
+}
+
+.osd-slider slider {
+  all: unset;
+}
+
+.osd-slider trough {
+  border-radius: 10px;
+}
+
