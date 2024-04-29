@@ -2,6 +2,7 @@ import { getMicIcon, getVolumeIcon } from "../../utils/utils.js";
 
 import brightness from "../../services/brightness.js";
 const audio = await Service.import("audio");
+const powerprofiles = await Service.import("powerprofiles");
 
 function Volume() {
   return Widget.Box({
@@ -12,7 +13,7 @@ function Volume() {
           getVolumeIcon(audio.speaker.stream?.is_muted, audio.speaker.volume),
           audio.speaker,
           () =>
-            getVolumeIcon(audio.speaker.stream?.is_muted, audio.speaker.volume)
+            getVolumeIcon(audio.speaker.stream?.is_muted, audio.speaker.volume),
         ),
       }),
       Widget.Label({
@@ -67,7 +68,7 @@ function Mic() {
         icon: Utils.watch(
           getMicIcon(audio.microphone.stream?.is_muted),
           audio.microphone,
-          () => getMicIcon(audio.microphone.stream?.is_muted)
+          () => getMicIcon(audio.microphone.stream?.is_muted),
         ),
       }),
       Widget.Label({
@@ -77,7 +78,21 @@ function Mic() {
   });
 }
 
-/** @param {"volume" | "brightness" | "mic"} type */
+function PPD() {
+  return Widget.Box({
+    spacing: 8,
+    children: [
+      Widget.Icon({
+        icon: powerprofiles.bind("icon_name").as((p) => `${p}`),
+      }),
+      Widget.Label({
+        label: powerprofiles.bind("active_profile").as((p) => `${p}`),
+      }),
+    ],
+  });
+}
+
+/** @param {"volume" | "brightness" | "mic" | "ppd"} type */
 function getOSD(type) {
   switch (type) {
     case "brightness":
@@ -86,10 +101,12 @@ function getOSD(type) {
       return Volume;
     case "mic":
       return Mic;
+    case "ppd":
+      return PPD;
   }
 }
 
-/** @param {"volume" | "brightness" | "mic"} type */
+/** @param {"volume" | "brightness" | "mic" | "ppd"} type */
 export default function OSD(type) {
   return Widget.Window({
     name: `osd-${type}`,

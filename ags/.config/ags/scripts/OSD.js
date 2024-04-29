@@ -36,3 +36,17 @@ export function micOSD() {
     App.closeWindow("osd-mic");
   }, 3000);
 }
+
+
+export function ppdOSD() {
+  if (
+    !App.getWindow("osd-ppd") ||
+    App.getWindow("osd-ppd").visible
+  )
+    return;
+
+  App.openWindow("osd-ppd");
+  setTimeout(() => {
+    App.closeWindow("osd-ppd");
+  }, 3000);
+}

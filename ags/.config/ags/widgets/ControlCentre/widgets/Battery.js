@@ -67,23 +67,10 @@ export const PowerProfiles = () => {
   const icon = powerprofiles.bind("icon_name");
   const profile = powerprofiles.bind("active_profile").as((p) => `${p}`);
 
-  const switchProfile = () => {
-    switch (powerprofiles.active_profile) {
-      case "balanced":
-        powerprofiles.active_profile = "performance";
-        break;
-      case "performance":
-        powerprofiles.active_profile = "power-saver";
-        break;
-      default:
-        powerprofiles.active_profile = "balanced";
-        break;
-    }
-  };
 
   return Widget.Button({
     class_name: "control-button",
-    on_clicked: switchProfile,
+    on_clicked: switchPPD,
     hexpand: true,
     child: Widget.Box({
       spacing: 8,

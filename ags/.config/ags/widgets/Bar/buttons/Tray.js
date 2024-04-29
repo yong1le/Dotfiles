@@ -10,7 +10,7 @@ export function SysTray() {
       Widget.Button({
         child: Widget.Icon({
           icon: item.bind("icon").as((i) => {
-            return i
+            return i;
           }),
         }),
         on_primary_click: (_, event) => item.activate(event),
@@ -27,11 +27,22 @@ export function SysTray() {
 
 export function Volume() {
   return Widget.Button({
-    tooltip_text: audio.speaker.bind("volume").as((v) => `${Math.round(v * 100)} %`),
-    on_primary_click: () => Utils.subprocess(["pamixer", "-t"], () => {}),
+    tooltip_text: audio.speaker
+      .bind("volume")
+      .as((v) => `${Math.round(v * 100)} %`),
+    on_primary_click: () => {
+      volumeOSD();
+      Utils.subprocess(["pamixer", "-t"], () => {});
+    },
     on_secondary_click: () => Utils.subprocess(["pavucontrol"], () => {}),
-    on_scroll_up: () => (audio.speaker.volume += 0.05),
-    on_scroll_down: () => (audio.speaker.volume -= 0.05),
+    on_scroll_up: () => {
+      volumeOSD();
+      audio.speaker.volume += 0.05;
+    },
+    on_scroll_down: () => {
+      volumeOSD();
+      audio.speaker.volume -= 0.05;
+    },
     child: Widget.Icon({
       icon: Utils.watch(
         getVolumeIcon(audio.speaker.stream?.is_muted, audio.speaker.volume),
@@ -45,9 +56,10 @@ export function Volume() {
 
 export function Mic() {
   return Widget.Button({
-    on_primary_click: () =>
-      Utils.subprocess(["pamixer", "--default-source", "-t"], () => {}),
-    on_secondary_click: () => App.ToggleWindow("controlcentre"),
+    on_primary_click: () => {
+      micOSD();
+      Utils.subprocess(["pamixer", "--default-source", "-t"], () => {})
+    },
     child: Widget.Icon({
       icon: Utils.watch(
         getMicIcon(audio.microphone.stream?.is_muted),
@@ -60,7 +72,7 @@ export function Mic() {
 
 export function Battery() {
   return Widget.Button({
-    tooltip_text: battery.bind("percent").as(p => `${p} %`),
+    tooltip_text: battery.bind("percent").as((p) => `${p} %`),
     on_primary_click: () => App.ToggleWindow("controlcentre"),
     child: Widget.Icon({
       icon: battery.bind("icon_name"),

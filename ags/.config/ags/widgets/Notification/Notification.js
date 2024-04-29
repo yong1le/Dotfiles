@@ -84,7 +84,7 @@ export function Notification(n) {
   );
 }
 
-export default function NotificationPopups() {
+export default function NotificationPopups(m) {
   const list = Widget.Box({
     vertical: true,
     children: notifications.popups.map(Notification),
@@ -104,7 +104,8 @@ export default function NotificationPopups() {
     .hook(notifications, onDismissed, "dismissed");
 
   return Widget.Window({
-    name: `notifications`,
+    monitor: m,
+    name: `notifications-${m}`,
     class_name: "notification-popups",
     anchor: ["top", "right"],
     setup: () => {
