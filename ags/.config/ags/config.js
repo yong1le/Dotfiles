@@ -5,6 +5,8 @@ import NotificationPopups from "./widgets/Notification/Notification.js";
 import PopupCalendar from "./widgets/Calendar/Calendar.js";
 import AppLauncher from "./widgets/AppLauncher/AppLauncher.js";
 
+const hyprland = await Service.import("hyprland");
+
 import setupGlobals from "./scripts/globals.js";
 
 setupGlobals();
@@ -12,11 +14,9 @@ setupGlobals();
 App.config({
   style: "./style.css",
   windows: [
-    Bar(0),
-    Bar(1),
+    hyprland.monitors.map((m) => Bar(m.id)),
     ControlCentre(),
-    NotificationPopups(0),
-    NotificationPopups(1),
+    hyprland.monitors.map((m) => NotificationPopups(m.id)),
     OSD("volume"),
     OSD("brightness"),
     OSD("mic"),
@@ -25,4 +25,3 @@ App.config({
     AppLauncher(),
   ],
 });
-

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if hyprctl monitors | grep "eDP-1"; then
+    hyprctl keyword monitor eDP-1,disable
+    killall ags
+    ags & disown
+else
+    hyprctl keyword monitor eDP-1,2240x1400,1920x0, auto
+    killall ags
+    ags & disown
+fi
+
+# socat - "UNIX-CONNECT:/tmp/hypr/${HYPRLAND_INSTANCE_SIGNATURE}/.socket2.sock" | while read -r line; do handle "$line"; done
