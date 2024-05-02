@@ -11,8 +11,20 @@ const Clear = () => {
   });
 };
 
+// const DND = () => {
+//   return Widget.Box({
+//     children: [
+//       Widget.Switch({
+//         state: notifications.bind("dnd"),
+//         on_activate: ({active}) => notifications.dnd = active
+//       })
+//     ]
+//   })
+// }
+
 export const NotificationHeader = () => {
   return Widget.Box({
+    spacing: 8,
     children: [
       Widget.Label({
         className: "label",
@@ -20,6 +32,7 @@ export const NotificationHeader = () => {
         hpack: "start",
         label: "Notifications",
       }),
+      // DND(),
       Clear(),
     ],
   });
