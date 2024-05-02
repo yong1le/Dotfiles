@@ -16,3 +16,7 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
+
+# fnm
+export PATH="/home/yonglehe/.local/share/fnm:$PATH"
+eval "`fnm env`"

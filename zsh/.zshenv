@@ -14,3 +14,4 @@ if [ -f "/opt/conda/etc/profile.d/conda.sh" ]; then
 else
     export PATH="/opt/conda/bin:$PATH"
 fi
+. "$HOME/.cargo/env"
