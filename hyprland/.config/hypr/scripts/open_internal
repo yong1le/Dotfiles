@@ -1,12 +1,20 @@
 #!/usr/bin/env bash
 
 function handle {
-  case "$1" in monitorremoved*)
-    if ! hyprctl monitors | grep "DP-2" ; then
-      hyprctl keyword monitor eDP-1,2240x1400,1920x0, auto
-      killall ags
-      ags & disown
-    fi
+  case "$1" in 
+    monitorremoved*)
+      if ! hyprctl monitors | grep "DP-2" ; then
+        hyprctl keyword monitor eDP-1,2240x1400,1920x0, auto
+        killall ags
+        ags &> /dev/null & disown
+      fi
+      ;;
+    monitoraddedv2*)
+      if hyprctl monitors | grep "DP-2"; then
+        hyprctl keyword monitor eDP-1, disable
+        killall ags
+        ags &> /dev/null & disown
+      fi
   esac
 }
 
