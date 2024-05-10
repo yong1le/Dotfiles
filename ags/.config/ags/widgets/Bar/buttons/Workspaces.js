@@ -21,8 +21,8 @@ export function Workspaces(monitor) {
 
   return Widget.EventBox({
     class_name: "workspaces",
-    onScrollUp: () => dispatch("+1"),
-    onScrollDown: () => dispatch("-1"),
+    onScrollUp: () => dispatch("e+1"),
+    onScrollDown: () => dispatch("e-1"),
     child: Widget.Box({
       children: workspaces,
     }),
