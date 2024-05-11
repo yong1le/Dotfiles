@@ -7,7 +7,7 @@ shift
 TITLE="$(basename "$1")"
 
 if [ -n "$TITLE" ]; then
-  /usr/bin/kitty --title "$TITLE" "$@"
+  /usr/bin/alacritty --title "$TITLE" -e "$@"
 else
-  /usr/bin/kitty"$@"
+  /usr/bin/alacritty -e "$@"
 fi

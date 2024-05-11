@@ -1,5 +1,5 @@
 import = [
-    "~/.config/alacritty/themes/kanagawa-wave.toml"
+  "~/.config/alacritty/themes/gruvbox.toml"
 ]
 
 [env]
@@ -15,10 +15,10 @@ blinking = "On"
 shape = "Beam"
 
 [font]
-size = 17
+size = 12
 
 [font.normal]
-family = "SauceCodePro Nerd Font"
+family = "SpaceMono Nerd Font"
 
 [window]
 decorations = "buttonless"
