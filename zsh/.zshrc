@@ -1,3 +1,5 @@
+alias code="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
+
 # ZSH options (ignore-case)
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
@@ -22,7 +24,3 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-
-# fnm
-export PATH="/home/yonglehe/.local/share/fnm:$PATH"
-eval "`fnm env`"

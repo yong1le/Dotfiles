@@ -25,6 +25,10 @@ decorations = "buttonless"
 dynamic_title = true
 option_as_alt = "Both"
 
+[window.dimensions]
+columns = 125
+lines = 35
+
 [window.padding]
 x = 10
 y = 10
