@@ -15,7 +15,7 @@ blinking = "On"
 shape = "Beam"
 
 [font]
-size = 12
+size = 11
 
 [font.normal]
 family = "SpaceMono Nerd Font"
