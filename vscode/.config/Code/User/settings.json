@@ -1,0 +1,182 @@
+{
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "vscode-neovim.neovimInitVimPaths.linux": "~/.config/vsvim/init.lua",
+    "vscode-neovim.compositeKeys": {
+        "jk": {
+            "command": "vscode-neovim.escape",
+        }
+    },
+    "whichkey.bindings": [
+        {
+            "key": "/",
+            "name": "Comment",
+            "type": "command",
+            "command": "editor.action.commentLine"
+        },
+        {
+            "key": " ",
+            "name": "Quick Open",
+            "type": "command",
+            "command": "workbench.action.quickOpen"
+        },
+        {
+            "key": "l",
+            "name": "LSP...",
+            "type": "bindings",
+            "bindings": [
+                {
+                    "key": ";",
+                    "name": "Refactor",
+                    "type": "command",
+                    "command": "editor.action.refactor",
+                    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+                },
+                {
+                    "key": "d",
+                    "name": "Diagnostics",
+                    "type": "command",
+                    "command": "workbench.actions.view.problems"
+                },
+                {
+                    "key": "D",
+                    "name": "Declaration",
+                    "type": "command",
+                    "command": "editor.action.revealDeclaration"
+                },
+                {
+                    "key": "e",
+                    "name": "Errors",
+                    "type": "command",
+                    "command": "workbench.actions.view.problems"
+                },
+                {
+                    "key": "f",
+                    "name": "Format",
+                    "type": "command",
+                    "command": "editor.action.formatDocument",
+                    "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+                },
+                {
+                    "key": "i",
+                    "name": "Implementation",
+                    "type": "command",
+                    "command": "editor.action.goToImplementation",
+                    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
+                },
+                {
+                    "key": "N",
+                    "name": "Next Problem",
+                    "type": "command",
+                    "command": "editor.action.marker.nextInFiles",
+                    "when": "editorFocus"
+                },
+                {
+                    "key": "p",
+                    "name": "Prev Problem",
+                    "type": "command",
+                    "command": "editor.action.marker.prevInFiles",
+                    "when": "editorFocus"
+                },
+                {
+                    "key": "q",
+                    "name": "Quick Fix",
+                    "type": "command",
+                    "command": "editor.action.quickFix",
+                    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+                },
+                {
+                    "key": "r",
+                    "name": "Rename",
+                    "type": "command",
+                    "command": "editor.action.rename",
+                    "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+                },
+                {
+                    "key": "v",
+                    "name": "View All References",
+                    "type": "command",
+                    "command": "references-view.find",
+                    "when": "editorHasReferenceProvider"
+                },
+                {
+                    "key": "s",
+                    "name": "Go To Symbol",
+                    "type": "command",
+                    "command": "workbench.action.gotoSymbol"
+                },
+                {
+                    "key": "S",
+                    "name": "Show All Symbols",
+                    "type": "command",
+                    "command": "workbench.action.showAllSymbols"
+                }
+            ]
+        },
+        {
+            "key": "g",
+            "name": "Git...",
+            "type": "bindings",
+            "bindings": [
+                {
+                    "key": "s",
+                    "name": "Stage",
+                    "type": "command",
+                    "command": "git.stage"
+                },
+                {
+                    "key": "c",
+                    "name": "Commit",
+                    "type": "command",
+                    "command": "git.commit"
+                },
+                {
+                    "key": "h",
+                    "name": "History",
+                    "type": "command",
+                    "command": "git.viewFileHistory"
+                },
+                {
+                    "key": "j",
+                    "name": "Next Change",
+                    "type": "command",
+                    "command": "workbench.action.editor.nextChange"
+                },
+                {
+                    "key": "k",
+                    "name": "Previous Change",
+                    "type": "command",
+                    "command": "workbench.action.editor.previousChange"
+                },
+                {
+                    "key": "u",
+                    "name": "Unstage",
+                    "type": "command",
+                    "command": "git.unstage"
+                }
+            ]
+        }
+    ],
+    "window.titleBarStyle": "custom",
+    "editor.fontFamily": "SpaceCode Nerd Font Mono",
+    "editor.fontSize": 14,
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "workbench.startupEditor": "none",
+    "editor.cursorSurroundingLines": 8,
+    "editor.cursorSurroundingLinesStyle": "all",
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.minimap.enabled": false,
+    "editor.suggest.preview": true,
+    "git.openRepositoryInParentFolders": "always",
+    "editor.stickyScroll.enabled": false,
+    "window.density.editorTabHeight": "compact",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.smoothScrolling": true,
+    "terminal.integrated.smoothScrolling": true,
+    "workbench.list.smoothScrolling": true,
+    "editor.lineNumbers": "relative",
+    "editor.renderWhitespace": "trailing",
+    "explorer.confirmDelete": false,
+}
