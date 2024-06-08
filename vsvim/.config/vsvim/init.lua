@@ -63,38 +63,7 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		event = { "BufReadPost", "BufNewFile" },
-		opts = {
-			ensure_installed = "all",
-			auto_install = true,
-			autotag = { enable = false },
-			highlight = { enable = false },
-			incremental_selection = { enable = false },
-			textobjects = {
-				select = {
-					enable = true,
-					lookahead = true,
-					keymaps = {
-						["af"] = { query = "@function.outer", desc = "Select around function" },
-						["if"] = { query = "@function.inner", desc = "Select inside function" },
-						["ac"] = { query = "@class.outer", desc = "Select around class" },
-						["ic"] = { query = "@class.inner", desc = "Select inside class" },
-						["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
-					},
-					include_surrounding_whitespace = true,
-				},
-			},
-			indent = { enable = false },
-		},
-		config = function(_, opts)
-			require("nvim-treesitter.configs").setup(opts)
-		end,
-	},
-
-	-- Extend textobjects using TS
+	-- Extend textobjects
 	{
 		"echasnovski/mini.ai",
 		event = "VeryLazy",
