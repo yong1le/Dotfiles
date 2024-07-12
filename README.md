@@ -16,6 +16,14 @@
 - ripgrep
 - neovim
 - zoxide
+- hyprland
+    - hyprshot
+    - hyprlock
+    - hypridle
+    - swww
+    - waypaper
+    - ags/waybar
+- kitty/alacritty
 
 ## Setting up firefox
 - [flags](https://github.com/FirefoxCSS-Store/FirefoxCSS-Store.github.io/blob/main/README.md#generic-installation)
