@@ -32,12 +32,16 @@ notify_user() {
 
 # Increase brightness
 inc_backlight() {
-	brightnessctl s +5%
+  swayosd-client --brightness raise
+  # lightctl up
+	# brightnessctl s +5% && ags -r "brightnessOSD()" # && get_icon && notify_user
 }
 
 # Decrease brightness
 dec_backlight() {
-	brightnessctl s 5%-
+  swayosd-client --brightness lower
+  # lightctl down
+	# brightnessctl s 5%- && ags -r "brightnessOSD()"  # && get_icon && notify_user
 }
 
 # Execute accordingly

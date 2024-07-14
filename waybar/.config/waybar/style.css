@@ -14,6 +14,7 @@
   padding: 0px;
 }
 
+
 menu,
 tooltip {
   border-radius: 8px;
@@ -156,4 +157,10 @@ window#waybar {
 #custom-lock,
 #custom-quit {
   margin: 0 10 0 10
+}
+
+#custom-reboot:hover,
+#custom-lock:hover,
+#custom-quit:hover {
+  color: lighter(@accent)
 }

@@ -277,7 +277,7 @@
       "critical": 15
     },
     "format": "{icon}",
-    "format-charging": "<b>{icon} </b>",
+    "format-charging": "<b>󰂄</b>",
     "format-full": "<span color='#82A55F'><b>{icon}</b></span>",
     "format-icons": [
       "󰁻",
@@ -333,12 +333,12 @@
     "format": "󰜉",
     "tooptip": true,
     "tooltip-format": "Reboot",
-    "on-click": "systemctl reboot now"
+    "on-click": "systemctl reboot"
   },
   "custom/power": {
     "format": "󰐥",
     "tooptip": true,
     "tooltip-format": "Shutdown",
-    "on-click": "systemctl shutdown now"
+    "on-click": "systemctl shutdown"
   }
 }
