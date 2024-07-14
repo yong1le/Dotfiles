@@ -3,7 +3,8 @@
 // import ControlCentre from "./widgets/ControlCentre/ControlCentre.js";
 // import NotificationPopups from "./widgets/Notification/Notification.js";
 // import PopupCalendar from "./widgets/Calendar/Calendar.js";
-import AppLauncher from "./widgets/AppLauncher/AppLauncher.js";
+// import AppLauncher from "./widgets/AppLauncher/AppLauncher.js";
+import { AppLauncher } from "./widgets/Launcher/Launcher.js";
 
 // const hyprland = await Service.import("hyprland");
 //
@@ -23,5 +24,6 @@ App.config({
     // OSD("ppd"),
     // PopupCalendar(),
     AppLauncher(),
+    // ClipboardLauncher()
   ],
 });

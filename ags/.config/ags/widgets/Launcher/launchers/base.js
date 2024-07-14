@@ -1,38 +1,8 @@
-const applications = await Service.import("applications");
-const WINDOW_NAME = "applauncher";
-
-/** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
-const AppItem = (app) =>
-  Widget.Button({
-    on_clicked: () => {
-      App.closeWindow(WINDOW_NAME);
-      app.launch();
-    },
-    attribute: {
-      /** @param {string} text */
-      match: (text) => app.match(text ?? ""),
-      action: app.launch,
-    },
-    child: Widget.Box({
-      spacing: 8,
-      children: [
-        Widget.Icon({
-          icon: app.icon_name || "",
-        }),
-        Widget.Label({
-          class_name: "title",
-          label: app.name,
-          xalign: 0,
-          vpack: "center",
-          truncate: "end",
-        }),
-      ],
-    }),
-  });
-
-const LauncherWindow = () => {
+// List of items returned by reloadItems must have the following attributes:
+// .match() and .action()
+const LauncherWindow = (reloadItems, windowName) => {
   // list of application buttons
-  let items = applications.query("").map(AppItem);
+  let items = reloadItems();
 
   // container holding the buttons
   const list = Widget.Box({
@@ -43,8 +13,7 @@ const LauncherWindow = () => {
 
   // repopulate the box, so the most frequent apps are on top of the list
   function repopulate() {
-    applications.reload();
-    items = applications.query("").map(AppItem);
+    items = reloadItems();
     list.children = items;
   }
 
@@ -56,7 +25,7 @@ const LauncherWindow = () => {
       // make sure we only consider visible (searched for) applications
       const results = items.filter((item) => item.visible);
       if (results[0]) {
-        App.toggleWindow(WINDOW_NAME);
+        App.toggleWindow(windowName);
         results[0].attribute.action();
       }
     },
@@ -84,29 +53,29 @@ const LauncherWindow = () => {
       self.hook(
         App,
         (_, windowName, visible) => {
-          if (windowName !== WINDOW_NAME || !visible) return;
+          if (windowName !== windowName || !visible) return;
           // when the applauncher shows up
           repopulate();
           entry.text = "";
           entry.grab_focus();
         },
-        "window-toggled",
+        "window-toggled"
       ),
   });
 };
 
-export default function AppLauncher() {
+export default function Launcher({ windowName, reloadItems }) {
   return Widget.Window({
-    name: WINDOW_NAME,
+    name: windowName,
     css: `background-color: transparent`,
     setup: (self) => {
       self.keybind("Escape", () => {
-        App.closeWindow(WINDOW_NAME);
+        App.closeWindow(windowName);
       });
-      App.applyCss(`${App.configDir}/widgets/AppLauncher/AppLauncher.css`);
+      App.applyCss(`${App.configDir}/widgets/Launcher/Launcher.css`);
     },
     visible: false,
     keymode: "exclusive",
-    child: LauncherWindow(),
+    child: LauncherWindow(reloadItems, windowName),
   });
 }
