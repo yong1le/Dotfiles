@@ -1,230 +1,159 @@
+@define-color accent @accent_bg_color;
+@define-color foreground @headerbar_fg_color;
+@define-color background @headerbar_bg_color;
+
 * {
-	border: none;
-	border-radius: 10px;
-    font-family: "JetBrainsMono Nerd Font" ;
-	font-size: 12px;
-	min-height: 10px;
+  font-size: 16px;
+  font-family: "JetBrainsMono Nerd Font,JetBrainsMono NF";
+  min-width: 10px;
+  min-height: 10px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+}
+
+menu,
+tooltip {
+  border-radius: 8px;
+  padding: 10px;
+  border: 3px solid lighter(@accent);
+  background: @background;
+
+  color: lighter(@accent);
+}
+
+menu label,
+tooltip label {
+  padding: 2px 10px;
+  font-size: 14px;
+  color: lighter(@accent);
 }
 
 window#waybar {
-	background: transparent;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  background: alpha(@background, 0.9);
+  color: @foreground;
+  border-radius: 8px;
+  border: 4px solid @accent;
 }
 
-window#waybar.hidden {
-	opacity: 0.2;
-}
-
-#window {
-	margin-top: 6px;
-	padding-left: 10px;
-	padding-right: 10px;
-	border-radius: 10px;
-	transition: none;
-    color: transparent;
-	background: transparent;
-}
-
-#workspaces {
-	margin-top: 6px;
-	margin-left: 12px;
-	font-size: 4px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	background: #303447;
-	transition: none;
+.modules-left,
+.modules-right,
+.modules-center {
+  padding: 10px 15px
 }
 
 #workspaces button {
-	transition: none;
-	color: #B5E8E0;
-	background: transparent;
-	font-size: 16px;
-	border-radius: 2px;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  background: transparent;
+  border-radius: 4px;
+  color: alpha(@foreground, 0.3);
+  padding: 2px 10px;
+}
+
+#workspaces button.urgent {
+  font-weight: bold;
+  color: @foreground;
 }
 
 #workspaces button.active {
-	transition: none;
-	color: #E28C8C;
-	background: transparent;
-	font-size: 4px;
-}
-
-#workspaces button:hover {
-	transition: none;
-	box-shadow: inherit;
-	text-shadow: inherit;
-	color: #FAE3B0;
-    border-color: #E8A2AF;
-    color: #E8A2AF;
-}
-
-
-#power-profiles-daemon {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: #1A1826;
-	background: #E28C8C;
-}
-
-#pulseaudio {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: #1A1826;
-	background: #FAE3B0;
-}
-
-#battery {
-	margin-top: 6px;
-	margin-left: 8px;
-	margin-right: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: #303447;
-	background: #B5E8E0;
-}
-
-#battery.charging, #battery.plugged {
-	color: #303447;
-    background-color: #B5E8E0;
-}
-
-#battery.critical:not(.charging) {
-    background-color: #B5E8E0;
-    color: #303447;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-@keyframes blink {
-    to {
-        background-color: #BF616A;
-        color: #B5E8E0;
-    }
-}
-
-#backlight {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: #303447;
-	background: #F8BD96;
+  background: alpha(@accent, 0.4);
+  color: lighter(@accent);
 }
 
 #clock {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: #303447;
-	background: #ABE9B3;
+  font-weight: bold;
 }
 
-#memory {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 10px;
-	transition: none;
-	color: #303447;
-	background: #DDB6F2;
+#privacy {
+  margin: 0 10;
+  font-weight: bold;
 }
 
-#cpu {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 10px;
-	transition: none;
-	color: #303447;
-	background: #96CDFB;
+#privacy-item {
+  margin: 0 10;
 }
 
+#privacy-item.screenshare {
+  color: @red_3
+}
 
-#custom-gpu {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 10px;
-	transition: none;
-	color: #303447;
-	background: #E28C8C;
+#privacy-item.audio-in {
+  color: @orange_3
+}
+
+#network.disabled {
+  color: alpha(@foreground, 0.3);
+}
+
+#bluetooth,
+#backlight {
+  margin: 0 8 0 0
+}
+
+#network {
+  margin: 0 5 0 0
+}
+
+#pulseaudio {
+  margin: 0 16 0 0
+}
+
+#backlight-slider,
+#pulseaudio-slider {
+  padding: 0 5px 0 0
+}
+
+#power-profiles-daemon {
+  margin: 0 10px 0 0
+}
+
+#backlight-slider slider,
+#pulseaudio-slider slider {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+#backlight-slider trough,
+#pulseaudio-slider trough {
+  min-width: 60px;
+  min-height: 6px;
+  border-radius: 8px;
+  background-color: alpha(@accent, 0.6);
+}
+
+#backlight-slider highlight,
+#pulseaudio-slider highlight {
+  border-radius: 8px;
+  background-color: lighter(@accent);
 }
 
 #tray {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 10px;
-	transition: none;
-	color: #000000;
-	background: #303447;
+  padding: 2px 10px;
+  margin: 0 5px;
 }
 
-#custom-launcher {
-	font-size: 24px;
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 5px;
-	border-radius: 10px;
-	transition: none;
-    color: #89DCEB;
-    background: #303447;
+#system, #connections {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  background: transparent;
+  border-radius: 4px;
+  padding: 2px 10px;
+  margin: 0 10 0 0;
+  background: darker(@accent);
 }
 
 #custom-power {
-	font-size: 20px;
-	margin-top: 6px;
-	margin-left: 8px;
-	margin-right: 8px;
-	padding-left: 10px;
-	padding-right: 5px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: #303447;
-	background: #F28FAD;
+  color: @red_1;
 }
 
-#custom-media {
-	margin-top: 6px;
-	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-bottom: 0px;
-	border-radius: 10px;
-	transition: none;
-	color: #303447;
-	background: #F2CDCD;
+#custom-power,
+#custom-reboot,
+#custom-lock,
+#custom-quit {
+  margin: 0 10 0 10
 }
