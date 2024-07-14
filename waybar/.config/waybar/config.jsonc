@@ -151,7 +151,9 @@
     "format-disconnected": "󰖪",
     "format-linked": "󰈁",
     "tooltip": false,
-    "on-click": "nm-connection-editor"
+    "on-click": "ags -t networklauncher",
+    "on-click-right": "nm-connection-editor"
+    
   },
   "network#details": {
     "format": "{essid} ({signalStrength}%)"

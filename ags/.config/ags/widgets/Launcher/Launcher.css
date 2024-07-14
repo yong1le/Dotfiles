@@ -6,7 +6,7 @@
 
   border-radius: 10px;
   background-color: @insensitive_base_color;
-  border: 2px solid @borders;
+  border: 2px solid @accent_color;
 }
 
 .launcher-container button {

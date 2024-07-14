@@ -1,15 +1,23 @@
 import Launcher from "./base.js";
 
-const ClipboardItem = (item, windowName) =>
-  Widget.Button({
+const ClipboardItem = (item, windowName) => {
+  const copyText = () => {
+    Utils.execAsync([
+      "bash",
+      "-c",
+      `echo "${item}" | cliphist decode | wl-copy`,
+    ]);
+  };
+
+  return Widget.Button({
     on_clicked: () => {
       App.closeWindow(windowName);
-      // app.launch();
+      copyText();
     },
     attribute: {
       /** @param {string} text */
-      match: () => { }, //(text) => item.match(text ?? ""),
-      action: () => { } //item.launch,
+      match: (text) => item.toLowerCase().match(text.toLowerCase() ?? ""),
+      action: copyText,
     },
     child: Widget.Box({
       spacing: 8,
@@ -24,13 +32,15 @@ const ClipboardItem = (item, windowName) =>
       ],
     }),
   });
+};
 
 export default function ClipboardLauncher() {
   return Launcher({
     windowName: "clipboardlauncher",
     reloadItems: () => {
-      const items = Utils.exec("cliphist list -max-items 30").split("\n")
-      console.log(items)
+      const items = Utils.exec('bash -c "cliphist list | head -n 30"').split(
+        "\n"
+      );
       return items.map((item) => ClipboardItem(item, "clipboardlauncher"));
     },
   });
