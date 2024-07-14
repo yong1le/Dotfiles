@@ -1,4 +1,4 @@
-@define-color accent @accent_bg_color;
+@define-color accent @accent_color;
 @define-color foreground @headerbar_fg_color;
 @define-color background @headerbar_bg_color;
 
