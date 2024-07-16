@@ -120,12 +120,13 @@
 }
 
 .control-center {
-  border-radius: 0.5rem;
-  margin: 1rem;
+  border-radius: 0 0 10px 10px;
+  margin: 0rem 0 20rem 0;
   background-color: alpha(@view_bg_color, 0.9);
   color: @view_fg_color;
   padding: 1rem;
   border: 2px solid @accent_bg_color;
+  border-top: none
 }
 
 .control-center .widget-title {
@@ -142,7 +143,7 @@
 }
 
 .control-center .widget-title button:hover {
-  background-color: #26233a;
+  background-color: @view_bg_color;
 }
 
 .control-center .widget-title button:active {
@@ -227,7 +228,7 @@
   > *:last-child
   > *
   .notification-action:hover {
-  background-color: #26233a;
+  background-color: @view_bg_color;
 }
 
 .control-center
@@ -288,26 +289,26 @@ trough {
 }
 
 .control-center-dnd slider {
-  background: #26233a;
+  background: @view_bg_color;
   border-radius: 0.5rem;
 }
 
 .widget-dnd {
-  color: #908caa;
+  color: @view_fg_color;
 }
 
 .widget-dnd > switch {
   border-radius: 0.5rem;
-  background: #26233a;
+  background: @view_bg_color;
   border: 1px solid #6e6a86;
 }
 
 .widget-dnd > switch:checked slider {
-  background: #31748f;
+  background: @red_3;
 }
 
 .widget-dnd > switch slider {
-  background: #6e6a86;
+  background: @view_fg_color;
   border-radius: 0.5rem;
   margin: 0.25rem;
 }

@@ -21,7 +21,6 @@ tooltip {
   padding: 10px;
   border: 1px solid lighter(@accent);
   background: @background;
-
   color: lighter(@accent);
 }
 
@@ -68,6 +67,9 @@ window#waybar {
 
 #clock {
   font-weight: bold;
+}
+#clock:hover {
+  color: lighter(@accent)
 }
 
 #privacy {

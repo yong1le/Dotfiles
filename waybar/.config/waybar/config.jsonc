@@ -67,7 +67,8 @@
       "format": {
         "today": "<span color='#a6e3a1'><b><u>{}</u></b></span>"
       }
-    }
+    },
+    "on-click": "swaync-client -t"
   },
   "privacy": {
     "icon-spacing": 4,
