@@ -65,6 +65,13 @@ window#waybar {
   color: lighter(@accent);
 }
 
+#submap {
+  background: alpha(@accent, 0.4);
+  color: @foreground;
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
 #clock {
   font-weight: bold;
 }

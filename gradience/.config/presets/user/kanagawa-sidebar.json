@@ -1,8 +1,8 @@
 {
     "name": "Kanagawa Sidebar",
     "variables": {
-        "accent_color": "#7AA89F",
-        "accent_bg_color": "#6A9589",
+        "accent_color": "#E56175",
+        "accent_bg_color": "#E56175",
         "accent_fg_color": "#DCD7BA",
         "destructive_color": "#E82424",
         "destructive_bg_color": "#C34043",

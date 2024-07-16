@@ -5,8 +5,8 @@
   "reload_style_on_change": true,
   // LEFT
   "modules-left": [
-    "hyprland/workspaces"
-    // "group/player"
+    "hyprland/workspaces",
+    "hyprland/submap"
   ],
   "hyprland/workspaces": {
     "format": "{icon}",

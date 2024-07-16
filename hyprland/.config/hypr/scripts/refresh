@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+killall waybar
+killall ags
+killall swaync
+killall swayosd-server
+
+waybar &
+ags &
+swaync &
+swayosd-server &
