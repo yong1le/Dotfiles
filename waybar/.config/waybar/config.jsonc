@@ -90,6 +90,7 @@
   // RIGHT
   "modules-right": [
     "tray",
+    "idle_inhibitor",
     "group/connections",
     "group/system",
     "group/power"
@@ -154,7 +155,6 @@
     "tooltip": false,
     "on-click": "ags -t networklauncher",
     "on-click-right": "nm-connection-editor"
-    
   },
   "network#details": {
     "format": "{essid} ({signalStrength}%)"
@@ -178,7 +178,7 @@
     "modules": [
       "pulseaudio",
       "pulseaudio#mic",
-      "pulseaudio/slider",
+      "pulseaudio/slider"
     ]
   },
   "pulseaudio": {
@@ -225,7 +225,7 @@
     },
     "modules": [
       "backlight",
-      "backlight/slider",
+      "backlight/slider"
     ]
   },
   "backlight": {
@@ -305,6 +305,15 @@
   },
   "battery#percentage": {
     "format": "{capacity}%"
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "tooltip-format-activated": "Idle Inhibitor is active",
+    "tooltip-format-deactivated": "Idle Inhibitor is not active",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
   },
   "group/power": {
     "orientation": "inherit",
