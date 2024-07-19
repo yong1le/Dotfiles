@@ -28,7 +28,7 @@
   .notification-row
   .notification-background
   .notification.critical {
-  border: 2px solid @red_3;
+  border: 2px solid @accent_color;
 }
 
 .floating-notifications.background
@@ -119,6 +119,10 @@
   background-color: @red_5;
 }
 
+.blank-window {
+  background: alpha(#000000, 0.4);
+}
+
 .control-center {
   border-radius: 0 0 10px 10px;
   margin: 0rem 0 20rem 0;
@@ -127,6 +131,11 @@
   padding: 1rem;
   border: 2px solid @accent_bg_color;
   border-top: none
+}
+
+.control-center.background {
+  background-color: alpha(@view_bg_color, 0.9);
+  color: @view_fg_color;
 }
 
 .control-center .widget-title {
@@ -304,7 +313,7 @@ trough {
 }
 
 .widget-dnd > switch:checked slider {
-  background: @red_3;
+  background: @accent_color;
 }
 
 .widget-dnd > switch slider {

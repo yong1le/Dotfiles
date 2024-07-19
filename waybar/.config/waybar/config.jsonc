@@ -53,10 +53,11 @@
   // CENTER
   "modules-center": [
     "clock",
-    "privacy",
+    "privacy"
   ],
   "clock": {
     "format": "{:%m/%d %I:%M%p}",
+    "tooltip": false,
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "month",
