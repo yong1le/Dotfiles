@@ -29,6 +29,13 @@ del("n", "<leader><tab>]")
 del("n", "<leader><tab>d")
 del("n", "<leader><tab>[")
 
+-- Lazygit
+del("n", "<leader>gG")
+del("n", "<leader>gb")
+del("n", "<leader>gl")
+del("n", "<leader>gL")
+del("n", "<leader>gf")
+
 set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
 set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
 set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
