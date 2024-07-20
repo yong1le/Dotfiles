@@ -39,7 +39,7 @@ export default function ClipboardLauncher() {
     windowName: "clipboardlauncher",
     reloadItems: () => {
       const items = Utils.exec('bash -c "cliphist list | head -n 30"').split(
-        "\n"
+        "\n",
       );
       return items.map((item) => ClipboardItem(item, "clipboardlauncher"));
     },

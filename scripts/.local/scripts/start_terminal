@@ -1,13 +1,15 @@
 #!/bin/bash
 
-[ x"$1" = x"--" ] || exit 1
+[ "$1" = "--" ] || exit 1
 
 shift
 
 TITLE="$(basename "$1")"
 
 if [ -n "$TITLE" ]; then
+  echo hello
   /usr/bin/alacritty --title "$TITLE" -e "$@"
 else
+  echo helloworld
   /usr/bin/alacritty -e "$@"
 fi
