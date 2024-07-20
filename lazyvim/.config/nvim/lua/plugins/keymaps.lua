@@ -1,5 +1,18 @@
 return {
   {
+    "neovim/nvim-lspconfig",
+    opts = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+
+      keys[#keys + 1] = { "gr", "<cmd>Trouble lsp_references<cr>", desc = "Goto Definition" }
+      keys[#keys + 1] = { "gI", "<cmd>Trouble lsp_implementations<cr>", desc = "Goto Implementation" }
+      keys[#keys + 1] = { "gd", "<cmd>Trouble lsp_definitions<cr>", desc = "Goto Definition" }
+      keys[#keys + 1] = { "gD", "<cmd>Trouble lsp_declarations<cr>", desc = "Goto Declaration" }
+      keys[#keys + 1] = { "gy", "<cmd>Trouble lsp_type_definitions<cr>", desc = "Goto Type Definition" }
+      keys[#keys + 1] = { "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Show Line Diagnostics" }
+    end,
+  },
+  {
     "nvim-neo-tree/neo-tree.nvim",
     keys = {
       {
@@ -30,19 +43,39 @@ return {
       { "<leader>fF", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
       { "<leader>fr", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
       { "<leader>fR", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-      { "<leader>sg", false },
-      { "<leader>sG", false },
       { "<leader>sw", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
       { "<leader>sW", LazyVim.pick("live_grep"), desc = "Grep (Root Dir)" },
-      { "<leader>sa", false },
-      { "<leader>sb", false },
-      { "<leader>sC", false },
-      { "<leader>sh", false },
-      { "<leader>sH", false },
-      { "<leader>sk", false },
-      { "<leader>sM", false },
-      { "<leader>so", false },
-      { "<leader>gs", false },
+      { "<leader>sd", false }, -- file diagnostics
+      { "<leader>sg", false }, -- live grep (root), mapped to sW
+      { "<leader>sG", false }, -- live grep (cwd), mapped to sw
+      { "<leader>sa", false }, -- autocmd
+      { "<leader>sb", false }, -- current buffer fzf
+      { "<leader>sC", false }, -- commands
+      { "<leader>sh", false }, -- help pages
+      { "<leader>sH", false }, -- highlight groups
+      { "<leader>sk", false }, -- keymaps
+      { "<leader>sM", false }, -- man pages
+      { "<leader>so", false }, -- options
+      { "<leader>sq", false }, -- quickfix list
+      { "<leader>gs", false }, -- git statuses
+      { "<leader>sD", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Diagnostics" },
+    },
+  },
+  {
+    "folke/trouble.nvim",
+    opts = {
+      focus = true,
+    },
+    keys = {
+      { "<leader>sd", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
+      { "<leader>st", "<cmd>Trouble todo toggle<cr>", desc = "Todo (Trouble)" },
+      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,HACK,FIXME,BUG,NOTE<cr>", desc = "Todo" },
+      { "<leader>xx", false },
+      { "<leader>xX", false },
+      { "<leader>cs", false },
+      { "<leader>xL", false },
+      { "<leader>xQ", false },
+      { "<leader>xT", false },
     },
   },
   {

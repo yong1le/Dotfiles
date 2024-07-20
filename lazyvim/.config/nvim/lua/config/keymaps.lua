@@ -1,6 +1,9 @@
 local del = vim.keymap.del
 local set = vim.keymap.set
--- delete default
+
+---------------------------------------------------------------------------
+-- DELETE DEFAULT BINDINGS
+---------------------------------------------------------------------------
 del("n", "<leader>l") -- :Lazy
 del("n", "<leader>L") -- :Lazy
 del("n", "<leader>K") -- hover doc
@@ -34,8 +37,15 @@ del("n", "<leader>gG")
 del("n", "<leader>gb")
 del("n", "<leader>gl")
 del("n", "<leader>gL")
-del("n", "<leader>gf")
 
+del("n", "<leader>xl") -- location list
+del("n", "<leader>xq") -- quickfix list
+del("n", "<leader>xt") -- todo list
+del("n", "<leader>xT") -- todo list
+
+---------------------------------------------------------------------------
+-- SET BINDINGS
+---------------------------------------------------------------------------
 set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
 set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
 set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
