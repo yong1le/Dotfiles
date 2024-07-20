@@ -52,8 +52,7 @@
   },
   // CENTER
   "modules-center": [
-    "clock",
-    "privacy"
+    "clock"
   ],
   "clock": {
     "format": "{:%m/%d %I:%M%p}",
@@ -72,8 +71,8 @@
     "on-click": "swaync-client -t"
   },
   "privacy": {
-    "icon-spacing": 4,
-    "icon-size": 18,
+    "icon-spacing": 10,
+    "icon-size": 14,
     "transition-duration": 250,
     "modules": [
       {
@@ -94,6 +93,7 @@
     "idle_inhibitor",
     "group/connections",
     "group/system",
+    "privacy",
     "group/power"
   ],
   "tray": {

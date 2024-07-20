@@ -76,17 +76,13 @@ window#waybar {
 #clock {
   font-weight: bold;
 }
+
 #clock:hover {
   color: lighter(@accent)
 }
 
 #privacy {
-  margin: 0 10;
-  font-weight: bold;
-}
-
-#privacy-item {
-  margin: 0 10;
+  margin: 0 2;
 }
 
 #privacy-item.screenshare {
@@ -148,7 +144,8 @@ window#waybar {
   margin: 0 5px;
 }
 
-#system, #connections {
+#system,
+#connections {
   transition-property: background-color;
   transition-duration: 0.5s;
   background: transparent;
