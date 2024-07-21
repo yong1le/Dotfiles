@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-if ! killall systemd-inhibit; then
-  systemd-inhibit --what=idle --who=me --why="testing reasons" sleep infinity
-fi

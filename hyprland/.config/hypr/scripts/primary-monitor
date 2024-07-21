@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+function handle {
+  case "$1" in
+  monitoraddedv2*)
+    sleep 3
+    xrandr --output DP-2 --primary
+    ;;
+  esac
+}
+
+socat -U - "UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock" |
+  while read -r line; do handle "$line"; done
