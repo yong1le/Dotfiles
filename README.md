@@ -1,4 +1,5 @@
 ## Apps
+
 - Libreoffice (Writer, Calc) (flatpak)
 - Gnome Resources (flatpak)
 - Celluloid (flatpak)
@@ -9,6 +10,7 @@
 - dconf
 
 ## Programs
+
 - Fnm (node)
 - rustup
 - go
@@ -17,21 +19,21 @@
 - neovim
 - zoxide
 - hyprland
-    - hyprshot
-    - hyprlock
-    - hypridle
-    - swww
-    - waypaper
-    - ags/waybar
+  - hyprshot
+  - hyprlock
+  - hypridle
+  - swww
+  - waypaper
+  - ags/waybar
 - kitty/alacritty
 
 ## Setting up firefox
+
 - [flags](https://github.com/FirefoxCSS-Store/FirefoxCSS-Store.github.io/blob/main/README.md#generic-installation)
 - in `chrome/userChrome.css`
-    ```css
-    #TabsToolbar
-        {
-            visibility: collapse;
-        }
 
-    ```
+  ```css
+  #TabsToolbar {
+    visibility: collapse;
+  }
+  ```
