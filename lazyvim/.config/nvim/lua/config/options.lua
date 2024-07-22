@@ -8,14 +8,22 @@ local opt = vim.opt
 
 opt.autowrite = false
 opt.expandtab = true
+
 opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
-  fold = " ",
+  foldopen = "",
+  foldclose = "",
+  fold = "",
   foldsep = " ",
   diff = "╱",
   eob = " ",
 }
+vim.g.lazyvim_statuscolumn = {
+  folds_open = true,
+  folds_githl = true,
+}
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 opt.listchars = {
   tab = "│→",
   extends = "⟩",
