@@ -14,41 +14,20 @@ return {
   },
   {
     "stevearc/conform.nvim",
-    opts = function(_, opt)
-      local slow_format_filetypes = {}
-      table.insert(opt, {
-        formatters_by_ft = {
-          lua = { "stylua" },
-          python = { "isort", "black" },
-          javascript = { "prettier" },
-          typescript = { "prettierd", "prettier", stop_after_first = true },
-          javascriptreact = { "prettierd", "prettier", stop_after_first = true },
-          typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-          svelte = { "prettierd", "prettier", stop_after_first = true },
-          astro = { "prettierd", "prettier", stop_after_first = true },
-          yaml = { "prettierd", "prettier", stop_after_first = true },
-          json = { "prettierd", "prettier", stop_after_first = true },
-        },
-        format_on_save = function(bufnr)
-          if slow_format_filetypes[vim.bo[bufnr].filetype] then
-            return
-          end
-          local function on_format(err)
-            if err and err:match("timeout$") then
-              slow_format_filetypes[vim.bo[bufnr].filetype] = true
-            end
-          end
-
-          return { timeout_ms = 200, lsp_format = "fallback" }, on_format
-        end,
-        format_after_save = function(bufnr)
-          if not slow_format_filetypes[vim.bo[bufnr].filetype] then
-            return
-          end
-          return { lsp_format = "fallback" }
-        end,
-      })
-    end,
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "isort", "black" },
+        javascript = { "prettier" },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
+        javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+        typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+        svelte = { "prettierd", "prettier", stop_after_first = true },
+        astro = { "prettierd", "prettier", stop_after_first = true },
+        yaml = { "prettierd", "prettier", stop_after_first = true },
+        json = { "prettierd", "prettier", stop_after_first = true },
+      },
+    },
   },
   {
     "neovim/nvim-lspconfig",
