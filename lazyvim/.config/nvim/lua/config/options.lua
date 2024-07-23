@@ -28,7 +28,7 @@ opt.listchars = {
   tab = "│→",
   extends = "⟩",
   precedes = "⟨",
-  trail = "·",
+  trail = "",
   nbsp = "␣",
 }
 opt.foldlevel = 99
