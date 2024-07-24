@@ -1,5 +1,5 @@
 window {
-  background: alpha(@view_bg_color, 0.9);
-  border-radius: 10px;
-  border: 2px solid @accent_color
+  background: alpha(lighter(@view_bg_color), 0.7);
+  border-radius: 20px;
+  /*border: 2px solid @accent_color*/
 }

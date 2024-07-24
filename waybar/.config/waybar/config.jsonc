@@ -1,6 +1,6 @@
 {
   "layer": "top",
-  "margin": "5 10 0 10",
+  // "margin": "5 10 0 10",
   "position": "top",
   "reload_style_on_change": true,
   // LEFT

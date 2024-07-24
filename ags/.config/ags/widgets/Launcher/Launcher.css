@@ -1,12 +1,10 @@
 .launcher-container {
   min-width: 800px;
   min-height: 400px;
-  padding: 10px;
-  opacity: 0.9;
-
-  border-radius: 10px;
-  background-color: @insensitive_base_color;
-  border: 2px solid @accent_color;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: alpha(lighter(@view_bg_color), 0.7);
+  /*border: 2px solid @accent_color;*/
 }
 
 .launcher-container button {
@@ -14,8 +12,8 @@
 }
 
 .launcher-container button:focus {
-  background-color: @theme_selected_bg_color;
-  color: @theme_selected_fg_color
+  background-color: @accent_color;
+  color: @accent_fg_color
 }
 
 .launcher-container image {
