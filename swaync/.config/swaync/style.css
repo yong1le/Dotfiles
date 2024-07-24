@@ -13,7 +13,9 @@
 }
 
 .floating-notifications.background .notification-row .notification-background {
-  border-radius: 0.5rem;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 20px;
   color: @foreground;
   background-color: alpha(@background, 0.7);
   /*border: 2px solid @accent_bg_color;*/
@@ -79,8 +81,8 @@
 /*}*/
 
 .control-center {
-  border-radius: 0 0 10px 10px;
-  margin: 0rem 0 20rem 0;
+  border-radius: 0 0 20px 20px;
+  margin: 0rem 0rem 20rem 0;
   background-color: alpha(@background, 0.7);
   color: @foreground;
   padding: 1rem;
