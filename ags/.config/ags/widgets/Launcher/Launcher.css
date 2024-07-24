@@ -1,10 +1,12 @@
+@define-color background @card_bg_color;
+
 .launcher-container {
   min-width: 800px;
   min-height: 400px;
   padding: 30px;
-  border-radius: 20px;
-  background-color: alpha(lighter(@view_bg_color), 0.7);
-  /*border: 2px solid @accent_color;*/
+  border-radius: 10px;
+  background-color: alpha(@background, 0.8);
+  /*border: 1px solid @accent_color;*/
 }
 
 .launcher-container button {

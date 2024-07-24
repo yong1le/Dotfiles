@@ -1,6 +1,6 @@
 @define-color accent @accent_color;
-@define-color foreground @view_fg_color;
-@define-color background @view_bg_color;
+@define-color foreground @headerbar_fg_color;
+@define-color background @headerbar_bg_color;
 
 * {
   font-size: 16px;

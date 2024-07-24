@@ -1,5 +1,6 @@
 window {
-  background: alpha(lighter(@view_bg_color), 0.7);
-  border-radius: 20px;
+  background: alpha(@card_bg_color, 0.7);
+  color: @card_fg_color;
+  border-radius: 10px;
   /*border: 2px solid @accent_color*/
 }
