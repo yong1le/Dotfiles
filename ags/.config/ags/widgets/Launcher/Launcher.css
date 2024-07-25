@@ -9,6 +9,10 @@
   /*border: 1px solid @accent_color;*/
 }
 
+.launcher-container:backdrop {
+  box-shadow: 20px 20px 20px 20px @background;
+}
+
 .launcher-container button {
   background-color: transparent
 }
