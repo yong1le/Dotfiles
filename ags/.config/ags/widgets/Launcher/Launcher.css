@@ -6,7 +6,7 @@
   padding: 30px;
   border-radius: 10px;
   background-color: alpha(@background, 0.8);
-  /*border: 1px solid @accent_color;*/
+  border: 1px solid alpha(@dark_1, 0.3);
 }
 
 .launcher-container:backdrop {

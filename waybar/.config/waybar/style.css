@@ -19,8 +19,8 @@ menu,
 tooltip {
   border-radius: 8px;
   padding: 10px;
-  border: 1px solid lighter(@accent);
-  background: @background;
+  border: 1px solid alpha(@dark_1, 0.3);
+  background: lighter(@background);
   color: lighter(@accent);
 }
 
