@@ -23,11 +23,3 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Prompt Config
 eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-
-
-# fnm
-FNM_PATH="/home/yonglehe/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/yonglehe/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi

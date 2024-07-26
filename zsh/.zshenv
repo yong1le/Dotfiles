@@ -5,9 +5,13 @@ export PATH="$HOME/.cargo/bin/:$PATH"
 export ANDROID_HOME="/home/yonglehe/Android/sdk"
 export PATH="$PATH:$ANDROID_HOME/emulator"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:/home/yonglehe/.spicetify"
 
-export PATH="/home/yonglehe/.local/share/fnm:$PATH"
-eval "`fnm env`"
+FNM_PATH="/home/yonglehe/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/yonglehe/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
 
 if [ -f "/opt/conda/etc/profile.d/conda.sh" ]; then
     . "/opt/conda/etc/profile.d/conda.sh"
