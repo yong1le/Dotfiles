@@ -103,7 +103,7 @@
 
 .control-center .widget-title button {
   border-radius: 0.5rem;
-  color: @foreground;
+  color: @accent_fg_color;
   background-color: @accent;
   padding: 0.5rem;
 }

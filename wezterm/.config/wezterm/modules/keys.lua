@@ -9,19 +9,14 @@ function modules.apply_to_config(config)
 
   config.keys = {
     {
-      key = "Enter",
-      mods = "ALT",
-      action = act.DisableDefaultAssignment,
-    },
-    {
-      key = "Tab",
-      mods = "CTRL",
-      action = act.DisableDefaultAssignment,
-    },
-    {
-      key = "Tab",
+      key = "c",
       mods = "CTRL|SHIFT",
-      action = act.DisableDefaultAssignment,
+      action = act.CopyTo "Clipboard",
+    },
+    {
+      key = "v",
+      mods = "CTRL|SHIFT",
+      action = act.PasteFrom "Clipboard",
     },
   }
 end

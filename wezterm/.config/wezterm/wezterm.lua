@@ -15,7 +15,7 @@ config.color_scheme = "Catppuccin Mocha"
 -- config.window_frame = kanagawa.window_frame()
 
 -- Fonts
-config.font = wezterm.font "SauceCodePro Nerd Font Mono"
+config.font = wezterm.font "JetBrainsMono Nerd Font"
 config.font_size = 12
 
 -- Size
@@ -23,19 +23,20 @@ config.initial_rows = 40
 config.initial_cols = 100
 
 -- Keys
+config.disable_default_key_bindings = true
 keys.apply_to_config(config)
 
 -- Menu bar
 -- config.window_decorations = "INTEGRATED_BUTTONS"
 config.enable_tab_bar = false
-config.window_close_confirmation = 'NeverPrompt'
+config.window_close_confirmation = "NeverPrompt"
 
 -- Padding
 config.window_padding = {
   left = 10,
   right = 10,
   top = 0,
-  bottom = 0
+  bottom = 0,
 }
 
 return config

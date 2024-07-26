@@ -4,12 +4,10 @@
 
 shift
 
-TITLE="$(basename "$1")"
+# TITLE="$(basename "$1")"
 
-if [ -n "$TITLE" ]; then
-  echo hello
-  /usr/bin/alacritty --title "$TITLE" -e "$@"
-else
-  echo helloworld
-  /usr/bin/alacritty -e "$@"
-fi
+# if [ -n "$TITLE" ]; then
+/usr/bin/wezterm -e "$@"
+# else
+# /usr/bin/wezterm -e "$@"
+# fi
