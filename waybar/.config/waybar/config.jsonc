@@ -55,7 +55,7 @@
     "clock"
   ],
   "clock": {
-    "format": "{:%m/%d %I:%M%p}",
+    "format": "{:%B %d, %I:%M %p}",
     "tooltip": false,
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
@@ -102,8 +102,8 @@
   "group/connections": {
     "orientation": "inherit",
     "modules": [
-      "group/bluetooth",
-      "group/network"
+      "bluetooth",
+      "network"
     ]
   },
   // Bluetooth
@@ -153,7 +153,8 @@
     "format-ethernet": "󰈀",
     "format-disconnected": "󰖪",
     "format-linked": "󰈁",
-    "tooltip": false,
+    "tooltip": true,
+    "tooltip-format": "{essid} ({signalStrength}%)",
     "on-click": "ags -t networklauncher",
     "on-click-right": "nm-connection-editor"
   },
@@ -327,7 +328,7 @@
       "custom/power", // First element is the "group leader" and won't ever be hidden
       "custom/quit",
       "custom/lock",
-      "custom/reboot",
+      "custom/reboot"
     ]
   },
   "custom/quit": {

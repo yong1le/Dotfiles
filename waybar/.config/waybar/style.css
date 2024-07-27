@@ -1,4 +1,5 @@
-@define-color accent @accent_color;
+@define-color accent @accent_bg_color;
+@define-color accent_fg @accent_fg_color;
 @define-color foreground @headerbar_fg_color;
 @define-color background @headerbar_bg_color;
 
@@ -14,21 +15,20 @@
   padding: 0px;
 }
 
-
 menu,
 tooltip {
   border-radius: 8px;
   padding: 10px;
   border: 1px solid alpha(@dark_1, 0.3);
-  background: lighter(@background);
-  color: lighter(@accent);
+  background: @background;
+  color: @accent;
 }
 
 menu label,
 tooltip label {
   padding: 2px 10px;
   font-size: 14px;
-  color: lighter(@accent);
+  color: @accent;
 }
 
 window#waybar {
@@ -52,6 +52,7 @@ window#waybar {
   background: transparent;
   border-radius: 5px;
   color: alpha(@foreground, 0.3);
+  margin: 0 2px;
   padding: 2px 10px;
 }
 
@@ -61,8 +62,8 @@ window#waybar {
 }
 
 #workspaces button.active {
-  background: alpha(@accent, 0.4);
-  color: lighter(@accent);
+  background: @accent;
+  color: @accent_fg;
 }
 
 #submap {
@@ -78,7 +79,7 @@ window#waybar {
 }
 
 #clock:hover {
-  color: lighter(@accent)
+  color: @accent
 }
 
 #privacy {
@@ -97,15 +98,13 @@ window#waybar {
   color: alpha(@foreground, 0.3);
 }
 
-#bluetooth,
+
+#network,
 #backlight {
-  margin: 0 8 0 0
+  margin: 0 8px 0 0
 }
 
-#network {
-  margin: 0 5 0 0
-}
-
+#bluetooth,
 #pulseaudio {
   margin: 0 16 0 0
 }
@@ -130,46 +129,58 @@ window#waybar {
   min-width: 60px;
   min-height: 6px;
   border-radius: 8px;
-  background-color: alpha(@accent, 0.6);
+  background-color: darker(@accent);
 }
 
 #backlight-slider highlight,
 #pulseaudio-slider highlight {
   border-radius: 8px;
-  background-color: lighter(@accent);
+  background-color: @accent_fg;
 }
 
 #tray {
-  padding: 2px 10px;
-  margin: 0 5px;
+  margin: 0 12px;
 }
 
+#custom-power,
+#custom-reboot,
+#custom-lock,
+#custom-quit,
 #system,
 #connections {
   transition-property: background-color;
   transition-duration: 0.5s;
   background: transparent;
   border-radius: 4px;
-  padding: 2px 10px;
-  margin: 0 10 0 0;
-  background: darker(@accent);
+  padding: 0 10px;
+  background: @accent;
+  color: @accent_fg
 }
 
-#custom-power {
-  color: @red_1;
+#custom-reboot,
+#custom-lock,
+#custom-quit,
+#system,
+#connections {
+  margin: 0 5 0 0;
 }
 
-#custom-power,
+#custom-power:hover {
+  background: @red_1
+}
+
 #custom-reboot,
 #custom-lock,
 #custom-quit {
-  margin: 0 10 0 10
+  background: transparent;
+  color: @red_1
 }
 
 #custom-reboot:hover,
 #custom-lock:hover,
 #custom-quit:hover {
-  color: lighter(@accent)
+  background: @red_1;
+  color: @accent_fg
 }
 
 #idle_inhibitor {
