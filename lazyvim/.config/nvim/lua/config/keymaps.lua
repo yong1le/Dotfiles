@@ -49,10 +49,10 @@ end
 ---------------------------------------------------------------------------
 -- SET BINDINGS
 ---------------------------------------------------------------------------
-set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
-set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
-set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
-set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
+set("n", "<C-h>", "<cmd>NavigatorLeft<cr>")
+set("n", "<C-j>", "<cmd>NavigatorDown<cr>")
+set("n", "<C-k>", "<cmd>NavigatorUp<cr>")
+set("n", "<C-l>", "<cmd>NavigatorRight<cr>")
 
 set("n", "<leader>h", "<C-W>s", { desc = "Split Window Below", remap = true })
 set("n", "<leader>v", "<C-W>v", { desc = "Split Window Right", remap = true })

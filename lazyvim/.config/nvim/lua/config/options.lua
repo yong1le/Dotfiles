@@ -10,8 +10,8 @@ opt.autowrite = false
 opt.expandtab = true
 
 opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
+  foldopen = "",
+  foldclose = "",
   fold = " ",
   foldsep = " ",
   diff = "╱",

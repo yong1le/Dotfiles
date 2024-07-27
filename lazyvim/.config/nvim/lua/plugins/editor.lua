@@ -55,15 +55,16 @@ return {
     end,
   },
   {
-    "christoomey/vim-tmux-navigator",
+    "numToStr/Navigator.nvim",
     event = "VeryLazy",
     cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-      "TmuxNavigatePrevious",
+      "NavigatorLeft",
+      "NavigatorDown",
+      "NavigatorUp",
+      "NavigatorRight",
+      "NavigatorPrevious",
     },
+    opts = {},
   },
   {
     "kevinhwang91/nvim-bqf",
