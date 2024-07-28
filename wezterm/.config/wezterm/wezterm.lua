@@ -5,14 +5,10 @@ local keys = require "modules.keys"
 -- This table will hold the configuration.
 local config = {}
 
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
 if wezterm.config_builder then config = wezterm.config_builder() end
 
 -- Theming
 config.color_scheme = "Catppuccin Mocha"
--- config.colors = kanagawa.colors()
--- config.window_frame = kanagawa.window_frame()
 
 -- Fonts
 config.font = wezterm.font "JetBrainsMono Nerd Font"
@@ -27,9 +23,9 @@ config.disable_default_key_bindings = true
 keys.apply_to_config(config)
 
 -- Menu bar
--- config.window_decorations = "INTEGRATED_BUTTONS"
-config.enable_tab_bar = false
-config.window_close_confirmation = "NeverPrompt"
+config.enable_tab_bar = true
+config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
 
 -- Padding
 config.window_padding = {
@@ -38,5 +34,9 @@ config.window_padding = {
   top = 0,
   bottom = 0,
 }
+
+-- options
+config.window_close_confirmation = "NeverPrompt"
+config.default_cursor_style = "SteadyBar"
 
 return config
