@@ -152,7 +152,7 @@
     "format": "{icon}",
     "format-disconnected": "󰤭",
     "format-icons": [
-      "",
+      "󰤟",
       "󰤢",
       "󰤥",
       "󰤨"
