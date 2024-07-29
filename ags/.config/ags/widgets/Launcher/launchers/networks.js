@@ -2,17 +2,22 @@ import Launcher from "./base.js";
 const network = await Service.import("network");
 
 const NetworkItem = (item, windowName) => {
+  const action = () => {
+    Utils.execAsync([
+      "bash",
+      "-c",
+      `~/.config/hypr/scripts/connect-wifi "${item.ssid}"`,
+    ]);
+  };
   return Widget.Button({
     on_clicked: () => {
       App.closeWindow(windowName);
-      Utils.execAsync(["nmcli", "device", "wifi", "connect", item.bssid]);
+      action();
     },
     attribute: {
       /** @param {string} text */
       match: (text) => item.ssid.toLowerCase().match(text.toLowerCase() ?? ""),
-      action: () => {
-        Utils.execAsync(["nmcli", "device", "wifi", "connect", item.ssid]);
-      },
+      action,
     },
     child: Widget.Box({
       spacing: 8,
