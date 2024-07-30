@@ -24,7 +24,7 @@ require("lazy").setup({
     version = false,
   },
   install = { colorscheme = { "kanagawa" } },
-  checker = { enabled = true },
+  checker = { enabled = false },
   performance = {
     rtp = {
       disabled_plugins = {

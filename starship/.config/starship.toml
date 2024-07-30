@@ -59,7 +59,7 @@ style = "bold green"
 
 [lua]
 format = "[$symbol$version]($style) "
-symbol = "[](bold yellow)"
+symbol = "[ ](bold yellow)"
 style = "bold green"
 
 [time]
