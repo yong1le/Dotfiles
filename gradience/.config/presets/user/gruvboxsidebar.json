@@ -101,8 +101,8 @@
         }
     },
     "custom_css": {
-        "gtk4": "@define-color sidebar_bg_color #282828;\n@define-color sidebar_fg_color #ebdbb2;\n@define-color sidebar_backdrop_color #282828;\n@define-color sidebar_shade_color #282828;",
-        "gtk3": "@define-color sidebar_bg_color #282828;\n@define-color sidebar_fg_color #ebdbb2;\n@define-color sidebar_backdrop_color #282828;\n@define-color sidebar_shade_color #282828;"
+        "gtk4": "@define-color sidebar_bg_color #3C3836;\n@define-color sidebar_fg_color #ebdbb2;\n@define-color sidebar_backdrop_color #3C3836;\n@define-color sidebar_shade_color #3C3836;",
+        "gtk3": "@define-color sidebar_bg_color #3C3836;\n@define-color sidebar_fg_color #ebdbb2;\n@define-color sidebar_backdrop_color #3C3836;\n@define-color sidebar_shade_color #3C3836;"
     },
     "plugins": {}
 }
