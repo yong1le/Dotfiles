@@ -8,7 +8,7 @@ local config = {}
 if wezterm.config_builder then config = wezterm.config_builder() end
 
 -- Theming
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "Gruvbox Material (Gogh)"
 
 -- Fonts
 config.font = wezterm.font "JetBrainsMono Nerd Font"
@@ -38,5 +38,13 @@ config.window_padding = {
 -- options
 config.window_close_confirmation = "NeverPrompt"
 config.default_cursor_style = "SteadyBar"
+
+-- Mux
+config.unix_domains = {
+  {
+    name = "unix",
+  },
+}
+config.default_gui_startup_args = { "connect", "unix" }
 
 return config

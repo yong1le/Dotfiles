@@ -70,4 +70,16 @@ return {
     "kevinhwang91/nvim-bqf",
     ft = "qf",
   },
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = function(_, opts)
+      local themes = require("telescope.themes")
+
+      opts.defaults = themes.get_ivy({
+        layout_config = {
+          preview_cutoff = 1,
+        },
+      })
+    end,
+  },
 }

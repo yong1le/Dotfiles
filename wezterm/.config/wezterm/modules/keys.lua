@@ -1,9 +1,7 @@
 local wezterm = require "wezterm"
 local act = wezterm.action
 
-local nvim_nav = require "modules.nvim_nav"
-local is_outside_vim = nvim_nav.is_outside_vim
-local bind_if = nvim_nav.bind_if
+require "modules.nvim_nav"
 
 local modules = {}
 
@@ -13,10 +11,10 @@ function modules.apply_to_config(config)
   config.send_composed_key_when_right_alt_is_pressed = false
 
   config.keys = {
-    bind_if(is_outside_vim, "h", "CTRL", act.ActivatePaneDirection "Left"),
-    bind_if(is_outside_vim, "l", "CTRL", act.ActivatePaneDirection "Right"),
-    bind_if(is_outside_vim, "j", "CTRL", act.ActivatePaneDirection "Down"),
-    bind_if(is_outside_vim, "k", "CTRL", act.ActivatePaneDirection "Up"),
+    { key = "h", mods = "CTRL", action = act.EmitEvent "ActivatePaneDirection-left" },
+    { key = "j", mods = "CTRL", action = act.EmitEvent "ActivatePaneDirection-down" },
+    { key = "k", mods = "CTRL", action = act.EmitEvent "ActivatePaneDirection-up" },
+    { key = "l", mods = "CTRL", action = act.EmitEvent "ActivatePaneDirection-right" },
     {
       key = "c",
       mods = "CTRL|SHIFT",

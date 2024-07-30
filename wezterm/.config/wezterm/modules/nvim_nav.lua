@@ -1,37 +1,27 @@
 local wezterm = require "wezterm"
 local act = wezterm.action
 
-local function is_inside_vim(pane)
-  local tty = pane:get_tty_name()
-  if tty == nil then return false end
-
-  local success, _, _ = wezterm.run_child_process {
-    "sh",
-    "-c",
-    "ps -o state= -o comm= -t"
-      .. wezterm.shell_quote_arg(tty)
-      .. " | "
-      .. "grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?)(diff)?$'",
-  }
-
-  return success
+local function isViProcess(pane)
+  -- return pane:get_foreground_process_name():find "n?vim" ~= nil
+  return pane:get_title():find "n?vim" ~= nil
 end
 
-local function is_outside_vim(pane) return not is_inside_vim(pane) end
-
-local function bind_if(cond, key, mods, action)
-  local function callback(win, pane)
-    if cond(pane) then
-      win:perform_action(action, pane)
-    else
-      win:perform_action(act.SendKey { key = key, mods = mods }, pane)
-    end
+local function conditionalActivatePane(window, pane, pane_direction, vim_direction)
+  if isViProcess(pane) then
+    window:perform_action(
+      -- This should match the keybinds you set in Neovim.
+      act.SendKey { key = vim_direction, mods = "CTRL" },
+      pane
+    )
+  else
+    window:perform_action(act.ActivatePaneDirection(pane_direction), pane)
   end
-
-  return { key = key, mods = mods, action = wezterm.action_callback(callback) }
 end
 
-return {
-  is_outside_vim = is_outside_vim,
-  bind_if = bind_if,
-}
+wezterm.on(
+  "ActivatePaneDirection-right",
+  function(window, pane) conditionalActivatePane(window, pane, "Right", "l") end
+)
+wezterm.on("ActivatePaneDirection-left", function(window, pane) conditionalActivatePane(window, pane, "Left", "h") end)
+wezterm.on("ActivatePaneDirection-up", function(window, pane) conditionalActivatePane(window, pane, "Up", "k") end)
+wezterm.on("ActivatePaneDirection-down", function(window, pane) conditionalActivatePane(window, pane, "Down", "j") end)
