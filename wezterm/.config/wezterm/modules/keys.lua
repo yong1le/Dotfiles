@@ -5,6 +5,8 @@ require "modules.nvim_nav"
 
 local modules = {}
 
+wezterm.on("update-right-status", function(window, pane) window:set_right_status(window:active_workspace()) end)
+
 function modules.apply_to_config(config)
   config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 2000 }
   config.send_composed_key_when_left_alt_is_pressed = false
@@ -59,6 +61,34 @@ function modules.apply_to_config(config)
       key = "p",
       mods = "LEADER",
       action = act.ActivateTabRelative(-1),
+    },
+    {
+      key = " ",
+      mods = "LEADER | CTRL",
+      action = act.ShowLauncherArgs {
+        flags = "FUZZY | WORKSPACES",
+      },
+    },
+    {
+      key = "n",
+      mods = "LEADER | SHIFT",
+      action = act.PromptInputLine {
+        description = wezterm.format {
+          { Attribute = { Intensity = "Bold" } },
+          { Foreground = { AnsiColor = "Fuchsia" } },
+          { Text = "Enter name for new workspace" },
+        },
+        action = wezterm.action_callback(function(window, pane, line)
+          if line then
+            window:perform_action(
+              act.SwitchToWorkspace {
+                name = line,
+              },
+              pane
+            )
+          end
+        end),
+      },
     },
   }
 end
