@@ -67,20 +67,27 @@ window#waybar {
 }
 
 #submap {
+  transition-property: background-color;
+  transition-duration: 0.5s;
   background: alpha(@accent, 0.4);
   color: @foreground;
-  padding: 2px 10px;
+  padding: 0px 10px;
   margin: 0px 10px;
   border-radius: 4px;
 }
 
 #clock {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  background: alpha(@accent, 0.1);
+  padding: 0px 10px;
   font-size: 16px;
   font-weight: bold;
+  border-radius: 4px;
 }
 
 #clock:hover {
-  color: @accent
+  background: alpha(@accent, 0.4);
 }
 
 #privacy {

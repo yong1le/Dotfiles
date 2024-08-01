@@ -6,6 +6,11 @@ function handle {
     sleep 3
     xrandr --output DP-2 --primary
     ;;
+  urgent*)
+    window_id="${1:8}"
+    window=$(hyprctl clients -j | jq -r ".[] | select(.address == \"0x${window_id}\") | .title")
+    hyprctl dispatch focuswindow title:"$window"
+    ;;
   esac
 }
 
