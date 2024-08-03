@@ -90,6 +90,10 @@ window#waybar {
   background: alpha(@accent, 0.4);
 }
 
+#calendar {
+  background: alpha(@background, 0.6)
+}
+
 #privacy {
   margin: 0 10px;
 }
@@ -107,14 +111,19 @@ window#waybar {
 }
 
 
+#custom-notification {
+  margin: 0 16px 0 0
+}
+
 #network,
 #backlight {
   margin: 0 8px 0 0
 }
 
+
 #bluetooth,
 #pulseaudio {
-  margin: 0 16 0 0
+  margin: 0 16px 0 0
 }
 
 #backlight-slider,
