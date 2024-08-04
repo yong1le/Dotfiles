@@ -34,7 +34,7 @@ return {
   {
     "ellisonleao/gruvbox.nvim",
     opts = {
-      terminal_colors = true, -- add neovim terminal colors
+      terminal_colors = true,
       undercurl = true,
       underline = true,
       bold = true,
@@ -49,11 +49,16 @@ return {
       invert_selection = false,
       invert_signs = false,
       invert_tabline = false,
-      invert_intend_guides = false,
+      invert_indent_guides = false,
       inverse = true,
       contrast = "",
       palette_overrides = {},
-      overrides = {},
+      overrides = {
+        NormalFloat = { bg = "none" },
+        FloatBorder = { bg = "none" },
+        FloatTitle = { bg = "none" },
+        DiagnosticSignInfo = { bg = "none" },
+      },
       dim_inactive = false,
       transparent_mode = false,
     },

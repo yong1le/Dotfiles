@@ -45,4 +45,4 @@ else
   opt.foldtext = "v:lua.require'lazyvim.util'.ui.foldtext()"
 end
 
-local lsp = vim.lsp
+opt.termsync = false
