@@ -40,7 +40,6 @@ sudo dnf install -y \
   neovim \
   tmux \
   zoxide \
-  alacritty \
   zsh \
   ripgrep \
   fzf \
@@ -56,6 +55,13 @@ sudo dnf copr enable -y atim/lazygit
 sudo dnf copr enable -y atim/starship
 sudo dnf copr enable -y tofik/nwg-shell
 sudo dnf install -y lazygit starship lazygit nwg-look
+
+# Wezterm
+tempfile=$(mktemp) &&
+  curl -o "$tempfile" https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo &&
+  tic -x -o ~/.terminfo "$tempfile" &&
+  rm "$tempfile"
+sudo dnf install -y wezterm
 
 # Rust
 sudo dnf install -y rustup
@@ -105,7 +111,7 @@ stow ~/Dotfiles/starship
 stow ~/Dotfiles/tmux
 stow ~/Dotfiles/waybar
 stow ~/Dotfiles/electron
-stow ~/Dotfiles/alacritty
+stow ~/Dotfiles/wezterm
 stow ~/Dotfiles/ags
 stow ~/Dotfiles/hyprland
 stow ~/Dotfiles/gradience
