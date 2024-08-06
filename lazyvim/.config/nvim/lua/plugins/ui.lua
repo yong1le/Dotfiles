@@ -40,6 +40,10 @@ return {
       vim.g.gruvbox_material_enable_bold = 1
       vim.g.gruvbox_material_menu_selection_background = "yellow"
       vim.g.gruvbox_material_float_style = "bright"
+      vim.g.gruvbox_material_visual = "red background"
+      vim.g.gruvbox_material_ui_contrast = "high"
+      vim.g.gruvbox_material_diagnostic_virtual_text = "highlight"
+      vim.g.gruvbox_material_current_word = "grey background"
     end,
   },
   {
@@ -147,11 +151,11 @@ return {
     end,
   },
   {
-    "folke/noice.nvim",
-    opts = {
-      cmdline = {
-        view = "cmdline",
-      },
+    "utilyre/barbecue.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "SmiteshP/nvim-navic",
     },
+    opts = {},
   },
 }

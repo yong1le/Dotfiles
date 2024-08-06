@@ -59,6 +59,7 @@ return {
       { "<leader>sq", false }, -- quickfix list
       { "<leader>gs", false }, -- git statuses
       { "<leader>sD", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Diagnostics" },
+      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,HACK,FIXME,BUG,NOTE<cr>", desc = "Todo" },
     },
   },
   {
@@ -69,13 +70,20 @@ return {
     keys = {
       { "<leader>sd", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
       { "<leader>st", "<cmd>Trouble todo toggle<cr>", desc = "Todo (Trouble)" },
-      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,HACK,FIXME,BUG,NOTE<cr>", desc = "Todo" },
       { "<leader>xx", false },
       { "<leader>xX", false },
       { "<leader>cs", false },
       { "<leader>xL", false },
       { "<leader>xQ", false },
+    },
+  },
+  {
+    "folke/todo-comments.nvim",
+    keys = {
+      { "<leader>xt", false },
       { "<leader>xT", false },
+      { "<leader>st", false },
+      { "<leader>sT", false },
     },
   },
   {
@@ -127,6 +135,12 @@ return {
         end, "Diff This ~")
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
       end,
+    },
+  },
+  {
+    "utilyre/barbecue.nvim",
+    keys = {
+      { "<leader>uB", "<cmd>Barbecue toggle<cr>", desc = "Toggle Breadcrumbs" },
     },
   },
 }

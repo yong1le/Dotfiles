@@ -23,7 +23,7 @@ require("lazy").setup({
     lazy = false,
     version = false,
   },
-  install = { colorscheme = { "kanagawa" } },
+  install = { colorscheme = { "gruvbox-material" } },
   checker = { enabled = false },
   performance = {
     rtp = {

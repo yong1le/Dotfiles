@@ -42,8 +42,6 @@ if not vim.g.vscode then
 
   del("n", "<leader>xl") -- location list
   del("n", "<leader>xq") -- quickfix list
-  del("n", "<leader>xt") -- todo list
-  del("n", "<leader>xT") -- todo list
 end
 
 ---------------------------------------------------------------------------
