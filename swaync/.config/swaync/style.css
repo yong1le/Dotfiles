@@ -16,7 +16,7 @@
 .floating-notifications.background .notification-row .notification-background {
   margin-top: 10px;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
   color: @foreground;
   background-color: alpha(@background, 0.8);
   border: 1px solid alpha(@dark_1, 0.3);
@@ -48,12 +48,13 @@
 
 .floating-notifications.background .notification-row .notification-background .notification>*:last-child>* .notification-action {
   border-radius: 0.5rem;
-  color: @foreground;
-  background-color: @foreground;
+  color: @accent_fg_color;
+  background-color: @accent;
   border: 2px solid @accent;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification>*:last-child>* .notification-action:hover {
+  color: @foreground;
   background-color: @background;
 }
 
@@ -130,7 +131,7 @@
 }
 
 .control-center .notification-row .notification-background .notification.critical {
-  border: 1px solid #eb6f92;
+  border: 1px solid @red_1;
 }
 
 .control-center .notification-row .notification-background .notification .notification-content {
@@ -154,12 +155,13 @@
 
 .control-center .notification-row .notification-background .notification>*:last-child>* .notification-action {
   border-radius: 0.5rem;
-  color: @foreground;
-  background-color: alpha(@background, 0.8);
+  color: @accent_fg_color;
+  background-color: alpha(@accent, 0.8);
   border: 1px solid @accent;
 }
 
 .control-center .notification-row .notification-background .notification>*:last-child>* .notification-action:hover {
+  color: @foreground;
   background-color: @background;
 }
 
