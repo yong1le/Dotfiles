@@ -12,7 +12,7 @@ config.color_scheme = "Gruvbox Dark (Gogh)"
 
 -- Fonts
 config.font = wezterm.font "JetBrainsMono Nerd Font"
-config.font_size = 12
+config.font_size = 10
 
 -- Size
 config.initial_rows = 40
@@ -29,8 +29,8 @@ config.tab_bar_at_bottom = true
 
 -- Padding
 config.window_padding = {
-  left = 10,
-  right = 10,
+  left = 5,
+  right = 0,
   top = 20,
   bottom = 0,
 }
