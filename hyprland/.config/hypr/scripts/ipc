@@ -9,7 +9,9 @@ function handle {
   urgent*)
     window_id="${1:8}"
     window=$(hyprctl clients -j | jq -r ".[] | select(.address == \"0x${window_id}\") | .title")
-    hyprctl dispatch focuswindow title:"$window"
+    if [ -n "$window" ]; then
+      hyprctl dispatch focuswindow title:"$window"
+    fi
     ;;
   esac
 }
