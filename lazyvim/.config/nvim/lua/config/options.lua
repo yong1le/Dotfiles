@@ -3,7 +3,7 @@ vim.g.maplocalleader = ","
 vim.g.autoformat = true
 vim.g.lazyvim_picker = "telescope"
 vim.g.trouble_lualine = false -- trouble in default lualine
-vim.g.lazygit_config = false
+-- vim.g.lazygit_config = false
 
 local opt = vim.opt
 
