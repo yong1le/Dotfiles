@@ -23,7 +23,7 @@ config.disable_default_key_bindings = true
 keys.apply_to_config(config)
 
 -- Menu bar
-config.enable_tab_bar = true
+config.enable_tab_bar = false
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 
@@ -40,10 +40,10 @@ config.window_close_confirmation = "NeverPrompt"
 config.default_cursor_style = "SteadyBar"
 
 -- Mux
-config.unix_domains = {
-  {
-    name = "unix",
-  },
-}
+-- config.unix_domains = {
+--   {
+--     name = "unix",
+--   },
+-- }
 
 return config

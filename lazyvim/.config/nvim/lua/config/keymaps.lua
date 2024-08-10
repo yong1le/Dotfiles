@@ -52,5 +52,15 @@ set("n", "<C-j>", "<cmd>NavigatorDown<cr>")
 set("n", "<C-k>", "<cmd>NavigatorUp<cr>")
 set("n", "<C-l>", "<cmd>NavigatorRight<cr>")
 
+set("i", "<C-h>", "<cmd>NavigatorLeft<cr>")
+set("i", "<C-j>", "<cmd>NavigatorDown<cr>")
+set("i", "<C-k>", "<cmd>NavigatorUp<cr>")
+set("i", "<C-l>", "<cmd>NavigatorRight<cr>")
+
+set("v", "<C-h>", "<cmd>NavigatorLeft<cr>")
+set("v", "<C-j>", "<cmd>NavigatorDown<cr>")
+set("v", "<C-k>", "<cmd>NavigatorUp<cr>")
+set("v", "<C-l>", "<cmd>NavigatorRight<cr>")
+
 set("n", "<leader>h", "<C-W>s", { desc = "Split Window Below", remap = true })
 set("n", "<leader>v", "<C-W>v", { desc = "Split Window Right", remap = true })
