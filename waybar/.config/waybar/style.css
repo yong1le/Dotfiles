@@ -62,7 +62,7 @@ window#waybar {
   background: transparent;
   border-radius: 5px;
   color: alpha(@foreground, 0.3);
-  padding: 0 10px
+  padding: 0 15px
 }
 
 #workspaces button.urgent {

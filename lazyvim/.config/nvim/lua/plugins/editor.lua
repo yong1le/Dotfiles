@@ -79,7 +79,15 @@ return {
         layout_config = {
           preview_cutoff = 1,
         },
+        hidden = false,
       })
     end,
+  },
+  {
+    "ahmedkhalf/project.nvim",
+    opts = {
+      manual_mode = "false",
+      show_hidden = "true",
+    },
   },
 }
