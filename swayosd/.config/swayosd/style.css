@@ -1,5 +1,5 @@
 window {
-  background: alpha(@card_bg_color, 0.7);
+  background: alpha(@card_bg_color, 0.9);
   color: @card_fg_color;
   border-radius: 10px;
   border: 1px solid alpha(@dark_1, 0.3);
