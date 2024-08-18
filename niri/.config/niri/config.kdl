@@ -1,0 +1,284 @@
+spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
+spawn-at-startup "xrandr" "--output" "DP-2" "--primary"
+spawn-at-startup "swww-daemon" "--format" "xrgb"
+spawn-at-startup "waypaper" "--restore"
+spawn-at-startup "bash" "-c" "wl-paste --type text --watch cliphist store -max-items 30"
+spawn-at-startup "bash" "-c" "wl-paste --type image --watch cliphist store -max-items 30"
+spawn-at-startup "waybar"
+spawn-at-startup "fcitx5-remote" "-r"
+spawn-at-startup "swayosd-server" "-s" "~/.config/swayosd/style.css"
+spawn-at-startup "ags"
+spawn-at-startup "swaync"
+spawn-at-startup "hypridle"
+spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "/home/yonglehe/.config/niri/scripts/idle.sh"
+
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Input
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+input {
+    keyboard {
+        xkb {
+            layout "us"
+        }
+
+        repeat-delay 350
+        repeat-rate 25
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    mouse {
+        natural-scroll
+    }
+
+    focus-follows-mouse max-scroll-amount="10%"
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Output
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+output "eDP-1" {
+
+    mode "2240x1400@60"
+
+    scale 1.25
+
+    transform "normal"
+
+    position x=1440 y=0
+}
+output "DP-2" {
+    mode "2560x1440@75"
+    position x=0 y=0
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Layout
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+layout {
+    gaps 10
+
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        off 
+    }
+
+    border {
+        width 3
+        active-gradient from="#A7C080" to="#D699B6" angle=90
+        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+    }
+
+    struts {
+        // left 64
+        // right 64
+        // top 64
+        // bottom 64
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Animations
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+animations {
+    slowdown 3.0
+    workspace-switch {
+        spring damping-ratio=0.8 stiffness=600 epsilon=0.001
+    }
+
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+
+    horizontal-view-movement {
+        spring damping-ratio=0.9 stiffness=800 epsilon=0.001
+    }
+
+    window-movement {
+        spring damping-ratio=0.9 stiffness=800 epsilon=0.001
+    }
+
+    window-resize {
+        spring damping-ratio=0.9 stiffness=800 epsilon=0.001
+    }
+
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+    }
+
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Window Rules
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Rounded corners
+window-rule {
+  geometry-corner-radius 5
+  clip-to-geometry true
+  draw-border-with-background false
+}
+
+// Block password managers from screen capture
+window-rule { 
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screen-capture"
+}
+
+window-rule {
+    match app-id=r#"^org.wezfurlong.wezterm.*"#
+    match app-id=r#"^neovide$"#
+    opacity 0.95
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Binds
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+binds {
+    // shows a list of important hotkeys.
+    Mod+Slash { show-hotkey-overlay; }
+
+    Mod+Return repeat=false { spawn "bash" "-c" "wezterm start ~/.local/scripts/start_tmux"; }
+    Mod+Space repeat=false { spawn "ags" "-t" "applauncher"; }
+    Super+M repeat=false { spawn "loginctl" "lock-session"; }
+    Super+E repeat=false { spawn "nautilus"; }
+    Super+B repeat=false { spawn "flatpak" "run" "org.mozilla.firefox"; }
+    Mod+V repeat=false { spawn "ags" "-t" "clipboardlauncher"; }
+    Mod+N repeat=false { spawn "swaync-client" "-t" ; }
+
+    // Volume
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
+    XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
+
+    // Brightness
+    XF86MonBrightnessUp allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
+
+    Mod+C { close-window; }
+
+    Mod+H { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-column-or-monitor-left"; }
+    Mod+J { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-window-or-workspace-down"; }
+    Mod+K { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-window-or-workspace-up"; }
+    Mod+L { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-column-or-monitor-right"; }
+    Mod+Shift+H { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-column-left-or-to-monitor-left"; }
+    Mod+Shift+J { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-window-down-or-to-workspace-down"; }
+    Mod+Shift+K { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-window-up-or-to-workspace-up"; }
+    Mod+Shift+L { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-column-right-or-to-monitor-right"; }
+
+    Mod+Shift+Down { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-workspace-down" ;}
+    Mod+Shift+Up { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-workspace-up"; }
+
+    Mod+WheelScrollDown cooldown-ms=150 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-workspace-down"; }
+    Mod+WheelScrollUp   cooldown-ms=150 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-workspace-up"; }
+    Mod+Ctrl+WheelScrollDown      cooldown-ms=150 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-column-right"; }
+    Mod+Ctrl+WheelScrollUp        cooldown-ms=150 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-column-left"; }
+
+    Mod+Shift+WheelScrollDown     cooldown-ms=150 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-column-to-workspace-down"; }
+    Mod+Shift+WheelScrollUp       cooldown-ms=150 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-column-to-workspace-up"; }
+
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Shift+WheelScrollRight { move-column-right; }
+    Mod+Shift+WheelScrollLeft  { move-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    Mod+1 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-workspace" "1"; }
+    Mod+2 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-workspace" "2"; }
+    Mod+3 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-workspace" "3"; }
+    Mod+4 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-workspace" "4"; }
+    Mod+5 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-workspace" "5"; }
+    Mod+6 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-workspace" "6"; }
+    Mod+7 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-workspace" "7"; }
+    Mod+8 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-workspace" "7"; }
+    Mod+9 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-workspace" "9"; }
+    Mod+0 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "focus-workspace" "10"; }
+
+    Mod+Shift+1 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-window-to-workspace" "1"; }
+    Mod+Shift+2 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-window-to-workspace" "2"; }
+    Mod+Shift+3 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-window-to-workspace" "3"; }
+    Mod+Shift+4 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-window-to-workspace" "4"; }
+    Mod+Shift+5 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-window-to-workspace" "5"; }
+    Mod+Shift+6 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-window-to-workspace" "6"; }
+    Mod+Shift+7 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-window-to-workspace" "7"; }
+    Mod+Shift+8 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-window-to-workspace" "8"; }
+    Mod+Shift+9 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-window-to-workspace" "9"; }
+    Mod+Shift+0 { spawn "~/.config/waybar/scripts/niri-workspaces.sh" "move-window-to-workspace" "10"; }
+
+    // Switches focus between the current and the previous workspace.
+    // Mod+Tab { focus-workspace-previous; }
+    Mod+Comma  { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { reset-window-height; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+Shift+C { center-column; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // Mod+Space       { switch-layout "next"; }
+    // Mod+Shift+Space { switch-layout "prev"; }
+
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    // The quit action will show a confirmation dialog to avoid accidental exits.
+    Mod+Ctrl+Alt+M { quit; }
+
+    Mod+Shift+P { power-off-monitors; }
+
+    Mod+Semicolon { spawn "~/.config/hypr/scripts/refresh"; }
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+environment {
+    GDK_SCLAE "1.5"
+    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME "qt5ct"
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
+    DISPLAY ":0"
+}
+
