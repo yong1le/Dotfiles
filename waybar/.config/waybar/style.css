@@ -6,7 +6,6 @@
 * {
   font-size: 18px;
   font-family: "JetBrainsMono Nerd Font,JetBrainsMono NF";
-  min-width: 10px;
   min-height: 10px;
   border: none;
   border-radius: 0;
@@ -34,7 +33,7 @@ tooltip label {
 window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
-  background: alpha(@background, 0.7);
+  background: alpha(@background, 0.9);
   color: @foreground;
 }
 
@@ -44,25 +43,10 @@ window#waybar {
   padding: 6px 16px
 }
 
-#workspaces {
-  transition-property: background-color;
-  transition-duration: 0.5s;
-  background-color: alpha(@accent, 0.1);
-  padding: 0 10px 0 5px;
-  border-radius: 8px;
-}
-
-#workspaces:hover {
-  background-color: alpha(@accent, 0.3);
-}
-
 #workspaces button {
   transition-property: color;
   transition-duration: 0.5s;
   background: transparent;
-  border-radius: 5px;
-  color: alpha(@foreground, 0.3);
-  padding: 0 15px
 }
 
 #workspaces button.urgent {
@@ -74,13 +58,21 @@ window#waybar {
 }
 
 #submap {
+  transition-property: color;
+  transition-duration: 0.5s;
+  color: @accent;
+  margin: 0px 10px;
+}
+
+#taskbar button {
   transition-property: background-color;
   transition-duration: 0.5s;
-  background: alpha(@accent, 0.4);
-  color: @foreground;
-  padding: 0px 10px;
-  margin: 0px 10px;
-  border-radius: 4px;
+  padding: 0 5px;
+  border-radius: 10px;
+}
+
+#taskbar button.active {
+  background: alpha(@accent, 0.5);
 }
 
 #clock {
@@ -94,7 +86,7 @@ window#waybar {
 }
 
 #privacy {
-  margin: 0 10px;
+  margin: 0 5px;
 }
 
 #privacy-item.screenshare {
@@ -109,30 +101,6 @@ window#waybar {
   color: alpha(@foreground, 0.3);
 }
 
-
-#custom-notification {
-  margin: 0 16px 0 0
-}
-
-#network,
-#backlight {
-  margin: 0 8px 0 0
-}
-
-
-#bluetooth,
-#pulseaudio {
-  margin: 0 16px 0 0
-}
-
-#backlight-slider,
-#pulseaudio-slider {
-  padding: 0 5px 0 0
-}
-
-#power-profiles-daemon {
-  margin: 0 10px 0 0;
-}
 
 #power-profiles-daemon.performance {
   color: @red_3;
@@ -157,67 +125,40 @@ window#waybar {
   min-width: 60px;
   min-height: 6px;
   border-radius: 8px;
-  background-color: darker(@accent);
 }
 
 #backlight-slider highlight,
 #pulseaudio-slider highlight {
   border-radius: 8px;
-  background-color: @accent_fg;
-}
-
-#tray {
-  margin: 0 12px;
+  background-color: @accent;
 }
 
 #idle_inhibitor,
-#custom-power,
-#custom-reboot,
-#custom-lock,
-#custom-quit,
-#system,
-#connections {
-  transition-property: background-color;
+#custom-notification,
+#bluetooth,
+#network,
+#pulseaudio,
+#backlight,
+#battery,
+#custom-power {
+  transition-property: color;
   transition-duration: 0.5s;
-  background: transparent;
-  border-radius: 4px;
-  padding: 0 12px;
-  background: @accent;
-  color: @accent_fg
 }
 
-#idle_inhibitor,
-#custom-reboot,
-#custom-lock,
-#custom-quit,
-#system,
-#connections {
-  margin: 0 5 0 0;
+#custom-notification:hover,
+#bluetooth:hover,
+#network:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#battery:hover {
+  color: @accent
 }
 
+#idle_inhibitor:hover,
 #custom-power:hover {
-  background: @red_1
-}
-
-#custom-reboot,
-#custom-lock,
-#custom-quit {
-  background: transparent;
-  color: @red_1
-}
-
-#custom-reboot:hover,
-#custom-lock:hover,
-#custom-quit:hover {
-  background: @red_1;
-  color: @accent_fg
-}
-
-
-#idle_inhibitor {
-  padding-right: 15px;
+  color: @red_3;
 }
 
 #idle_inhibitor.activated {
-  background: @red_1
+  color: @red_3;
 }

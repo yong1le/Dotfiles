@@ -6,10 +6,12 @@
   // LEFT
   "modules-left": [
     "hyprland/workspaces",
-    "hyprland/submap"
+    "hyprland/submap",
+    "custom/niri-workspaces"
+    // "wlr/taskbar"
   ],
   "hyprland/workspaces": {
-    "format": "{icon}",
+    "format": " {icon} ",
     "on-click": "activate",
     "format-icons": {
       "default": "",
@@ -20,31 +22,14 @@
       "9": "󰓇"
     }
   },
-  "group/player": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": true
-    },
-    "modules": [
-      "mpris",
-      "mpris#details"
-    ]
+  "custom/niri-workspaces": {
+    "tooltip": false,
+    "exec": "$HOME/.config/waybar/scripts/niri-workspaces.sh \"$WAYBAR_OUTPUT_NAME\"",
+    "signal": 8
   },
-  "mpris": {
-    "format": "{player_icon}",
-    "format-paused": "{status_icon}",
-    "player-icons": {
-      "default": "▶",
-      "mpv": "🎵"
-    },
-    "status-icons": {
-      "paused": "⏸"
-    }
-  },
-  "mpris#details": {
-    "format": "{dynamic}",
-    "dynamic-len": 60
+  "wlr/taskbar": {
+    "icon-size": 24,
+    "on-click": "activate"
   },
   // CENTER
   "modules-center": [
@@ -66,46 +51,25 @@
     },
     "on-click": "gnome-calendar"
   },
-  "privacy": {
-    "icon-spacing": 10,
-    "icon-size": 14,
-    "transition-duration": 250,
-    "modules": [
-      {
-        "type": "screenshare",
-        "tooltip": true,
-        "tooltip-icon-size": 24
-      },
-      {
-        "type": "audio-in",
-        "tooltip": true,
-        "tooltip-icon-size": 24
-      }
-    ]
-  },
   // RIGHT
   "modules-right": [
     "tray",
     "idle_inhibitor",
-    "group/connections",
-    "group/system",
+    "custom/notification",
+    "bluetooth",
+    "network",
+    "group/volume",
+    "group/backlight",
+    "group/battery",
     "privacy",
-    "group/power"
+    "custom/power"
   ],
   "tray": {
     "spacing": 10
   },
-  "group/connections": {
-    "orientation": "inherit",
-    "modules": [
-      "custom/notification",
-      "bluetooth",
-      "network"
-    ]
-  },
   "custom/notification": {
     "tooltip": false,
-    "format": "{icon}",
+    "format": " {icon} ",
     "format-icons": {
       "notification": "󰂚<span foreground='red'><sup></sup></span>",
       "none": "󰂚",
@@ -123,51 +87,20 @@
     "on-click-right": "swaync-client -d -sw",
     "escape": true
   },
-  // Bluetooth
-  "group/bluetooth": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": false
-    },
-    "modules": [
-      "bluetooth",
-      "bluetooth#details"
-    ]
-  },
   "bluetooth": {
-    "format-on": "",
-    "format-off": "󰂲",
+    "format-on": "  ",
+    "format-off": " 󰂲 ",
     "format-disabled": "",
-    "format-connected": "<b>󰂱</b>",
+    "format-connected": " <b>󰂱</b> ",
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
     "on-click": "blueman-manager"
   },
-  "bluetooth#details": {
-    "format-on": "No connections",
-    "format-off": "Off",
-    "format-disabled": "",
-    "format-connected": "<b>{num_connections}</b>",
-    "format-connected-battery": "<small><b>{device_battery_percentage}%</b></small>",
-  },
-  // Network
-  "group/network": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": false
-    },
-    "modules": [
-      "network",
-      "network#details"
-    ]
-  },
   "network": {
-    "format": "{icon}",
-    "format-disconnected": "󰤭",
+    "format": " {icon} ",
+    "format-disconnected": " 󰤭 ",
     "format-icons": [
       "󰤟",
       "󰤢",
@@ -179,19 +112,6 @@
     "on-click": "ags -t networklauncher",
     "on-click-right": "nm-connection-editor"
   },
-  "network#details": {
-    "format": "{essid} ({signalStrength}%)"
-  },
-  // System
-  "group/system": {
-    "orientation": "inherit",
-    "modules": [
-      "group/volume",
-      "group/backlight",
-      "group/battery"
-    ]
-  },
-  // Volume
   "group/volume": {
     "orientation": "inherit",
     "drawer": {
@@ -205,10 +125,9 @@
     ]
   },
   "pulseaudio": {
-    "format": "{icon}",
-    "format-bluetooth": "{icon}",
+    "format": " {icon} ",
     "tooltip-format": "{volume}% {icon} | {desc}",
-    "format-muted": "󰝟",
+    "format-muted": " 󰝟 ",
     "format-icons": {
       "headphones": "󰋌",
       "handsfree": "󰋌",
@@ -229,9 +148,9 @@
     "smooth-scrolling-threshold": 1
   },
   "pulseaudio#mic": {
-    "format": "{format_source}",
-    "format-source": "󰍬",
-    "format-source-muted": "󰍭",
+    "format": " {format_source} ",
+    "format-source": " 󰍬 ",
+    "format-source-muted": " 󰍭 ",
     "on-click": "pamixer --default-source -t"
   },
   "pulseaudio/slider": {
@@ -239,7 +158,6 @@
     "max": 100,
     "orientation": "horizontal"
   },
-  // Backlight
   "group/backlight": {
     "orientation": "inherit",
     "drawer": {
@@ -253,7 +171,7 @@
   },
   "backlight": {
     "device": "intel_backlight",
-    "format": "{icon}",
+    "format": " {icon} ",
     "format-icons": [
       "",
       "",
@@ -282,7 +200,6 @@
     "max": 100,
     "orientation": "horizontal"
   },
-  // Battery
   "group/battery": {
     "orientation": "inherit",
     "drawer": {
@@ -296,13 +213,12 @@
     ]
   },
   "battery": {
-    "rotate": 270,
     "states": {
       "good": 95,
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon}",
+    "format": " {icon} ",
     "format-charging": "<b>󰂄</b>",
     "format-full": "<span color='#82A55F'><b>{icon}</b></span>",
     "format-icons": [
@@ -320,7 +236,7 @@
     "tooltip-format": "{power} W"
   },
   "power-profiles-daemon": {
-    "format": "{icon}",
+    "format": " {icon} ",
     "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
     "tooltip": true,
     "format-icons": {
@@ -331,10 +247,10 @@
     }
   },
   "battery#percentage": {
-    "format": "{capacity}%"
+    "format": "<span><small>{capacity}%</small></span>"
   },
   "idle_inhibitor": {
-    "format": "{icon}",
+    "format": " {icon} ",
     "tooltip-format-activated": "Idle Inhibitor is active",
     "tooltip-format-deactivated": "Idle Inhibitor is not active",
     "format-icons": {
@@ -342,42 +258,27 @@
       "deactivated": "󰾪"
     }
   },
-  "group/power": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "children-class": "power-items",
-      "transition-left-to-right": false
-    },
+  "privacy": {
+    "icon-spacing": 15,
+    "icon-size": 14,
+    "transition-duration": 250,
     "modules": [
-      "custom/power", // First element is the "group leader" and won't ever be hidden
-      "custom/quit",
-      "custom/lock",
-      "custom/reboot"
+      {
+        "type": "screenshare",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      },
+      {
+        "type": "audio-in",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      }
     ]
   },
-  "custom/quit": {
-    "format": "󰗼",
-    "tooptip": true,
-    "tooltip-format": "Logout",
-    "on-click": "hyprctl dispatch exit"
-  },
-  "custom/lock": {
-    "format": "󰍁",
-    "tooptip": true,
-    "tooltip-format": "Lock",
-    "on-click": "loginctl lock-session"
-  },
-  "custom/reboot": {
-    "format": "󰜉",
-    "tooptip": true,
-    "tooltip-format": "Reboot",
-    "on-click": "systemctl reboot"
-  },
   "custom/power": {
-    "format": "󰐥",
+    "format": " 󰐥 ",
     "tooptip": true,
     "tooltip-format": "Shutdown",
-    "on-click": "systemctl shutdown"
+    "on-click": "wlogout"
   }
 }
