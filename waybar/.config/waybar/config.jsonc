@@ -25,7 +25,9 @@
   "custom/niri-workspaces": {
     "tooltip": false,
     "exec": "$HOME/.config/waybar/scripts/niri-workspaces.sh \"$WAYBAR_OUTPUT_NAME\"",
-    "signal": 8
+    "signal": 8,
+    "on-scroll-up": "niri msg action focus-workspace-up",
+    "on-scroll-down": "niri msg action focus-workspace-down"
   },
   "wlr/taskbar": {
     "icon-size": 24,
@@ -196,6 +198,7 @@
     "smooth-scrolling-threshold": 1
   },
   "backlight/slider": {
+    "device": "intel_backlight",
     "min": 5,
     "max": 100,
     "orientation": "horizontal"
