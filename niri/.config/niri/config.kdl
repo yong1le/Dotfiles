@@ -14,6 +14,9 @@ spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "/home/yonglehe/.config/niri/scripts/idle.sh"
 
+// Sequence of actions
+spawn-at-startup "~/.config/niri/scripts/startup.sh"
+
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
@@ -89,8 +92,8 @@ layout {
     }
 
     struts {
-        // left 64
-        // right 64
+        left 30
+        right 30
         // top 64
         // bottom 64
     }
@@ -138,8 +141,27 @@ animations {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Named Workspaces
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+workspace "social" {
+  open-on-output "DP-2"
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //// Window Rules
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window-rule {
+    match app-id=r#"^vesktop$"#
+    match app-id=r#"^Spotify$"#
+    open-on-workspace "social"
+}
+
+window-rule {
+    match app-id=r#"^vesktop$"#
+    default-column-width { proportion 1.0; }
+}
 
 // Rounded corners
 window-rule {
@@ -263,7 +285,7 @@ binds {
     Alt+Print { screenshot-window; }
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
-    Mod+Ctrl+Alt+M { quit; }
+    Mod+Ctrl+Alt+M { spawn "wlogout"; }
 
     Mod+Shift+P { power-off-monitors; }
 
@@ -281,4 +303,3 @@ environment {
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
     DISPLAY ":0"
 }
-
