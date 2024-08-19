@@ -162,3 +162,15 @@ window#waybar {
 #idle_inhibitor.activated {
   color: @red_3;
 }
+
+#battery.good {
+  color: @green_3;
+}
+
+#battery.warning {
+  color: @orange_3;
+}
+
+#battery.critical {
+  color: @red_3;
+}
