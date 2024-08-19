@@ -38,6 +38,7 @@ config.window_padding = {
 -- options
 config.window_close_confirmation = "NeverPrompt"
 config.default_cursor_style = "SteadyBar"
+config.warn_about_missing_glyphs = false
 
 -- Mux
 -- config.unix_domains = {
