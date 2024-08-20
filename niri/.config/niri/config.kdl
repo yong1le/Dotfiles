@@ -7,7 +7,6 @@ spawn-at-startup "bash" "-c" "wl-paste --type image --watch cliphist store -max-
 spawn-at-startup "waybar"
 spawn-at-startup "fcitx5-remote" "-r"
 spawn-at-startup "swayosd-server" "-s" "~/.config/swayosd/style.css"
-spawn-at-startup "ags"
 spawn-at-startup "swaync"
 spawn-at-startup "hypridle"
 spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
@@ -193,11 +192,11 @@ binds {
     Mod+Slash { show-hotkey-overlay; }
 
     Mod+Return repeat=false { spawn "bash" "-c" "wezterm start ~/.local/scripts/start_tmux"; }
-    Mod+Space repeat=false { spawn "ags" "-t" "applauncher"; }
+    Mod+Space repeat=false { spawn "fuzzel"; }
     Super+M repeat=false { spawn "loginctl" "lock-session"; }
     Super+E repeat=false { spawn "nautilus"; }
     Super+B repeat=false { spawn "flatpak" "run" "org.mozilla.firefox"; }
-    Mod+V repeat=false { spawn "ags" "-t" "clipboardlauncher"; }
+    Mod+V repeat=false { spawn "bash" "-c" "cliphist list | fuzzel -d | cliphist decode | wl-copy"; }
     Mod+N repeat=false { spawn "swaync-client" "-t" ; }
 
     // Volume

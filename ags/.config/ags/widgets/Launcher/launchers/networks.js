@@ -5,17 +5,17 @@ const GLib = imports.gi.GLib;
 
 const NetworkItem = (item, windowName) => {
   const action = () => {
-    const desktop = GLib.getenv("XDG_SESSION_DESKTOP");
+    // const desktop = GLib.getenv("XDG_SESSION_DESKTOP");
 
-    if (desktop === "niri") {
-      Utils.execAsync(["nmcli", "dev", "wifi", "connect", item.ssid]);
-    } else {
-      Utils.execAsync([
-        "bash",
-        "-c",
-        `~/.config/hypr/scripts/connect-wifi "${item.ssid}"`,
-      ]);
-    }
+    // if (desktop === "niri") {
+    //   Utils.execAsync(["nmcli", "dev", "wifi", "connect", item.ssid]);
+    // } else {
+    Utils.execAsync([
+      "bash",
+      "-c",
+      `~/.config/hypr/scripts/connect-wifi "${item.ssid}"`,
+    ]);
+    // }
   };
   return Widget.Button({
     on_clicked: () => {
