@@ -84,10 +84,15 @@ return {
     end,
   },
   {
-    "ahmedkhalf/project.nvim",
+    "Rics-Dev/project-explorer.nvim",
     opts = {
-      manual_mode = "false",
-      show_hidden = "true",
+      paths = {
+        "~/Documents/code/*",
+        "~/.config/",
+      },
+    },
+    keys = {
+      { "<leader>fp", "<cmd>ProjectExplorer<cr>", desc = "Project Explorer" },
     },
   },
 }
