@@ -195,7 +195,7 @@ binds {
     Mod+Space repeat=false { spawn "fuzzel"; }
     Super+M repeat=false { spawn "loginctl" "lock-session"; }
     Super+E repeat=false { spawn "nautilus"; }
-    Super+B repeat=false { spawn "flatpak" "run" "org.mozilla.firefox"; }
+    Super+B repeat=false { spawn "flatpak" "run" "io.github.zen_browser.zen"; }
     Mod+V repeat=false { spawn "bash" "-c" "cliphist list | fuzzel -d | cliphist decode | wl-copy"; }
     Mod+N repeat=false { spawn "swaync-client" "-t" ; }
 

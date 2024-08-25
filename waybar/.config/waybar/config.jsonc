@@ -35,7 +35,7 @@
   // CENTER
   "modules-center": ["clock"],
   "clock": {
-    "format": "{:%B %d, %I:%M %p}",
+    "format": "{:%b %d | %I:%M %p}",
     "tooltip": true,
     "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {

@@ -76,9 +76,15 @@ window#waybar {
 }
 
 #clock {
+  transition-property: color;
+  transition-duration: 0.5s;
   color: alpha(@foreground, 0.8);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 900;
+}
+
+#clock:hover {
+  color: @foreground;
 }
 
 #calendar {
