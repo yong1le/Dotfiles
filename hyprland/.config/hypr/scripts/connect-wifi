@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-if ! nmcli connection up "$1"; then
-  wezterm start --class ags-wifi bash -c "nmcli dev wifi connect --ask \"$1\""
-fi
