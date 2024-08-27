@@ -8,7 +8,7 @@ local config = {}
 if wezterm.config_builder then config = wezterm.config_builder() end
 
 -- Theming
-config.color_scheme = "Everforest Dark Medium (Gogh)"
+config.color_scheme = "Gruvbox Dark (Gogh)"
 
 -- Fonts
 config.font = wezterm.font "JetBrainsMono Nerd Font"

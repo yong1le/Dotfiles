@@ -1,8 +1,8 @@
 {
     "name": "GruvboxSidebar",
     "variables": {
-        "accent_color": "#fbf1c7",
-        "accent_bg_color": "#ebdbb2",
+        "accent_color": "#FFBE6F",
+        "accent_bg_color": "#FFBE6F",
         "accent_fg_color": "#282828",
         "destructive_color": "#fb4934",
         "destructive_bg_color": "#cc241d",

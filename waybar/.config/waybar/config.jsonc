@@ -22,6 +22,9 @@
       "9": "󰓇",
     },
   },
+  "hyprland/submap": {
+    "format": "{}",
+  },
   "custom/niri-workspaces": {
     "tooltip": false,
     "exec": "$HOME/.config/waybar/scripts/niri-workspaces.sh \"$WAYBAR_OUTPUT_NAME\"",
