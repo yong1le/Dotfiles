@@ -181,3 +181,7 @@ window#waybar {
 #battery.critical {
   color: @red_3;
 }
+
+#tray {
+  padding-right: 5px;
+}
