@@ -80,7 +80,6 @@ window#waybar {
   transition-property: color;
   transition-duration: 0.5s;
   color: alpha(@foreground, 0.8);
-  font-family: "Inter SemiBold";
   font-size: 14px;
   font-weight: 900;
 }
