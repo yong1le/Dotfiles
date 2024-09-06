@@ -68,7 +68,7 @@ output "DP-2" {
 //// Layout
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 layout {
-    gaps 10
+    gaps 5
 
     center-focused-column "never"
 
@@ -85,14 +85,14 @@ layout {
     }
 
     border {
-        width 3
+        width 2
         active-gradient from="#A7C080" to="#D699B6" angle=90
         inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
     struts {
-        left 10
-        right 10
+        // left 0
+        // right 0
         // top 64
         // bottom 64
     }
@@ -180,7 +180,7 @@ window-rule {
 window-rule {
     match app-id=r#"^org.wezfurlong.wezterm.*"#
     match app-id=r#"^neovide$"#
-    opacity 0.95
+    opacity 0.97
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

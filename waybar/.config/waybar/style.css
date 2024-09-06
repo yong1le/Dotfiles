@@ -33,7 +33,7 @@ tooltip label {
 window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
-  background: alpha(@background, 0.9);
+  background: alpha(@background, 0.95);
   color: @foreground;
 }
 
@@ -47,7 +47,7 @@ window#waybar {
   transition-property: color;
   transition-duration: 0.5s;
   background: transparent;
-  padding-right: 10px;
+  padding-right: 5px;
 }
 
 #workspaces button.urgent {

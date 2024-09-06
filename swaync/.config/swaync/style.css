@@ -39,7 +39,7 @@
 
 .floating-notifications.background .notification-row .notification-background .notification .notification-content .body {
   margin: 0.5rem;
-  color: alpha(@foreground, 0.7);
+  color: alpha(@foreground, 0.9);
 }
 
 .floating-notifications.background .notification-row .notification-background .notification>*:last-child>* {
@@ -93,7 +93,7 @@
 }
 
 .control-center.background {
-  background-color: alpha(@background, 0.7);
+  background-color: alpha(@background, 0.9);
   color: @foreground;
 }
 
