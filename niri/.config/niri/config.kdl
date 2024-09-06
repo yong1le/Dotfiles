@@ -91,8 +91,8 @@ layout {
     }
 
     struts {
-        left 30
-        right 30
+        left 10
+        right 10
         // top 64
         // bottom 64
     }
