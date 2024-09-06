@@ -47,6 +47,7 @@ window#waybar {
   transition-property: color;
   transition-duration: 0.5s;
   background: transparent;
+  padding-right: 10px;
 }
 
 #workspaces button.urgent {
