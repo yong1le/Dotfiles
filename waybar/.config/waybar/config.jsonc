@@ -30,7 +30,7 @@
     "format-icons": {
       "social": " ",
       // Icons by state
-      "active": " ",
+      "active": " ",
       "default": " ",
     },
   },
