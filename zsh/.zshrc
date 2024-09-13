@@ -11,14 +11,14 @@ SAVEHIST=1000
 setopt SHARE_HISTORY
 
 # Auto-Suggestions and Syntax Highlighting
-if [ ! -e ~/.zsh/zsh-syntax-highlighting ]; then
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
+if [ ! -e ~/.zsh/fsh ]; then
+    git clone https://github.com/zdharma-continuum/fast-syntax-highlighting ~/.zsh/fsh
 fi
 if [ ! -e ~/.zsh/zsh-autosuggestions ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 fi
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/fsh/fast-syntax-highlighting.plugin.zsh
 
 # Prompt Config
 eval "$(starship init zsh)"
