@@ -38,7 +38,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     keys = {
-      { "<leader><space>", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
+      { "<leader><space>", LazyVim.pick("buffers"), desc = "Find Buffers" },
       { "<leader>ff", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
       { "<leader>fF", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
       { "<leader>fr", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
