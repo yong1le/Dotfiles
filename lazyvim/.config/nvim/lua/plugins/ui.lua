@@ -77,16 +77,16 @@ return {
         ["TERMINAL"] = "",
       }
 
+      local git_icons = LazyVim.config.icons.git
+      local diagnostics_icons = LazyVim.config.icons.diagnostics
+
       return {
         options = {
           icons_enabled = true,
           theme = "auto",
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
-          disabled_filetypes = {
-            statusline = {},
-            winbar = {},
-          },
+          disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter" } },
           globalstatus = true,
         },
         sections = {
@@ -99,22 +99,60 @@ return {
             },
           },
           lualine_b = {
-            "filename",
+            "branch",
           },
           lualine_c = {
-            "branch",
+            {
+              "filetype",
+              icon_only = true,
+              separator = "",
+              padding = { left = 1, right = 0 },
+            },
+            "filename",
             {
               "diff",
-              symbols = { added = " ", modified = "󱨇 ", removed = " " },
+              symbols = {
+                added = git_icons.added,
+                modified = git_icons.modified,
+                removed = git_icons.removed,
+              },
             },
-            "filetype",
           },
           lualine_x = {
             {
               "diagnostics",
               sources = { "nvim_lsp", "nvim_diagnostic" },
+              symbols = {
+                error = diagnostics_icons.Error,
+                warn = diagnostics_icons.Warn,
+                info = diagnostics_icons.Info,
+                hint = diagnostics_icons.Hint,
+              },
             },
-            "searchcount",
+            -- stylua: ignore
+            {
+              function() return require("noice").api.status.command.get() end,
+              cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
+              color = function() return LazyVim.ui.fg("Statement") end,
+            },
+            -- stylua: ignore
+            {
+              function() return require("noice").api.status.mode.get() end,
+              cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+              color = function() return LazyVim.ui.fg("Constant") end,
+            },
+            -- stylua: ignore
+            {
+              function() return "  " .. require("dap").status() end,
+              cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
+              color = function() return LazyVim.ui.fg("Debug") end,
+            },
+            -- stylua: ignore
+            {
+              require("lazy.status").updates,
+              cond = require("lazy.status").has_updates,
+              color = function() return LazyVim.ui.fg("Special") end,
+            },
           },
           lualine_y = {
             "location",
