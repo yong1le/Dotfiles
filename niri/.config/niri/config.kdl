@@ -14,8 +14,6 @@ spawn-at-startup "/home/yonglehe/.config/niri/scripts/idle.sh"
 spawn-at-startup "udiskie --tray &"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "xrandr --output DP-2 --primary"
-// Sequence of actions
-spawn-at-startup "~/.config/niri/scripts/startup.sh"
 
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
@@ -71,7 +69,7 @@ output "DP-2" {
 layout {
     gaps 5
 
-    center-focused-column "never"
+    center-focused-column "on-overflow"
 
     preset-column-widths {
         proportion 0.33333
@@ -92,8 +90,8 @@ layout {
     }
 
     struts {
-        // left 0
-        // right 0
+        left 5
+        right 5
         // top 64
         // bottom 64
     }
@@ -144,19 +142,9 @@ animations {
 //// Named Workspaces
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-workspace "social" {
-  open-on-output "DP-2"
-}
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //// Window Rules
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-window-rule {
-    match app-id=r#"^vesktop$"#
-    match app-id=r#"^Spotify$"#
-    open-on-workspace "social"
-}
 
 window-rule {
     match app-id=r#"^vesktop$"#
