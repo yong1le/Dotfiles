@@ -6,11 +6,11 @@
   all: unset;
   font-family: JetBrainsMono Nerd Font;
   transition: 0.3s;
-  font-size: 1.2rem;
+  font-size: 14px;
 }
 
 .floating-notifications.background .notification-row {
-  padding: 1rem;
+  padding: 2px;
 }
 
 .floating-notifications.background .notification-row .notification-background {
@@ -50,7 +50,7 @@
   border-radius: 0.5rem;
   color: @accent_fg_color;
   background-color: @accent;
-  border: 2px solid @accent;
+  margin: 2px;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification>*:last-child>* .notification-action:hover {
@@ -156,8 +156,8 @@
 .control-center .notification-row .notification-background .notification>*:last-child>* .notification-action {
   border-radius: 0.5rem;
   color: @accent_fg_color;
-  background-color: alpha(@accent, 0.8);
-  border: 1px solid @accent;
+  background-color: @accent;
+  margin: 2px;
 }
 
 .control-center .notification-row .notification-background .notification>*:last-child>* .notification-action:hover {

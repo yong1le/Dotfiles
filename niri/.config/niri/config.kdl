@@ -266,6 +266,8 @@ binds {
     // Mod+Tab { focus-workspace-previous; }
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
 
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { reset-window-height; }
