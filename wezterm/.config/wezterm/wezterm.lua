@@ -31,7 +31,7 @@ config.tab_bar_at_bottom = true
 config.window_padding = {
   left = 5,
   right = 0,
-  top = 20,
+  top = 0,
   bottom = 0,
 }
 

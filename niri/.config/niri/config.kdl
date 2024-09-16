@@ -4,7 +4,7 @@ spawn-at-startup "swww-daemon" "--format" "xrgb"
 spawn-at-startup "waypaper" "--restore"
 spawn-at-startup "bash" "-c" "wl-paste --type text --watch cliphist store -max-items 30"
 spawn-at-startup "bash" "-c" "wl-paste --type image --watch cliphist store -max-items 30"
-spawn-at-startup "~/Downloads/Waybar/build/waybar"
+spawn-at-startup "waybar"
 spawn-at-startup "fcitx5-remote" "-r"
 spawn-at-startup "swayosd-server" "-s" "~/.config/swayosd/style.css"
 spawn-at-startup "swaync"
@@ -83,6 +83,7 @@ layout {
     gaps 5
 
     center-focused-column "on-overflow"
+    always-center-single-column
 
     preset-column-widths {
         proportion 0.33333
