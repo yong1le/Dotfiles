@@ -18,3 +18,11 @@ else
     export PATH="/opt/conda/bin:$PATH"
 fi
 . "$HOME/.cargo/env"
+
+# pnpm
+export PNPM_HOME="/home/yonglehe/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

@@ -11,9 +11,9 @@ spawn-at-startup "swaync"
 spawn-at-startup "hypridle"
 spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
 spawn-at-startup "/home/yonglehe/.config/niri/scripts/idle.sh"
-spawn-at-startup "udiskie --tray &"
+spawn-at-startup "udiskie" "--tray"
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "xrandr --output DP-2 --primary"
+spawn-at-startup "xrandr" "--output" "DP-2" "--primary"
 
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
