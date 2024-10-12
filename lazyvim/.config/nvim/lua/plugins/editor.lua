@@ -15,6 +15,7 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
+    enabled = false,
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local has_words_before = function()
@@ -84,18 +85,6 @@ return {
     end,
   },
   {
-    "Rics-Dev/project-explorer.nvim",
-    opts = {
-      paths = {
-        "~/Documents/code/*",
-        "~/.config/",
-      },
-    },
-    keys = {
-      { "<leader>fp", "<cmd>ProjectExplorer<cr>", desc = "Project Explorer" },
-    },
-  },
-  {
     "kevinhwang91/nvim-ufo",
     dependencies = {
       "kevinhwang91/promise-async",
@@ -131,6 +120,17 @@ return {
         table.insert(newVirtText, { suffix, "MoreMsg" })
         return newVirtText
       end,
+    },
+  },
+  {
+    "shellRaining/hlchunk.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      chunk = {
+        enable = true,
+        duration = 0,
+        delay = 0,
+      },
     },
   },
 }

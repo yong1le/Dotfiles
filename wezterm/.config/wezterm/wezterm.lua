@@ -32,7 +32,7 @@ config.window_padding = {
   left = 5,
   right = 0,
   top = 0,
-  bottom = 0,
+  bottom = 5,
 }
 
 -- options
