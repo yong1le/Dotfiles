@@ -18,7 +18,7 @@ menu,
 tooltip {
   border-radius: 8px;
   padding: 10px;
-  border: 1px solid alpha(@dark_1, 0.3);
+  border: 1px solid @dark_1;
   background: @background;
   color: @accent;
 }
@@ -33,7 +33,7 @@ tooltip label {
 window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
-  background: alpha(@background, 0.95);
+  background: @background;
   color: @foreground;
 }
 
@@ -81,8 +81,9 @@ window#waybar {
   transition-property: color;
   transition-duration: 0.5s;
   color: alpha(@foreground, 0.8);
+  font-family: "Inter";
   font-size: 14px;
-  font-weight: 900;
+  font-weight: bold;
 }
 
 #clock:hover {
@@ -171,9 +172,6 @@ window#waybar {
   color: @red_3;
 }
 
-#battery.good {
-  color: @green_3;
-}
 
 #battery.warning {
   color: @orange_3;
