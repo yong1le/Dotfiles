@@ -50,7 +50,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox-material",
+      colorscheme = "kanagawa-dragon",
     },
   },
   {

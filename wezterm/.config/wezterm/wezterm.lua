@@ -8,11 +8,10 @@ local config = {}
 if wezterm.config_builder then config = wezterm.config_builder() end
 
 -- Theming
-config.color_scheme = "Gruvbox Dark (Gogh)"
-
+config.color_scheme = "Kanagawa Dragon (Gogh)"
 -- Fonts
-config.font = wezterm.font "JetBrainsMono Nerd Font"
-config.font_size = 10
+config.font = wezterm.font_with_fallback { "SF Mono", { family = "Symbols Nerd Font Mono", scale = 0.75 } }
+config.font_size = 11
 
 -- Size
 config.initial_rows = 40
@@ -31,7 +30,7 @@ config.tab_bar_at_bottom = true
 config.window_padding = {
   left = 5,
   right = 0,
-  top = 0,
+  top = 5,
   bottom = 5,
 }
 
