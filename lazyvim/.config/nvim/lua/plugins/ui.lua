@@ -45,12 +45,15 @@ return {
     end,
   },
   {
-    "neanias/everforest-nvim",
+    "navarasu/onedark.nvim",
+    opts = {
+      style = "darker",
+    },
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "kanagawa-dragon",
+      colorscheme = "onedark",
     },
   },
   {
