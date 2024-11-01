@@ -53,7 +53,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "onedark",
+      colorscheme = "kanagawa",
     },
   },
   {
