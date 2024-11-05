@@ -6,17 +6,31 @@
 # Usage
 # tms [session]
 
+function get_sessions() {
+  tmux ls -F \#S &&
+    find ~/Documents/Code -mindepth 1 -maxdepth 1 -type d &&
+    find ~/Documents/Uni -mindepth 2 -maxdepth 2 -type d -not -path "*/.git/*"
+}
+
+if [[ $1 == "get_sessions" ]]; then
+  get_sessions
+  exit 0
+fi
+
+export FZF_DEFAULT_OPTS='
+  --tmux 60%,30%
+  --layout=reverse
+  --prompt="Switch to session: "
+  --preview="tmux list-windows -t {}"
+  --preview-window=down:3:wrap
+  --bind "ctrl-d:execute(tmux kill-session -t {})+reload(tms get_sessions)"
+'
+
 # If the name of an active session is given, switch to it, otherwise fuzzy find
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected=$(
-    (
-      tmux ls -F \#S &&
-        find ~/Documents/Code -mindepth 1 -maxdepth 1 -type d &&
-        find ~/Documents/Uni -mindepth 2 -maxdepth 2 -type d -not -path "*/.git/*"
-    ) | fzf
-  )
+  selected=$(get_sessions | fzf)
 fi
 
 # If nothing is selected, simply exit
