@@ -208,6 +208,8 @@ return {
     dependencies = {
       "SmiteshP/nvim-navic",
     },
-    opts = {},
+    opts = {
+      create_autocmd = false,
+    },
   },
 }

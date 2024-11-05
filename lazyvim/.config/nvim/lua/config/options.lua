@@ -9,6 +9,7 @@ local opt = vim.opt
 
 opt.autowrite = false
 opt.expandtab = true
+opt.updatecount = 200
 
 opt.fillchars = {
   foldopen = "",
