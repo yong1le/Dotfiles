@@ -7,5 +7,4 @@ return {
   { "folke/tokyonight.nvim", enabled = false },
   { "iamcco/markdown-preview.nvim", enabled = false },
   { "akinsho/bufferline.nvim", enabled = false },
-  { "lukas-reineke/indent-blankline.nvim", enabled = false },
 }
