@@ -22,32 +22,19 @@ return {
           },
         },
       },
-      overrides = function(_)
+      overrides = function(colors)
+        local theme = colors.theme
+
         return {
-          NormalFloat = { bg = "none" },
-          FloatBorder = { bg = "none" },
-          FloatTitle = { bg = "none" },
+          TelescopeTitle = { fg = theme.ui.special, bold = true },
+          TelescopePromptNormal = { bg = theme.ui.bg_p1 },
+          TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
+          TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+          TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
+          TelescopePreviewNormal = { bg = theme.ui.bg_dim },
+          TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
         }
       end,
-    },
-  },
-  {
-    "sainnhe/gruvbox-material",
-    config = function()
-      vim.g.gruvbox_material_better_performance = 1
-      vim.g.gruvbox_material_enable_bold = 1
-      vim.g.gruvbox_material_menu_selection_background = "yellow"
-      vim.g.gruvbox_material_float_style = "bright"
-      vim.g.gruvbox_material_visual = "red background"
-      vim.g.gruvbox_material_ui_contrast = "high"
-      vim.g.gruvbox_material_diagnostic_virtual_text = "highlight"
-      vim.g.gruvbox_material_current_word = "grey background"
-    end,
-  },
-  {
-    "navarasu/onedark.nvim",
-    opts = {
-      style = "darker",
     },
   },
   {

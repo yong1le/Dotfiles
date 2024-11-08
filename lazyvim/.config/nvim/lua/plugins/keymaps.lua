@@ -3,25 +3,12 @@ return {
     "neovim/nvim-lspconfig",
     opts = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
-
-      keys[#keys + 1] = { "gr", "<cmd>Trouble lsp_references<cr>", desc = "Goto Definition" }
-      keys[#keys + 1] = { "gI", "<cmd>Trouble lsp_implementations<cr>", desc = "Goto Implementation" }
-      keys[#keys + 1] = { "gd", "<cmd>Trouble lsp_definitions<cr>", desc = "Goto Definition" }
-      keys[#keys + 1] = { "gD", "<cmd>Trouble lsp_declarations<cr>", desc = "Goto Declaration" }
-      keys[#keys + 1] = { "gy", "<cmd>Trouble lsp_type_definitions<cr>", desc = "Goto Type Definition" }
       keys[#keys + 1] = { "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Show Line Diagnostics" }
     end,
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
     keys = {
-      {
-        "<leader>E",
-        function()
-          require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
-        end,
-        desc = "Explorer NeoTree (Root Dir)",
-      },
       {
         "<leader>e",
         function()
@@ -38,13 +25,6 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     keys = {
-      { "<leader><space>", LazyVim.pick("buffers"), desc = "Find Buffers" },
-      { "<leader>ff", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
-      { "<leader>fF", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
-      { "<leader>fr", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
-      { "<leader>fR", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-      { "<leader>sw", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
-      { "<leader>sW", LazyVim.pick("live_grep"), desc = "Grep (Root Dir)" },
       { "<leader>sd", false }, -- file diagnostics
       { "<leader>sg", false }, -- live grep (root), mapped to sW
       { "<leader>sG", false }, -- live grep (cwd), mapped to sw
@@ -58,33 +38,18 @@ return {
       { "<leader>so", false }, -- options
       { "<leader>sq", false }, -- quickfix list
       { "<leader>gs", false }, -- git statuses
-      { "<leader>sD", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Diagnostics" },
-      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,HACK,FIXME,BUG,NOTE<cr>", desc = "Todo" },
-    },
-  },
-  {
-    "folke/trouble.nvim",
-    opts = {
-      focus = true,
-    },
-    keys = {
-      { "<leader>sd", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
-      { "<leader>st", "<cmd>Trouble todo toggle<cr>", desc = "Todo (Trouble)" },
-      { "<leader>xx", false },
-      { "<leader>xX", false },
-      { "<leader>cs", false },
-      { "<leader>xL", false },
-      { "<leader>xQ", false },
+      { "<leader><space>", LazyVim.pick("buffers"), desc = "Find Buffers" },
+      { "<leader>ff", LazyVim.pick("files", { root = false }), desc = "Find Files" },
+      { "<leader>fF", LazyVim.pick("files", { no_ignore = true, root = false }), desc = "Find All Files" },
+      { "<leader>fr", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
+      { "<leader>sw", LazyVim.pick("live_grep", { root = false }), desc = "Find Words" },
+      { "<leader>sd", LazyVim.pick("diagnostics"), desc = "Diagnostics" },
+      { "<leader>st", "<cmd>TodoTelescope keywords=TODO,FIX,HACK,FIXME,BUG,NOTE<cr>", desc = "Todo" },
     },
   },
   {
     "folke/todo-comments.nvim",
-    keys = {
-      { "<leader>xt", false },
-      { "<leader>xT", false },
-      { "<leader>st", false },
-      { "<leader>sT", false },
-    },
+    keys = false,
   },
   {
     "lewis6991/gitsigns.nvim",
