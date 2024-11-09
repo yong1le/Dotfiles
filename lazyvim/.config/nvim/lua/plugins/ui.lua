@@ -33,8 +33,6 @@ return {
           TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
           TelescopePreviewNormal = { bg = theme.ui.bg_dim },
           TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
-
-          NoiceCmdlinePopup = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
         }
       end,
     },
@@ -204,10 +202,11 @@ return {
   {
     "folke/noice.nvim",
     opts = {
-      views = {
-        cmdline_popup = {
-          border = { style = "none", padding = { 1, 1 } },
-        },
+      presets = {
+        command_palette = false,
+      },
+      cmdline = {
+        view = "cmdline",
       },
     },
   },
