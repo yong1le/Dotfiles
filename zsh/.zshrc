@@ -23,3 +23,6 @@ source ~/.zsh/fsh/fast-syntax-highlighting.plugin.zsh
 # Prompt Config
 eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+# bun completions
+[ -s "/home/yonglehe/.bun/_bun" ] && source "/home/yonglehe/.bun/_bun"
