@@ -11,7 +11,7 @@ if wezterm.config_builder then config = wezterm.config_builder() end
 config.color_scheme = "Kanagawa Dragon (Gogh)"
 -- Fonts
 config.font = wezterm.font_with_fallback { "SF Mono", { family = "Symbols Nerd Font Mono", scale = 0.75 } }
-config.font_size = 11
+config.font_size = 10
 
 -- Size
 config.initial_rows = 40
@@ -38,12 +38,5 @@ config.window_padding = {
 config.window_close_confirmation = "NeverPrompt"
 config.default_cursor_style = "SteadyBar"
 config.warn_about_missing_glyphs = false
-
--- Mux
--- config.unix_domains = {
---   {
---     name = "unix",
---   },
--- }
 
 return config

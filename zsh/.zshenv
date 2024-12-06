@@ -6,9 +6,9 @@ export ANDROID_HOME="/home/yonglehe/Android/sdk"
 export PATH="$PATH:$ANDROID_HOME/emulator"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
-FNM_PATH="/home/yonglehe/.local/share/fnm"
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/yonglehe/.local/share/fnm:$PATH"
+  export PATH="${HOME}/.local/share/fnm:$PATH"
   eval "`fnm env`"
 fi
 
