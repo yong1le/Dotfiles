@@ -47,4 +47,4 @@ else
   opt.foldtext = "v:lua.require'lazyvim.util'.ui.foldtext()"
 end
 
-opt.termsync = false
+opt.termsync = true
