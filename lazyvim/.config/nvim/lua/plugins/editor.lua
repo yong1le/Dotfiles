@@ -70,18 +70,19 @@ return {
     end,
   },
   {
-    "hrsh7th/nvim-cmp",
-    opts = function(_, opts)
-      local cmp = require("cmp")
-
-      opts = vim.tbl_deep_extend("force", opts, {
-        mapping = {
-          ["<C-j>"] = cmp.mapping.select_next_item(),
-          ["<C-k>"] = cmp.mapping.select_prev_item(),
-        },
-      })
-
-      return opts
-    end,
+    "saghen/blink.cmp",
+    opts = {
+      signature = { enabled = true },
+      keymap = {
+        ["<C-j>"] = { "select_next", "fallback" },
+        ["<C-k>"] = { "select_prev", "fallback" },
+      },
+    },
+  },
+  {
+    "folke/which-key.nvim",
+    opts = {
+      preset = "modern",
+    },
   },
 }
