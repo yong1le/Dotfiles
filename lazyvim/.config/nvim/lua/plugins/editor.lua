@@ -72,11 +72,14 @@ return {
   {
     "saghen/blink.cmp",
     opts = {
-      signature = { enabled = true },
       keymap = {
         ["<C-j>"] = { "select_next", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback" },
       },
+      completion = {
+        documentation = { window = { border = "rounded" } },
+      },
+      signature = { enabled = true, window = { border = "rounded" } },
     },
   },
   {
