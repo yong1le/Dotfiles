@@ -33,7 +33,7 @@ keybinds {
       Run "zellij" "run" "--floating" "--close-on-exit" "--" "zms" {
         close_on_exit true
       }
-      SwitchToMode "locked"; MessagePlugin "autolock" {};
+      SwitchToMode "Normal"; MessagePlugin "autolock" {};
     }
 
     bind "g" {

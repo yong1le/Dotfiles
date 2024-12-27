@@ -7,7 +7,7 @@
 # tms [session]
 
 function get_current_sessions() {
-  zellij list-sessions -r -s | grep -v '(current)'
+  zellij list-sessions -r -s
 }
 
 function get_sessions() {
@@ -26,6 +26,8 @@ export FZF_DEFAULT_OPTS='
   --layout=reverse
   --prompt="Switch to session: "
   --bind "ctrl-d:execute(zellij kill-session {} || zellij delete-session {})+reload(zms get_sessions)"
+  --bind "tab:down"
+  --bind "shift-tab:up"
 '
 
 # If the name of an active session is given, switch to it, otherwise fuzzy find
