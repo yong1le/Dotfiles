@@ -6,12 +6,16 @@ keybinds {
     bind "Ctrl k" { MoveFocus "Up"; }
     bind "Ctrl l" { MoveFocus "Right"; }
     bind "Enter" {
-        WriteChars "\u{000D}";
-        MessagePlugin "autolock" {};
+      WriteChars "\u{000D}";
+      MessagePlugin "autolock" {};
     }
   }
   locked {
     bind "Ctrl Space" { SwitchToMode "tmux"; }
+  }
+  move {
+    bind "p" { MoveTab "Left"; }
+    bind "n" { MoveTab "Right"; }
   }
   tmux {
     bind "q" { Detach; }
