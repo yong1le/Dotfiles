@@ -14,7 +14,7 @@ return {
     },
   },
   {
-    "numToStr/Navigator.nvim",
+    "dynamotn/Navigator.nvim",
     event = "VeryLazy",
     cmd = {
       "NavigatorLeft",

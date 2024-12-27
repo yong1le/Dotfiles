@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Creds: The Primeagen tmux-sessionizer:
+# https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
+
+# Usage
+# tms [session]
+
+function get_current_sessions() {
+  zellij list-sessions -r -s | grep -v '(current)'
+}
+
+function get_sessions() {
+  get_current_sessions
+
+  fd -td -d 1 . ~/Documents/Projects &&
+    fd -td -d 1 . ~/Documents/Labs --exclude "*/.git/*"
+}
+
+if [[ $1 == "get_sessions" ]]; then
+  get_sessions
+  exit 0
+fi
+
+export FZF_DEFAULT_OPTS='
+  --layout=reverse
+  --prompt="Switch to session: "
+  --bind "ctrl-d:execute(zellij kill-session {} || zellij delete-session {})+reload(zms get_sessions)"
+'
+
+# If the name of an active session is given, switch to it, otherwise fuzzy find
+if [[ $# -eq 1 ]]; then
+  selected=$1
+else
+  selected=$(get_sessions | fzf)
+fi
+
+# If nothing is selected, simply exit
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+
+if get_current_sessions | grep -qx "$selected_name"; then
+  zellij pipe --plugin file:~/.config/zellij/plugins/zellij-switch.wasm -- "--session ${selected_name}"
+else
+  zellij pipe --plugin file:~/.config/zellij/plugins/zellij-switch.wasm -- "--session ${selected_name} --cwd ${selected} --layout default"
+fi
