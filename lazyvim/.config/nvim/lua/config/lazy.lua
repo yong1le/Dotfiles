@@ -23,7 +23,7 @@ require("lazy").setup({
     lazy = false,
     version = false,
   },
-  install = { colorscheme = { "kanagawa" } },
+  install = { colorscheme = { "kanagawa-dragon" } },
   checker = { enabled = false },
   performance = {
     rtp = {
