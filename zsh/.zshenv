@@ -2,9 +2,7 @@ export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/.local/scripts/:$PATH"
 export PATH="$HOME/go/bin/:$PATH"
 export PATH="$HOME/.cargo/bin/:$PATH"
-export ANDROID_HOME="/home/yonglehe/Android/sdk"
-export PATH="$PATH:$ANDROID_HOME/emulator"
-export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$HOME/racket/bin:$PATH"
 
 FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
