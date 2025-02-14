@@ -3,6 +3,7 @@ export PATH="$HOME/.local/scripts/:$PATH"
 export PATH="$HOME/go/bin/:$PATH"
 export PATH="$HOME/.cargo/bin/:$PATH"
 export PATH="$HOME/racket/bin:$PATH"
+export PATH="$HOME/.cabal/bin:$PATH"
 
 FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
@@ -10,12 +11,12 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
-if [ -f "/opt/conda/etc/profile.d/conda.sh" ]; then
-    . "/opt/conda/etc/profile.d/conda.sh"
-else
-    export PATH="/opt/conda/bin:$PATH"
-fi
-. "$HOME/.cargo/env"
+# if [ -f "/opt/conda/etc/profile.d/conda.sh" ]; then
+#     . "/opt/conda/etc/profile.d/conda.sh"
+# else
+#     export PATH="/opt/conda/bin:$PATH"
+# fi
+# . "$HOME/.cargo/env"
 
 # pnpm
 export PNPM_HOME="/home/yonglehe/.local/share/pnpm"
