@@ -6,8 +6,4 @@ shift
 
 TITLE="$(basename "$1")"
 
-if [ -n "$TITLE" ]; then
-  /usr/bin/wezterm -e --class "org.wezfurlong.wezterm.$TITLE" "$@"
-else
-  /usr/bin/wezterm -e "$@"
-fi
+/usr/bin/ghostty -e "$@"
