@@ -11,6 +11,7 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # (saving history)
 HISTFILE=~/.zsh_history
@@ -39,3 +40,5 @@ eval "$(zoxide init --cmd cd zsh)"
 [ -s "/home/yonglehe/.bun/_bun" ] && source "/home/yonglehe/.bun/_bun"
 
 
+
+[ -f "/home/yonglehe/.ghcup/env" ] && . "/home/yonglehe/.ghcup/env" # ghcup-env
