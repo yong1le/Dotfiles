@@ -26,14 +26,6 @@ return {
         local theme = colors.theme
 
         return {
-          -- TelescopeTitle = { fg = theme.ui.special, bold = true },
-          -- TelescopePromptNormal = { bg = theme.ui.bg_p1 },
-          -- TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
-          -- TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-          -- TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-          -- TelescopePreviewNormal = { bg = theme.ui.bg_dim },
-          -- TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
-
           NormalFloat = { bg = "none" },
           FloatBorder = { bg = "none" },
           FloatTitle = { bg = "none" },
@@ -206,6 +198,65 @@ return {
       },
       cmdline = {
         view = "cmdline",
+      },
+    },
+  },
+  {
+    "folke/edgy.nvim",
+    opts = {
+      wo = {
+        winfixwidth = false,
+        winfixheight = false,
+      },
+      animate = {
+        enabled = false,
+      },
+      bottom = {
+        {
+          ft = "snacks_terminal",
+          size = { height = 0.3 },
+          title = "%{b:snacks_terminal.id}: %{b:term_title}",
+          filter = function(_, win)
+            return vim.w[win].snacks_win
+              and vim.w[win].snacks_win.position == "bottom"
+              and vim.w[win].snacks_win.relative == "editor"
+              and not vim.w[win].trouble_preview
+          end,
+        },
+        {
+          ft = "dap-repl",
+          title = "REPL",
+          size = { height = 0.2 },
+        },
+        {
+          ft = "dapui_console",
+          title = "Console",
+          size = { height = 0.2 },
+        },
+      },
+      right = {
+        {
+          ft = "dapui_scopes",
+          title = "Scope",
+          size = { width = 0.2 },
+        },
+        {
+          ft = "dapui_breakpoints",
+          title = "Breakpoints",
+          size = { width = 0.2 },
+        },
+        {
+          ft = "dapui_stacks",
+          title = "Stacks",
+          size = { width = 0.2 },
+        },
+        {
+          ft = "dapui_watches",
+          title = "Expressions",
+          size = { width = 0.2 },
+        },
+        { title = "Grug Far", ft = "grug-far", size = { width = 0.2 } },
+        { title = "Copilot", ft = "copilot-chat", size = { width = 0.2 } },
       },
     },
   },

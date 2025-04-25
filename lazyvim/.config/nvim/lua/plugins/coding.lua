@@ -36,7 +36,7 @@ return {
     opts = {
       tools = {
         hover_actions = {
-          replace_builtin_hover = false,
+          replace_builtin_hover = true,
         },
       },
     },
@@ -44,7 +44,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      inlay_hints = { enabled = false },
+      inlay_hints = { enabled = true },
     },
   },
 }

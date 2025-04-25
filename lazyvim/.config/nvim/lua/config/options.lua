@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.g.autoformat = true
-vim.g.lazyvim_picker = "telescope"
+vim.g.lazyvim_picker = "snacks"
 vim.g.trouble_lualine = false -- trouble in default lualine
 -- vim.g.lazygit_config = false
 
@@ -48,3 +48,9 @@ else
 end
 
 opt.termsync = true
+
+if vim.g.neovide then
+  vim.g.neovide_title_background_color =
+    string.format("%x", vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg)
+  vim.g.snacks_animate = false
+end

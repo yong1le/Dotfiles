@@ -13,7 +13,7 @@ return {
               icon = " ",
               key = "c",
               desc = "Config",
-              action = ":lua Snacks.dashboard.pick('', {cwd = vim.fn.stdpath('config')})",
+              action = ":lua Snacks.picker('files', {cwd = vim.fn.stdpath('config')}); vim.cmd('cd ' .. vim.fn.stdpath('config'))",
             },
             { icon = " ", key = "s", desc = "Restore Session", section = "session" },
             { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
@@ -32,6 +32,31 @@ return {
         },
       },
       input = {},
+      picker = {
+        layout = {
+          preset = "ivy",
+        },
+        sources = {
+          projects = {
+            dev = { "~/Developer/Projects", "~/Developer/Projects/codecrafters", "~/.config/nvim" },
+            patterns = {
+              ".git",
+              "_darcs",
+              ".hg",
+              ".bzr",
+              ".svn",
+              "package.json",
+              "Makefile",
+              "Cargo.toml",
+              "go.mod",
+              "Dockerfile",
+              "docker-compose.yml",
+              "README.md",
+            },
+            recent = false,
+          },
+        },
+      },
       styles = {
         input = {
           relative = "cursor",
