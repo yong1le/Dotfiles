@@ -30,10 +30,8 @@ return {
           FloatBorder = { bg = "none" },
           FloatTitle = { bg = "none" },
 
-          -- Save an hlgroup with dark background and dimmed foreground
-          -- so that you can use it where your still want darker windows.
-          -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
           NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+          WinSeparator = { fg = theme.ui.special, bg = "none" },
         }
       end,
     },
@@ -175,10 +173,6 @@ return {
   {
     "folke/edgy.nvim",
     opts = {
-      wo = {
-        winfixwidth = false,
-        winfixheight = false,
-      },
       animate = {
         enabled = false,
       },

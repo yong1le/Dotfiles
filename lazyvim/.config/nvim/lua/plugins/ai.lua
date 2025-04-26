@@ -24,15 +24,6 @@ return {
           })
         end,
       },
-      display = {
-        diff = {
-          enabled = true,
-          close_chat_at = 240,
-          layout = "vertical",
-          opts = { "internal", "filler", "closeoff", "algorithm:patience", "followwrap", "linematch:120" },
-          provider = "mini_diff",
-        },
-      },
     },
     keys = {
       { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
