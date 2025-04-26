@@ -32,10 +32,6 @@ return {
         ["<C-j>"] = { "select_next", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback" },
       },
-      completion = {
-        documentation = { window = { border = "rounded" } },
-      },
-      signature = { enabled = true, window = { border = "rounded" } },
     },
   },
   {
@@ -43,5 +39,13 @@ return {
     opts = {
       preset = "modern",
     },
+  },
+  {
+    "utilyre/barbecue.nvim",
+    version = "*",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+    },
+    opts = {},
   },
 }

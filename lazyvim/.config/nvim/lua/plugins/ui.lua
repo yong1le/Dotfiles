@@ -34,16 +34,6 @@ return {
           -- so that you can use it where your still want darker windows.
           -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
           NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-
-          -- Popular plugins that open floats will link to NormalFloat by default;
-          -- set their background accordingly if you wish to keep them dark and borderless
-          LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-          MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-
-          Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
-          PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-          PmenuSbar = { bg = theme.ui.bg_m1 },
-          PmenuThumb = { bg = theme.ui.bg_p2 },
         }
       end,
     },
@@ -82,12 +72,15 @@ return {
       local diagnostics_icons = LazyVim.config.icons.diagnostics
 
       return {
+        refresh = {
+          winbar = 1,
+        },
         options = {
           icons_enabled = true,
           theme = "auto",
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
-          disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter" } },
+          disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "neotree", "neo-tree" } },
           globalstatus = true,
         },
         sections = {
@@ -180,28 +173,6 @@ return {
     end,
   },
   {
-    "utilyre/barbecue.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-    },
-    opts = {
-      create_autocmd = false,
-    },
-  },
-  {
-    "folke/noice.nvim",
-    opts = {
-      presets = {
-        command_palette = false,
-        lsp_doc_border = true,
-      },
-      cmdline = {
-        view = "cmdline",
-      },
-    },
-  },
-  {
     "folke/edgy.nvim",
     opts = {
       wo = {
@@ -256,7 +227,7 @@ return {
           size = { width = 0.2 },
         },
         { title = "Grug Far", ft = "grug-far", size = { width = 0.2 } },
-        { title = "Copilot", ft = "copilot-chat", size = { width = 0.2 } },
+        { title = "Code Companion", ft = "codecompanion", size = { width = 0.2 } },
       },
     },
   },

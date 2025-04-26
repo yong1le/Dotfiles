@@ -30,10 +30,4 @@ return {
       { "<leader>sd", LazyVim.pick("diagnostics"), desc = "Diagnostics" },
     },
   },
-  {
-    "utilyre/barbecue.nvim",
-    keys = {
-      { "<leader>uB", "<cmd>Barbecue toggle<cr>", desc = "Toggle Breadcrumbs" },
-    },
-  },
 }

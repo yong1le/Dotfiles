@@ -31,7 +31,6 @@ return {
         ]],
         },
       },
-      input = {},
       picker = {
         layout = {
           preset = "ivy",
@@ -56,6 +55,9 @@ return {
             recent = false,
           },
         },
+      },
+      explorer = {
+        replace_netrw = true,
       },
       styles = {
         input = {

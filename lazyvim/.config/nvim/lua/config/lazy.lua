@@ -24,7 +24,13 @@ require("lazy").setup({
     version = false,
   },
   install = { colorscheme = { "kanagawa-dragon" } },
-  checker = { enabled = false },
+  checker = { enabled = false, notify = false },
+  change_detection = {
+    notify = false,
+  },
+  ui = {
+    border = "single",
+  },
   performance = {
     rtp = {
       disabled_plugins = {
