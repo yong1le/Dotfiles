@@ -37,7 +37,7 @@ return {
         },
         sources = {
           projects = {
-            dev = { "~/Developer/Projects", "~/Developer/Projects/codecrafters", "~/.config/nvim" },
+            dev = { "~/Documents/Developer/Projects", "~/Documents/Developer/Codecrafter/" },
             patterns = {
               ".git",
               "_darcs",
