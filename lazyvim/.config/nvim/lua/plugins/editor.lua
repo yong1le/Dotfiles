@@ -41,12 +41,27 @@ return {
     },
   },
   {
-    "utilyre/barbecue.nvim",
-    version = "*",
-    event = "VeryLazy",
-    dependencies = {
-      "SmiteshP/nvim-navic",
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      current_line_blame = true,
     },
-    opts = {},
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    keys = {
+      { "<C-/>", "<cmd>ToggleTerm<cr>", desc = "Terminal", mode = { "n", "i", "v", "t" } },
+      { "<leader>ft", "<cmd>TermSelect<cr>", desc = "Terminals" },
+    },
+    opts = {
+      shade_terminals = false,
+      open_mapping = [[<c-/>]],
+      winbar = {
+        enabled = true,
+        name_formatter = function(term) --  term: Terminal
+          return "Terminal " .. term.id
+        end,
+      },
+    },
   },
 }

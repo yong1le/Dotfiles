@@ -21,7 +21,7 @@ return {
       { "<leader>so", false }, -- options
       { "<leader>sq", false }, -- quickfix list
       { "<leader>gs", false }, -- git statuses
-      { "<leader>,", LazyVim.pick("buffers"), desc = "Find Buffers" },
+      { "<leader>,", false },
       { "<leader><space>", LazyVim.pick("buffers"), desc = "Find Buffers" },
       { "<leader>ff", LazyVim.pick("files", { root = false }), desc = "Find Files" },
       { "<leader>fF", LazyVim.pick("files", { no_ignore = true, root = false }), desc = "Find All Files" },
@@ -67,9 +67,6 @@ return {
         map("n", "<leader>gu", gs.undo_stage_hunk, "Undo Stage Hunk")
         map("n", "<leader>gR", gs.reset_buffer, "Reset Buffer")
         map("n", "<leader>gp", gs.preview_hunk_inline, "Preview Hunk Inline")
-        map("n", "<leader>gl", function()
-          gs.blame_line({ full = true })
-        end, "Blame Line")
         map("n", "<leader>gb", function()
           gs.blame()
         end, "Blame Buffer")
@@ -79,12 +76,6 @@ return {
         end, "Diff This ~")
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
       end,
-    },
-  },
-  {
-    "utilyre/barbecue.nvim",
-    keys = {
-      { "<leader>uB", "<cmd>Barbecue toggle<cr>", desc = "Toggle Breadcrumbs" },
     },
   },
 }

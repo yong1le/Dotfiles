@@ -123,28 +123,6 @@ return {
             },
             Snacks.profiler.status(),
             {
-              function()
-                return require("noice").api.status.mode.get()
-              end,
-              cond = function()
-                return package.loaded["noice"] and require("noice").api.status.mode.has()
-              end,
-              color = function()
-                return { fg = Snacks.util.color("Constant") }
-              end,
-            },
-            {
-              function()
-                return "  " .. require("dap").status()
-              end,
-              cond = function()
-                return package.loaded["dap"] and require("dap").status() ~= ""
-              end,
-              color = function()
-                return { fg = Snacks.util.color("Debug") }
-              end,
-            },
-            {
               require("lazy.status").updates,
               cond = require("lazy.status").has_updates,
               color = function()
@@ -169,88 +147,5 @@ return {
         },
       }
     end,
-  },
-  {
-    "folke/edgy.nvim",
-    opts = {
-      keys = {
-        -- increase width
-        ["<c-Right>"] = function(win)
-          win:resize("width", 2)
-        end,
-        -- decrease width
-        ["<c-Left>"] = function(win)
-          win:resize("width", -2)
-        end,
-        -- increase height
-        ["<c-Up>"] = function(win)
-          win:resize("height", 2)
-        end,
-        -- decrease height
-        ["<c-Down>"] = function(win)
-          win:resize("height", -2)
-        end,
-      },
-      animate = {
-        enabled = false,
-      },
-      left = {
-        {
-          title = "Explorer",
-          ft = "snacks_layout_box",
-          -- exclude floating windows
-          filter = function(buf, win)
-            return vim.api.nvim_win_get_config(win).relative == ""
-          end,
-        },
-      },
-      bottom = {
-        {
-          ft = "snacks_terminal",
-          size = { height = 0.3 },
-          title = "%{b:snacks_terminal.id}: %{b:term_title}",
-          filter = function(_, win)
-            return vim.w[win].snacks_win
-              and vim.w[win].snacks_win.position == "bottom"
-              and vim.w[win].snacks_win.relative == "editor"
-              and not vim.w[win].trouble_preview
-          end,
-        },
-        {
-          ft = "dap-repl",
-          title = "REPL",
-          size = { height = 0.2 },
-        },
-        {
-          ft = "dapui_console",
-          title = "Console",
-          size = { height = 0.2 },
-        },
-      },
-      right = {
-        {
-          ft = "dapui_scopes",
-          title = "Scope",
-          size = { width = 0.2 },
-        },
-        {
-          ft = "dapui_breakpoints",
-          title = "Breakpoints",
-          size = { width = 0.2 },
-        },
-        {
-          ft = "dapui_stacks",
-          title = "Stacks",
-          size = { width = 0.2 },
-        },
-        {
-          ft = "dapui_watches",
-          title = "Expressions",
-          size = { width = 0.2 },
-        },
-        { title = "Grug Far", ft = "grug-far", size = { width = 0.2 } },
-        { title = "Code Companion", ft = "codecompanion", size = { width = 0.2 } },
-      },
-    },
   },
 }

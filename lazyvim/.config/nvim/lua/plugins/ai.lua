@@ -27,9 +27,7 @@ return {
       display = {
         chat = {
           window = {
-            opts = {
-              wrap = false,
-            },
+            width = 0.25,
           },
         },
       },

@@ -59,16 +59,6 @@ return {
       explorer = {
         replace_netrw = true,
       },
-      styles = {
-        input = {
-          relative = "cursor",
-          row = -3,
-          col = 0,
-          b = {
-            completion = true,
-          },
-        },
-      },
     },
   },
 }

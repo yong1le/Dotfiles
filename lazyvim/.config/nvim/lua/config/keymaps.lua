@@ -19,6 +19,11 @@ del("n", "<leader>?") -- buffer keymaps
 del("n", "<leader>ft") -- terminal
 del("n", "<leader>fT") -- terminal
 
+-- profiler
+del("n", "<leader>dph")
+del("n", "<leader>dps")
+del("n", "<leader>dpp")
+
 -- TABS
 del("n", "<leader><tab>l")
 del("n", "<leader><tab>o")
@@ -54,6 +59,13 @@ set("v", "<C-h>", "<cmd>NavigatorLeft<cr>")
 set("v", "<C-j>", "<cmd>NavigatorDown<cr>")
 set("v", "<C-k>", "<cmd>NavigatorUp<cr>")
 set("v", "<C-l>", "<cmd>NavigatorRight<cr>")
+
+set("t", "<C-h>", "<cmd>NavigatorLeft<cr>")
+set("t", "<C-j>", "<cmd>NavigatorDown<cr>")
+set("t", "<C-k>", "<cmd>NavigatorUp<cr>")
+set("t", "<C-l>", "<cmd>NavigatorRight<cr>")
+
+set("t", "<esc><esc>", "<C-\\><C-n>")
 
 set("n", "<leader>h", "<C-W>s", { desc = "Split Window Below", remap = true })
 set("n", "<leader>v", "<C-W>v", { desc = "Split Window Right", remap = true })
