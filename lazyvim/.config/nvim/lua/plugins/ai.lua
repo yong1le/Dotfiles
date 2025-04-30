@@ -24,6 +24,15 @@ return {
           })
         end,
       },
+      display = {
+        chat = {
+          window = {
+            opts = {
+              wrap = false,
+            },
+          },
+        },
+      },
     },
     keys = {
       { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },

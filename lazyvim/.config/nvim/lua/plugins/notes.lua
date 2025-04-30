@@ -1,12 +1,15 @@
 return {
-  "MeanderingProgrammer/render-markdown.nvim",
-  opts = {
-    heading = {
-      sign = false,
-      icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰲦 ", "󰎱 ", "󰎳 " },
-      position = "overlay",
-      border = true,
-      left_pad = 1,
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {
+      heading = {
+        enabled = true,
+        sign = true,
+        icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰲦 ", "󰎱 ", "󰎳 " },
+        position = "overlay",
+        border = true,
+        left_pad = 1,
+      },
     },
   },
   {
