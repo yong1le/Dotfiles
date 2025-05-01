@@ -9,7 +9,6 @@ return {
         typescriptreact = { "eslint_d" },
         svelte = { "eslint_d" },
         astro = { "eslint_d" },
-        python = { "flake8", "pylint" },
       },
     },
   },
@@ -40,5 +39,11 @@ return {
         },
       },
     },
+  },
+  {
+    "linux-cultist/venv-selector.nvim",
+    branch = "regexp",
+    enabled = true,
+    opts = {},
   },
 }

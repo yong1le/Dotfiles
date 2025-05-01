@@ -78,4 +78,21 @@ return {
       end,
     },
   },
+  {
+    "linux-cultist/venv-selector.nvim",
+    keys = {
+      {
+        "<leader>cv",
+        "<cmd>:VenvSelect fd '/bin/python$' $CWD --full-path --color never -E /proc -I -a -L<cr>",
+        desc = "Select Python Env",
+      },
+    },
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    keys = {
+      { "<C-/>", "<cmd>ToggleTerm<cr>", desc = "Terminal", mode = { "n", "i", "v", "t" } },
+      { "<leader>ft", "<cmd>TermSelect<cr>", desc = "Terminals" },
+    },
+  },
 }
