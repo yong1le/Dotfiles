@@ -1,3 +1,5 @@
+fpath=(~/.zfunc $fpath)
+
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 eval "$(dircolors -b)"
@@ -22,6 +24,8 @@ setopt histignorealldups sharehistory
 autoload -Uz compinit
 compinit
 
+alias zed="flatpak run dev.zed.Zed"
+
 # Auto-Suggestions and Syntax Highlighting
 if [ ! -e ~/.zsh/fsh ]; then
     git clone https://github.com/zdharma-continuum/fast-syntax-highlighting ~/.zsh/fsh
@@ -35,10 +39,3 @@ source ~/.zsh/fsh/fast-syntax-highlighting.plugin.zsh
 # Prompt Config
 eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-
-# bun completions
-[ -s "/home/yonglehe/.bun/_bun" ] && source "/home/yonglehe/.bun/_bun"
-
-
-
-[ -f "/home/yonglehe/.ghcup/env" ] && . "/home/yonglehe/.ghcup/env" # ghcup-env
