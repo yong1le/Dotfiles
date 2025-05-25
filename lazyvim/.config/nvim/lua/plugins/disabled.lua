@@ -3,5 +3,4 @@ return {
   { "folke/tokyonight.nvim", enabled = false },
   { "iamcco/markdown-preview.nvim", enabled = false },
   { "folke/trouble.nvim", enabled = false },
-  { "mfussenegger/nvim-dap", enabled = false },
 }
