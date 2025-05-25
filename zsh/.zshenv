@@ -3,6 +3,7 @@ export PATH="$HOME/.local/scripts/:$PATH"
 export PATH="$HOME/go/bin/:$PATH"
 export PATH="$HOME/racket/bin:$PATH"
 export PATH="$HOME/.cabal/bin:$PATH"
+export PATH="$HOME/zig:$PATH"
 
 FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
