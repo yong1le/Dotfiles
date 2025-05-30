@@ -8,9 +8,9 @@
 
 function get_sessions() {
   tmux ls | grep -v '(attached)' | cut -d: -f1
-  find ~/Developer/Projects -mindepth 1 -maxdepth 1 -type d &&
-    find ~/Developer/Projects/codecrafters -mindepth 1 -maxdepth 1 -type d &&
-    find ~/Developer/uni -mindepth 2 -maxdepth 2 -type d -not -path "*/.git/*"
+  find ~/Documents/Developer/Projects -mindepth 1 -maxdepth 1 -type d &&
+    find ~/Documents/Developer/cscc09 -mindepth 1 -maxdepth 1 -type d &&
+    find ~/Documents/Uni -mindepth 2 -maxdepth 2 -type d -not -path "*/.git/*"
 }
 
 if [[ $1 == "get_sessions" ]]; then
