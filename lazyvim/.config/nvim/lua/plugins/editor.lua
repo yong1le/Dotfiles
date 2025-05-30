@@ -46,18 +46,4 @@ return {
       current_line_blame = true,
     },
   },
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    opts = {
-      shade_terminals = false,
-      open_mapping = [[<c-/>]],
-      winbar = {
-        enabled = true,
-        name_formatter = function(term) --  term: Terminal
-          return "Terminal " .. term.id
-        end,
-      },
-    },
-  },
 }

@@ -56,9 +56,6 @@ return {
           },
         },
       },
-      explorer = {
-        replace_netrw = true,
-      },
     },
   },
 }

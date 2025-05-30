@@ -1,12 +1,5 @@
 return {
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    build = ":Copilot auth",
-    event = "BufReadPost",
-    opts = {},
-  },
-  {
     "olimorris/codecompanion.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -18,7 +11,7 @@ return {
           return require("codecompanion.adapters").extend("copilot", {
             schema = {
               model = {
-                default = "claude-3.7-sonnet",
+                default = "claude-sonnet-4",
               },
             },
           })
@@ -36,7 +29,7 @@ return {
       { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
       {
         "<leader>aa",
-        ":CodeCompanionChat<cr>",
+        ":CodeCompanionChat Toggle<cr>",
         desc = "AI Chat",
         mode = { "n", "v" },
         silent = true,

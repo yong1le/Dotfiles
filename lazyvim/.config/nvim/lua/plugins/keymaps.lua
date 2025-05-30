@@ -88,11 +88,4 @@ return {
       },
     },
   },
-  {
-    "akinsho/toggleterm.nvim",
-    keys = {
-      { "<C-/>", "<cmd>ToggleTerm<cr>", desc = "Terminal", mode = { "n", "i", "v", "t" } },
-      { "<leader>ft", "<cmd>TermSelect<cr>", desc = "Terminals" },
-    },
-  },
 }
