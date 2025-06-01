@@ -5,5 +5,5 @@ swayidle -w \
   resume 'brightnessctl -r' \
   timeout 300 'loginctl lock-session' \
   timeout 380 'niri msg action power-off-monitors' \
-  before-sleep 'loginctl lock-session' \
+  before-sleep 'swaylock -f' \
   timeout 600 'systemctl suspend'

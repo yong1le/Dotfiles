@@ -1,0 +1,185 @@
+@define-color accent @accent_bg_color;
+@define-color accent_fg @accent_fg_color;
+@define-color foreground @headerbar_bg_color;
+@define-color background @headerbar_fg_color;
+
+* {
+  font-size: 16px;
+  font-family: "JetBrainsMono Nerd Font,JetBrainsMono NF";
+  min-height: 10px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+}
+
+menu,
+tooltip {
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid @dark_1;
+  background: @background;
+  color: @accent;
+}
+
+menu label,
+tooltip label {
+  padding: 2px 10px;
+  font-size: 14px;
+  color: @accent;
+}
+
+window#waybar {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  background: @background;
+  color: @foreground;
+}
+
+.modules-left,
+.modules-right,
+.modules-center {
+  padding: 6px 16px;
+}
+
+#workspaces button {
+  transition-property: color;
+  transition-duration: 0.5s;
+  background: transparent;
+  color: @foreground;
+  padding-right: 5px;
+}
+
+#workspaces button.urgent {
+  color: @orange_3;
+}
+
+#workspaces button.active {
+  color: @accent;
+}
+
+#submap {
+  font-size: 14px;
+  transition-property: color;
+  transition-duration: 0.5s;
+  color: @accent;
+  margin: 0px 10px;
+}
+
+#taskbar button {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  padding: 0 5px;
+  border-radius: 10px;
+}
+
+#taskbar button.active {
+  background: alpha(@accent, 0.5);
+}
+
+#clock {
+  transition-property: color;
+  transition-duration: 0.5s;
+  color: alpha(@foreground, 0.8);
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#clock:hover {
+  color: @foreground;
+}
+
+#calendar {
+  background: alpha(@background, 0.6);
+}
+
+#privacy {
+  margin: 0 5px;
+}
+
+#privacy-item.screenshare {
+  color: @red_3;
+}
+
+#privacy-item.audio-in {
+  color: @orange_3;
+}
+
+#network.disabled {
+  color: alpha(@foreground, 0.3);
+}
+
+#power-profiles-daemon.performance {
+  color: @red_3;
+}
+
+#power-profiles-daemon.balanced {
+  color: @orange_3;
+}
+
+#power-profiles-daemon.power-saver {
+  color: @green_1;
+}
+
+#backlight-slider slider,
+#pulseaudio-slider slider {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+#backlight-slider trough,
+#pulseaudio-slider trough {
+  min-width: 60px;
+  min-height: 6px;
+  border-radius: 8px;
+}
+
+#backlight-slider highlight,
+#pulseaudio-slider highlight {
+  border-radius: 8px;
+  background-color: @accent;
+}
+
+#idle_inhibitor,
+#custom-notification,
+#bluetooth,
+#network,
+#pulseaudio,
+#backlight,
+#battery,
+#custom-power {
+  transition-property: color;
+  transition-duration: 0.5s;
+}
+
+#custom-notification:hover,
+#bluetooth:hover,
+#network:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#battery:hover {
+  color: @accent;
+}
+
+#idle_inhibitor:hover,
+#custom-power:hover {
+  color: @red_3;
+}
+
+#idle_inhibitor.activated {
+  color: @red_3;
+}
+
+#battery.warning {
+  color: @orange_3;
+}
+
+#battery.critical {
+  color: @red_3;
+}
+
+#tray {
+  padding-right: 5px;
+}

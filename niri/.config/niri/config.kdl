@@ -1,35 +1,45 @@
+// Auth
 spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
-spawn-at-startup "xrandr" "--output" "DP-2" "--primary"
+// spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
+
+// Wallpaper
+spawn-at-startup "swaybg" "-m" "fill" "-i" "~/Pictures/Wallpapers/10-blur.jpg" "&" "disown"
 spawn-at-startup "swww-daemon" "--format" "xrgb"
-spawn-at-startup "waypaper" "--restore"
+spawn-at-startup "swww" "img" "~/Pictures/Wallpapers/10.jpg"
+
+// Clipboard history
 spawn-at-startup "bash" "-c" "wl-paste --type text --watch cliphist store -max-items 30"
 spawn-at-startup "bash" "-c" "wl-paste --type image --watch cliphist store -max-items 30"
+
+// Widgets
 spawn-at-startup "waybar"
-spawn-at-startup "fcitx5-remote" "-r"
-spawn-at-startup "swayosd-server" "-s" "~/.config/swayosd/style.css"
+// spawn-at-startup "swayosd-server" "-s" "~/.config/swayosd/style.css"
 spawn-at-startup "swaync"
-spawn-at-startup "hypridle"
-spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
+
+//Other
+// spawn-at-startup "fcitx5-remote" "-r"
 spawn-at-startup "/home/yonglehe/.config/niri/scripts/idle.sh"
 spawn-at-startup "udiskie" "--tray"
+
+// Xwayland
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "xrandr" "--output" "DP-2" "--primary"
 
 prefer-no-csd
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //// ENV
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 environment {
-    GDK_SCLAE "1.5"
     QT_QPA_PLATFORM "wayland"
     QT_QPA_PLATFORMTHEME "qt5ct"
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
     DISPLAY ":0"
 }
 
+cursor {
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //// Input
@@ -50,9 +60,7 @@ input {
         natural-scroll
     }
 
-    mouse {
-        natural-scroll
-    }
+    mouse {}
 
     focus-follows-mouse max-scroll-amount="0%"
 }
@@ -62,18 +70,18 @@ input {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 output "eDP-1" {
-
     mode "2240x1400@60"
-
     scale 1.25
-
-    transform "normal"
-
-    position x=1440 y=0
+    position x=0 y=1440
 }
-output "DP-2" {
+output "DEL,DELL S2722DC,72F7HD3" {
     mode "2560x1440@75"
+    focus-at-startup
     position x=0 y=0
+}
+output "SKG,H24T27,0x00000001" {
+    mode "2560x1440@100"
+    position x=2560 y=0
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -94,20 +102,18 @@ layout {
     default-column-width { proportion 0.5; }
 
     focus-ring {
-        off 
+        off
     }
 
     border {
         width 2
-        active-gradient from="#A7C080" to="#D699B6" angle=90
-        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        // active-gradient from="#A7C080" to="#D699B6" angle=90
+        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
     struts {
         left 5
         right 5
-        // top 64
-        // bottom 64
     }
 }
 
@@ -115,7 +121,7 @@ layout {
 //// Animations
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 animations {
-    slowdown 3.0
+    // slowdown 3.0
     workspace-switch {
         spring damping-ratio=0.8 stiffness=600 epsilon=0.001
     }
@@ -157,6 +163,22 @@ animations {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Overview
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+overview {
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Gestures
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //// Window Rules
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -173,17 +195,45 @@ window-rule {
 }
 
 // Block password managers from screen capture
-window-rule { 
+window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
 
     block-out-from "screen-capture"
 }
 
+// Highlight screen cast targets
 window-rule {
-    match app-id=r#"^org.wezfurlong.wezterm.*"#
-    match app-id=r#"^neovide$"#
-    opacity 0.97
+  match is-window-cast-target=true
+
+  focus-ring {
+    active-color "#f38ba8"
+    inactive-color "#7d0d2d"
+  }
+
+  border {
+    inactive-color "#7d0d2d"
+  }
+
+  shadow {
+    color "#7d0d2d70"
+  }
+
+  tab-indicator {
+    active-color "#f38ba8"
+    inactive-color "#7d0d2d"
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Layer Rules
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+layer-rule {
+    // This is for swaybg; change for other wallpaper tools.
+    // Find the right namespace by running niri msg layers.
+    match namespace="^wallpaper$"
+    place-within-backdrop true
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -193,53 +243,62 @@ window-rule {
 binds {
     // shows a list of important hotkeys.
     Mod+Slash { show-hotkey-overlay; }
+    Mod+Tab repeat=false { toggle-overview; }
 
-    Mod+Return repeat=false { spawn "bash" "-c" "wezterm start ~/.local/scripts/start_tmux"; }
+    // App Shortcut
+    Mod+Return repeat=false { spawn "gtk-launch" "com.mitchellh.ghostty.desktop"; }
     Mod+Space repeat=false { spawn "fuzzel"; }
-    Super+M repeat=false { spawn "loginctl" "lock-session"; }
+    Super+M repeat=false { spawn "swaylock" "-f"; }
     Super+E repeat=false { spawn "nautilus"; }
-    Super+B repeat=false { spawn "flatpak" "run" "org.mozilla.firefox"; }
+    Super+B repeat=false { spawn "gtk-launch" "com.brave.Browser.desktop"; }
     Mod+V repeat=false { spawn "bash" "-c" "cliphist list | fuzzel -d | cliphist decode | wl-copy"; }
     Mod+N repeat=false { spawn "swaync-client" "-t" ; }
 
     // Volume
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
-    XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
+    // XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
+    // XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
+    // XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    // XF86AudioMicMute     allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "pamixer" "--increase" "5"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "pamixer" "--decrease" "5"; }
+    XF86AudioMute        allow-when-locked=true { spawn "pamixer" "--toggle-mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "pamixer" "--default--source" "--toggle-mute"; }
 
     // Brightness
-    XF86MonBrightnessUp allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "10%-"; }
 
     Mod+C { close-window; }
 
+    // Focus window
     Mod+H { focus-column-or-monitor-left; }
     Mod+J { focus-window-or-workspace-down; }
     Mod+K { focus-window-or-workspace-up; }
     Mod+L { focus-column-or-monitor-right; }
+
+    // Move window
     Mod+Shift+H { move-column-left-or-to-monitor-left; }
     Mod+Shift+J { move-window-down-or-to-workspace-down; }
     Mod+Shift+K { move-window-up-or-to-workspace-up; }
     Mod+Shift+L { move-column-right-or-to-monitor-right; }
 
+    // Move workspace
     Mod+Shift+Down { move-workspace-down ;}
     Mod+Shift+Up { move-workspace-up; }
+    Mod+Shift+Left { move-workspace-to-monitor-left; }
+    Mod+Shift+Right { move-workspace-to-monitor-right; }
 
-    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
-    Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
-    Mod+Ctrl+WheelScrollDown      cooldown-ms=150 { focus-column-right; }
-    Mod+Ctrl+WheelScrollUp        cooldown-ms=150 { focus-column-left; }
-
+    // Focus window (mouse)
+    Mod+WheelScrollDown cooldown-ms=150 { focus-window-or-workspace-down; }
+    Mod+WheelScrollUp   cooldown-ms=150 { focus-window-or-workspace-up; }
     Mod+Shift+WheelScrollDown     cooldown-ms=150 { move-column-to-workspace-down; }
     Mod+Shift+WheelScrollUp       cooldown-ms=150 { move-column-to-workspace-up; }
 
-    Mod+WheelScrollRight      { focus-column-right; }
-    Mod+WheelScrollLeft       { focus-column-left; }
-    Mod+Shift+WheelScrollRight { move-column-right; }
-    Mod+Shift+WheelScrollLeft  { move-column-left; }
-    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
-    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+    // Move window (mouse)
+    Mod+WheelScrollRight   cooldown-ms=150   { focus-column-right; }
+    Mod+WheelScrollLeft  cooldown-ms=150     { focus-column-left; }
+    Mod+Shift+WheelScrollRight cooldown-ms=150 { move-column-right; }
+    Mod+Shift+WheelScrollLeft cooldown-ms=150  { move-column-left; }
 
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
@@ -263,37 +322,43 @@ binds {
     Mod+Shift+9 { move-window-to-workspace 9; }
     Mod+Shift+0 { move-window-to-workspace 10; }
 
-    // Switches focus between the current and the previous workspace.
-    // Mod+Tab { focus-workspace-previous; }
+    // Tabs
+    Mod+T { toggle-column-tabbed-display; }
+    // Floating
+    Mod+W { toggle-window-floating; }
+
+    // Stacking
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
 
+    // Preset column size
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { reset-window-height; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
+    Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
     Mod+Shift+C { center-column; }
 
+    // Column size
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
-    // Mod+Space       { switch-layout "next"; }
-    // Mod+Shift+Space { switch-layout "prev"; }
-
+    // Ss
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Mod+Print { screenshot-window; }
+    Alt+Shift+3 {screenshot;}
+    Ctrl+Alt+Shift+3 {screenshot-screen;}
+    Mod+Alt+Shift+3 {screenshot-window;}
 
-    // The quit action will show a confirmation dialog to avoid accidental exits.
-    Mod+Ctrl+Alt+M { spawn "wlogout"; }
-
+    Mod+Ctrl+Alt+M { quit; }
     Mod+Shift+P { power-off-monitors; }
 
-    Mod+Semicolon { spawn "~/.config/hypr/scripts/refresh"; }
+    Mod+Semicolon { spawn "~/.config/niri/scripts/refresh.sh"; }
 }
 
 hotkey-overlay {
