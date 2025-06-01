@@ -2,18 +2,30 @@
 ---
 - MouseGesture: Mouse Gesture Button
 - KeyPress:
-  - Super_L
+  - [Super_L, Tab]
   - click
 ...
 ---
 - MouseGesture: Mouse Left
 - KeyPress:
-  - [Super_L, Alt_L, Left]
+  - [Super_L, Alt_L, h]
   - click
 ...
 ---
 - MouseGesture: Mouse Right
 - KeyPress:
-  - [Super_L, Alt_L, Right]
+  - [Super_L, Alt_L, l]
+  - click
+...
+---
+- MouseGesture: Mouse Down
+- KeyPress:
+  - [Super_L, j]
+  - click
+...
+---
+- MouseGesture: Mouse Up
+- KeyPress:
+  - [Super_L, k]
   - click
 ...

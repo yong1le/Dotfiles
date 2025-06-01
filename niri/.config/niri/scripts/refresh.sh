@@ -2,8 +2,10 @@
 
 killall waybar
 killall swaync
-killall swayosd-server
+killall avizo-service
+killall walker
 
 waybar &
 swaync &
-swayosd-server &
+avizo-service &
+walker --gapplication-service &

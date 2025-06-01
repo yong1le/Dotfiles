@@ -74,7 +74,7 @@
     "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
     "tooltip": true,
     "tooltip-format": "{essid} ({signalStrength}%)",
-    "on-click": "~/.config/waybar/scripts/select-network.sh",
+    "on-click": "walker --modules=network",
     "on-click-right": "nm-connection-editor",
   },
   "group/volume": {
@@ -219,6 +219,6 @@
     "format": " 󰐥 ",
     "tooptip": true,
     "tooltip-format": "Shutdown",
-    "on-click": "wlogout",
+    "on-click": "walker --modules=power",
   },
 }

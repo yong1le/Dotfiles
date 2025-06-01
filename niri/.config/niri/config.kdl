@@ -3,18 +3,15 @@ spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
 // spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
 
 // Wallpaper
-spawn-at-startup "swaybg" "-m" "fill" "-i" "~/Pictures/Wallpapers/10-blur.jpg" "&" "disown"
 spawn-at-startup "swww-daemon" "--format" "xrgb"
-spawn-at-startup "swww" "img" "~/Pictures/Wallpapers/10.jpg"
-
-// Clipboard history
-spawn-at-startup "bash" "-c" "wl-paste --type text --watch cliphist store -max-items 30"
-spawn-at-startup "bash" "-c" "wl-paste --type image --watch cliphist store -max-items 30"
+spawn-at-startup "swww" "img" "~/.local/share/niri-wallpaper/current"
+spawn-at-startup "swaybg" "-m" "fill" "-i" "~/.local/share/niri-wallpaper/current-blur"
 
 // Widgets
+spawn-at-startup "walker" "--gapplication-service"
 spawn-at-startup "waybar"
-// spawn-at-startup "swayosd-server" "-s" "~/.config/swayosd/style.css"
 spawn-at-startup "swaync"
+spawn-at-startup "avizo-service"
 
 //Other
 // spawn-at-startup "fcitx5-remote" "-r"
@@ -92,6 +89,7 @@ layout {
 
     center-focused-column "on-overflow"
     always-center-single-column
+    empty-workspace-above-first
 
     preset-column-widths {
         proportion 0.33333
@@ -106,9 +104,13 @@ layout {
     }
 
     border {
-        width 2
-        // active-gradient from="#A7C080" to="#D699B6" angle=90
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        width 4
+        inactive-color "#00000000"
+        active-gradient from="#80a4ff" to="#bbddff" angle=45
+    }
+
+    tab-indicator {
+        place-within-column
     }
 
     struts {
@@ -126,36 +128,34 @@ animations {
         spring damping-ratio=0.8 stiffness=600 epsilon=0.001
     }
 
+    overview-open-close {
+        spring damping-ratio=0.8 stiffness=600 epsilon=0.001
+    }
+
     window-open {
-        duration-ms 150
-        curve "ease-out-expo"
+        spring damping-ratio=0.8 stiffness=600 epsilon=0.001
     }
 
     window-close {
-        duration-ms 150
-        curve "ease-out-quad"
+        spring damping-ratio=0.8 stiffness=600 epsilon=0.001
     }
 
     horizontal-view-movement {
-        spring damping-ratio=0.9 stiffness=800 epsilon=0.001
+        spring damping-ratio=0.8 stiffness=800 epsilon=0.001
     }
 
     window-movement {
-        spring damping-ratio=0.9 stiffness=800 epsilon=0.001
+        spring damping-ratio=0.8 stiffness=800 epsilon=0.001
     }
 
     window-resize {
-        spring damping-ratio=0.9 stiffness=800 epsilon=0.001
+        spring damping-ratio=0.8 stiffness=800 epsilon=0.001
     }
 
     config-notification-open-close {
-        spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+        spring damping-ratio=0.8 stiffness=1000 epsilon=0.001
     }
 
-    screenshot-ui-open {
-        duration-ms 200
-        curve "ease-out-quad"
-    }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -183,8 +183,23 @@ gestures {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 window-rule {
-    match app-id=r#"^vesktop$"#
-    default-column-width { proportion 1.0; }
+    match app-id="org.gnome.Nautilus|com.saivert.pwvucontrol|nwg-look|xdg-desktop-portal-gnome|blueman-manager|nm-connection-editor"
+    open-floating true
+}
+
+window-rule {
+    match title="^wifi-selector$"
+    open-floating true
+}
+
+window-rule {
+  match is-floating=true
+  shadow {
+    on
+  }
+  border {
+    active-color "#42bd5f"
+  }
 }
 
 // Rounded corners
@@ -206,22 +221,9 @@ window-rule {
 window-rule {
   match is-window-cast-target=true
 
-  focus-ring {
-    active-color "#f38ba8"
-    inactive-color "#7d0d2d"
-  }
-
   border {
-    inactive-color "#7d0d2d"
-  }
-
-  shadow {
-    color "#7d0d2d70"
-  }
-
-  tab-indicator {
-    active-color "#f38ba8"
-    inactive-color "#7d0d2d"
+    active-color "#fab114"
+    inactive-color "#fab114"
   }
 }
 
@@ -236,6 +238,14 @@ layer-rule {
     place-within-backdrop true
 }
 
+layer-rule {
+    match namespace="^avizo$"
+    shadow {
+        on
+        draw-behind-window true
+    }
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //// Binds
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -247,26 +257,31 @@ binds {
 
     // App Shortcut
     Mod+Return repeat=false { spawn "gtk-launch" "com.mitchellh.ghostty.desktop"; }
-    Mod+Space repeat=false { spawn "fuzzel"; }
-    Super+M repeat=false { spawn "swaylock" "-f"; }
+    Mod+Space repeat=false { spawn "walker" "--modules=applications,calc" ; }
+    Super+M repeat=false { spawn "~/.config/niri/scripts/lock.sh"; }
     Super+E repeat=false { spawn "nautilus"; }
     Super+B repeat=false { spawn "gtk-launch" "com.brave.Browser.desktop"; }
-    Mod+V repeat=false { spawn "bash" "-c" "cliphist list | fuzzel -d | cliphist decode | wl-copy"; }
+    Mod+V repeat=false { spawn "bash" "-c" "walker --modules=clipboard"; }
     Mod+N repeat=false { spawn "swaync-client" "-t" ; }
+    Mod+Shift+W { spawn "~/.config/niri/scripts/wallpaper.sh"; }
 
     // Volume
     // XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
     // XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
     // XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
     // XF86AudioMicMute     allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "pamixer" "--increase" "5"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "pamixer" "--decrease" "5"; }
-    XF86AudioMute        allow-when-locked=true { spawn "pamixer" "--toggle-mute"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "pamixer" "--default--source" "--toggle-mute"; }
+    // XF86AudioRaiseVolume allow-when-locked=true { spawn "pamixer" "--increase" "5"; }
+    // XF86AudioLowerVolume allow-when-locked=true { spawn "pamixer" "--decrease" "5"; }
+    // XF86AudioMute        allow-when-locked=true { spawn "pamixer" "--toggle-mute"; }
+    // XF86AudioMicMute     allow-when-locked=true { spawn "pamixer" "--default--source" "--toggle-mute"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "volumectl"  "-u" "up"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "volumectl"  "-u" "down"; }
+    XF86AudioMute        allow-when-locked=true { spawn "volumectl"  "toggle-mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "volumectl"  "-m" "toggle-mute"; }
 
     // Brightness
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "10%-"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "lightctl"  "up"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "lightctl" "down" ; }
 
     Mod+C { close-window; }
 
@@ -275,6 +290,9 @@ binds {
     Mod+J { focus-window-or-workspace-down; }
     Mod+K { focus-window-or-workspace-up; }
     Mod+L { focus-column-or-monitor-right; }
+
+    Mod+Alt+H { focus-column-left; }
+    Mod+Alt+L { focus-column-right; }
 
     // Move window
     Mod+Shift+H { move-column-left-or-to-monitor-left; }
@@ -355,7 +373,7 @@ binds {
     Ctrl+Alt+Shift+3 {screenshot-screen;}
     Mod+Alt+Shift+3 {screenshot-window;}
 
-    Mod+Ctrl+Alt+M { quit; }
+    Mod+Ctrl+Alt+M { spawn "walker" "--modules=power"; }
     Mod+Shift+P { power-off-monitors; }
 
     Mod+Semicolon { spawn "~/.config/niri/scripts/refresh.sh"; }
