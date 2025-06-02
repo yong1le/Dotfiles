@@ -14,7 +14,7 @@ spawn-at-startup "swaync"
 spawn-at-startup "avizo-service"
 
 //Other
-// spawn-at-startup "fcitx5-remote" "-r"
+spawn-at-startup "fcitx5-remote" "-r"
 spawn-at-startup "/home/yonglehe/.config/niri/scripts/idle.sh"
 spawn-at-startup "udiskie" "--tray"
 
@@ -33,6 +33,8 @@ environment {
     QT_QPA_PLATFORMTHEME "qt5ct"
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
     DISPLAY ":0"
+    GTK_IM_MODULE "fcitx"
+    QT_IM_MODULE "fcitx"
 }
 
 cursor {
@@ -47,7 +49,6 @@ input {
         xkb {
             layout "us"
         }
-
         repeat-delay 350
         repeat-rate 25
     }
