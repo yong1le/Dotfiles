@@ -1,6 +1,7 @@
 #!/bin/bash
 
 swaylock \
+  -f \
   --image ~/.local/share/niri-wallpaper/current-blur \
   --clock \
   --timestr '%I:%M %p' --datestr '%d, %B %Y' \

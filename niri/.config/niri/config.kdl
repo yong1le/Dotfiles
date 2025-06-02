@@ -5,7 +5,7 @@ spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
 // Wallpaper
 spawn-at-startup "swww-daemon" "--format" "xrgb"
 spawn-at-startup "swww" "img" "~/.local/share/niri-wallpaper/current"
-spawn-at-startup "swaybg" "-m" "fill" "-i" "~/.local/share/niri-wallpaper/current-blur"
+spawn-at-startup "bash" "-c" "swaybg -m fill -i ~/.local/share/niri-wallpaper/current-blur & disown"
 
 // Widgets
 spawn-at-startup "walker" "--gapplication-service"
@@ -200,6 +200,12 @@ window-rule {
   border {
     active-color "#42bd5f"
   }
+}
+
+window-rule {
+    match app-id="dev.zed.Zed|brave-browser"
+
+    open-maximized true
 }
 
 // Rounded corners
