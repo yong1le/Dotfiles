@@ -1,5 +1,6 @@
 app_launch_prefix = ""
 terminal_title_flag = ""
+terminal = "ghostty"
 locale = ""
 close_when_open = false
 theme = "adwaita"
