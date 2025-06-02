@@ -1,25 +1,31 @@
 // Auth
+spawn-at-startup "dbus-update-activation-environment" "--all"
 spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
 // spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
 
+
+// Gnome calendar
+spawn-at-startup "/usr/libexec/evolution-source-registry"
+spawn-at-startup "/usr/libexec/evolution-calendar-factory"
+
 // Wallpaper
-spawn-at-startup "swww-daemon" "--format" "xrgb"
-spawn-at-startup "swww" "img" "~/.local/share/niri-wallpaper/current"
-spawn-at-startup "bash" "-c" "swaybg -m fill -i ~/.local/share/niri-wallpaper/current-blur & disown"
+spawn-at-startup "/usr/bin/swww-daemon" "--format" "xrgb"
+spawn-at-startup "/usr/bin/swww" "img" "~/.local/share/niri-wallpaper/current"
+spawn-at-startup "bash" "-c" "/usr/bin/swaybg -m fill -i ~/.local/share/niri-wallpaper/current-blur & disown"
 
 // Widgets
-spawn-at-startup "walker" "--gapplication-service"
-spawn-at-startup "waybar"
-spawn-at-startup "swaync"
-spawn-at-startup "avizo-service"
+spawn-at-startup "/usr/bin/walker" "--gapplication-service"
+spawn-at-startup "/usr/bin/waybar"
+spawn-at-startup "/usr/bin/swaync"
+spawn-at-startup "/usr/local/bin/avizo-service"
 
 //Other
-spawn-at-startup "fcitx5-remote" "-r"
+spawn-at-startup "/usr/bin/fcitx5-remote" "-r"
 spawn-at-startup "/home/yonglehe/.config/niri/scripts/idle.sh"
-spawn-at-startup "udiskie" "--tray"
+spawn-at-startup "/usr/bin/udiskie" "--tray"
 
 // Xwayland
-spawn-at-startup "xwayland-satellite"
+spawn-at-startup "~/Documents/Developer/Labs/xwayland-satellite/target/release/xwayland-satellite"
 
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
@@ -204,7 +210,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="dev.zed.Zed|brave-browser"
+    match app-id="dev.zed.Zed|brave-browser|^code$"
 
     open-maximized true
 }
