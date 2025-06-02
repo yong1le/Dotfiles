@@ -26,7 +26,7 @@ if [ -n "$wallpaper" ]; then
   cp "$wallpaper" "$DEST_DIR/current"
 
   # Create a blurred version using ffmpeg
-  ffmpeg -i "$wallpaper" -vf "gblur=sigma=50" -f "$extension" -y "$DEST_DIR/current-blur"
+  ffmpeg -i "$wallpaper" -vf "format=rgba,gblur=sigma=50" -q 2 -f "$extension" -y "$DEST_DIR/current-blur"
 
   swww img ~/.local/share/niri-wallpaper/current
   swaybg -m fill -i ~/.local/share/niri-wallpaper/current-blur &

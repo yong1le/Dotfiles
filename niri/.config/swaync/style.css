@@ -62,7 +62,6 @@
 .control-center .notification-background .notification .notification-content {
   background-color: @background;
   padding: 0.818rem;
-  border: 1px solid alpha(@foreground, 0.3);
 }
 
 .control-center
@@ -256,6 +255,38 @@
   background-color: alpha(@foreground, 0.2);
 }
 
+.notification-row .notification-background .notification .notification-default-action:not(:only-child) {
+  /* When alternative actions are visible */
+  background-color: @background;
+  color: @foreground;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.notification-row .notification-background .notification .notification-action {
+  /* The alternative actions below the default action */
+  border-top: 1px solid @foreground;
+  border-radius: 0px;
+  border-right: 1px solid @foreground;
+  background-color: @background;
+  color: @foreground;
+}
+
+.notification-row .notification-background .notification .notification-action:hover {
+  /* The alternative actions below the default action */
+  background-color: rgba(200, 200, 200, 1);
+}
+
+.notification-row .notification-background .notification .notification-action:first-child {
+  /* add bottom border radius to eliminate clipping */
+  border-bottom-left-radius: 12px;
+}
+
+.notification-row .notification-background .notification .notification-action:last-child {
+  border-bottom-right-radius: 12px;
+  border-right: none;
+}
+
 .control-center {
   border-radius: 1.705rem;
   -gtk-outline-radius: 1.705rem;
@@ -271,19 +302,17 @@
 }
 
 .control-center trough {
-  background-color: #45475a;
+  background-color: rgba(200, 200, 200, 1);
   border-radius: 9999px;
   -gtk-outline-radius: 9999px;
   min-width: 0.545rem;
-  background-color: transparent;
 }
 
 .control-center slider {
   border-radius: 9999px;
   -gtk-outline-radius: 9999px;
-  /* min-width: 0.273rem;
-  min-height: 2.045rem; */
-  background-color: rgba(199, 197, 208, 0.31);
+  background-color: rgba(200, 200, 200, 1);
+  transition: background-color 100ms;
 }
 
 .control-center slider:hover {
