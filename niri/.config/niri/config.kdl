@@ -73,19 +73,20 @@ input {
 //// Output
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-output "eDP-1" {
-    mode "2240x1400@60"
-    scale 1.25
-    position x=0 y=1440
-}
-output "DEL,DELL S2722DC,72F7HD3" {
-    mode "2560x1440@75"
+output "Dell Inc. DELL S2722DC 72F7HD3" {
+    mode "2560x1440@74.983"
     focus-at-startup
     position x=0 y=0
 }
-output "SKG,H24T27,0x00000001" {
-    mode "2560x1440@100"
+output "Shenzhen KTC Technology Group H24T27 0x00000001" {
+    mode "2560x1440@100.001"
     position x=2560 y=0
+}
+output "eDP-1" {
+    mode "2240x1400"
+    scale 1.25
+    variable-refresh-rate
+    position x=600 y=1440
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
