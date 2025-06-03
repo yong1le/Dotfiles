@@ -105,7 +105,7 @@ window#waybar {
 }
 
 #power-profiles-daemon.power-saver {
-  background-color: @green_1;
+  background-color: @green_4;
 }
 
 #idle_inhibitor,

@@ -78,12 +78,11 @@
   },
   "network": {
     "format": "{icon}",
-    "format-disconnected": " 󰤭  ",
+    "format-disconnected": "󰤭 ",
     "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
     "tooltip": true,
     "tooltip-format": "{essid} ({signalStrength}%)",
-    "on-click": "walker --modules=network",
-    "on-click-right": "nm-connection-editor",
+    "on-click": "XDG_CURRENT_DESKTOP=GNOME gtk-launch gnome-wifi-panel.desktop",
   },
   "pulseaudio": {
     "format": "{icon}",
@@ -101,7 +100,7 @@
     "on-click": "volumectl toggle-mute",
     "on-scroll-up": "volumectl -u up",
     "on-scroll-down": "volumectl -u down",
-    "on-click-right": "gtk-launch com.saivert.pwvucontrol.desktop",
+    "on-click-right": "XDG_CURRENT_DESKTOP=GNOME gtk-launch gnome-sound-panel.desktop",
     "smooth-scrolling-threshold": 1,
   },
   "pulseaudio#mic": {

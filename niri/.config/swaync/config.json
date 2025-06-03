@@ -74,6 +74,25 @@
       "show-per-app-label": false,
       "expand-button-label": "",
       "collapse-button-label": ""
+    },
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "",
+          "command": "niri msg pick-color",
+          "type": "normal"
+        },
+        {
+          "label": "",
+          "command": "niri msg pick-color",
+          "type": "normal"
+        },
+        {
+          "label": "",
+          "command": "niri msg pick-color",
+          "type": "normal"
+        }
+      ]
     }
   }
 }
