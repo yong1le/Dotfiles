@@ -265,16 +265,6 @@ label = "Logout"
 
 
 [[plugins.entries]]
-exec = "~/.config/niri/scripts/lock.sh"
+exec = "loginctl lock-session"
 icon = "system-lock-screen"
 label = "Lock Screen"
-
-[[plugins]]
-keep_sort = false
-name = "network"
-placeholder = "Networks"
-recalculate_score = true
-show_icon_when_single = true
-switcher_only = true
-src = "nmcli dev wifi rescan && nmcli --terse device wifi | cut -d: -f8 | sort | uniq | grep -v '^$'"
-cmd = "ghostty --title=wifi-selector -e ~/.config/niri/scripts/network.sh \"'%RESULT%'\""

@@ -19,8 +19,8 @@ menu,
 tooltip {
   border-radius: 8px;
   padding: 10px;
-  border: 1px solid @hover;
-  background: #ffffff;
+  border: 1px solid alpha(@bacground,0.3);
+  background-color: alpha(@foreground, 0.95);
   color: @background;
 }
 
@@ -58,6 +58,10 @@ window#waybar {
   padding-right: 5px;
 }
 
+#workspaces button:hover {
+  color: @group;
+}
+
 #workspaces button.urgent {
   color: @orange_3;
 }
@@ -70,9 +74,16 @@ window#waybar {
   transition-property: color;
   transition-duration: 0.5s;
   color: alpha(@foreground, 0.8);
-  font-family: "Inter";
-  font-size: 14px;
+  font-family: "Adwaita Sans";
+  font-size: 13px;
   font-weight: bold;
+  transition: background-color 0.5s, color 0.5s;
+  border-radius: 10px;
+  padding: 0 10px;
+}
+
+#clock:hover {
+  background: @group;
 }
 
 #privacy {
@@ -92,20 +103,20 @@ window#waybar {
 }
 
 #power-profiles-daemon {
-  padding: 0 15px 0 12px;
+  padding: 0 8px;
   border-radius: 10px;
   color: @foreground;
 }
 #power-profiles-daemon.performance {
-  background-color: @red_3;
+  color: @red_3;
 }
 
 #power-profiles-daemon.balanced {
-  background-color: @orange_3;
+  color: @orange_3;
 }
 
 #power-profiles-daemon.power-saver {
-  background-color: @green_4;
+  color: @green_4;
 }
 
 #idle_inhibitor,
@@ -115,7 +126,8 @@ window#waybar {
 #pulseaudio,
 #backlight,
 #battery,
-#custom-power {
+#custom-power,
+#custom-expand {
   transition-property: background-color;
   transition-duration: 0.5s;
   border-radius: 10px;
@@ -126,8 +138,13 @@ window#waybar {
 #bluetooth:hover,
 #network:hover,
 #pulseaudio:hover,
-#backlight:hover {
+#backlight:hover,
+#battery:hover
+ {
   background-color: @accent_bg_color;
+}
+#custom-expand:hover {
+  background-color: @group;
 }
 
 #idle_inhibitor:hover,
@@ -169,7 +186,7 @@ window#waybar {
 /* Icons */
 
 #battery {
-  padding: 0 2px;
+  padding: 0 8px;
 }
 
 #backlight {
@@ -194,10 +211,14 @@ window#waybar {
 }
 
 #custom-notification {
-  padding: 0 10px 0 9px;
+  padding: 0 8px 0 7px;
   margin-right: 6px;
 }
 
 #idle_inhibitor {
   padding: 0 8px 0 8px;
+}
+
+#custom-expand {
+  padding: 0 8px;
 }

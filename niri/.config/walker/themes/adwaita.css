@@ -1,5 +1,5 @@
-@define-color foreground rgba(0, 0, 0, 0.8);
-@define-color background rgba(255, 255, 255, 0.9);
+@define-color background rgba(0, 0, 0, 0.95);
+@define-color foreground rgba(255, 255, 255, 1);
 @define-color color1 @accent_bg_color;
 
 #window,
@@ -37,7 +37,7 @@ slider,
 }
 
 #box {
-  border-radius: 20px;
+  border-radius: 10px;
   background: @background;
   padding: 32px;
   border: 1px solid lighter(@background);

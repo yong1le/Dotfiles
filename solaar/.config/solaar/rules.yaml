@@ -20,12 +20,12 @@
 ---
 - MouseGesture: Mouse Down
 - KeyPress:
-  - [Super_L, j]
+  - [Super_L, Alt_L, j]
   - click
 ...
 ---
 - MouseGesture: Mouse Up
 - KeyPress:
-  - [Super_L, k]
+  - [Super_L, Alt_L, k]
   - click
 ...

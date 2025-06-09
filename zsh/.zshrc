@@ -51,8 +51,6 @@ setopt histignorealldups sharehistory
 autoload -Uz compinit
 compinit
 
-alias zed="flatpak run dev.zed.Zed"
-
 # Auto-Suggestions and Syntax Highlighting
 if [ ! -e ~/.zsh/fsh ]; then
     git clone https://github.com/zdharma-continuum/fast-syntax-highlighting ~/.zsh/fsh

@@ -1,12 +1,11 @@
 // Auth
 spawn-at-startup "dbus-update-activation-environment" "--all"
 spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
-// spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
+// since gnome polkit go removed
+spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
 
-
-// Gnome calendar
-spawn-at-startup "/usr/libexec/evolution-source-registry"
-spawn-at-startup "/usr/libexec/evolution-calendar-factory"
+// GSconnect/Kdeconnect
+spawn-at-startup "gtk-launch" "org.gnome.Shell.Extensions.GSConnect.desktop"
 
 // Wallpaper
 spawn-at-startup "/usr/bin/swww-daemon" "--format" "xrgb"
@@ -39,8 +38,6 @@ environment {
     QT_QPA_PLATFORMTHEME "qt5ct"
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
     DISPLAY ":0"
-    GTK_IM_MODULE "fcitx"
-    QT_IM_MODULE "fcitx"
 }
 
 cursor {
@@ -267,7 +264,7 @@ binds {
     // App Shortcut
     Mod+Return repeat=false { spawn "gtk-launch" "com.mitchellh.ghostty.desktop"; }
     Mod+Space repeat=false { spawn "walker" "--modules=applications,calc" ; }
-    Super+M repeat=false { spawn "~/.config/niri/scripts/lock.sh"; }
+    Super+M repeat=false { spawn "loginctl" "lock-session"; }
     Super+E repeat=false { spawn "nautilus"; }
     Super+B repeat=false { spawn "gtk-launch" "com.brave.Browser.desktop"; }
     Mod+V repeat=false { spawn "bash" "-c" "walker --modules=clipboard"; }
@@ -283,14 +280,14 @@ binds {
     // XF86AudioLowerVolume allow-when-locked=true { spawn "pamixer" "--decrease" "5"; }
     // XF86AudioMute        allow-when-locked=true { spawn "pamixer" "--toggle-mute"; }
     // XF86AudioMicMute     allow-when-locked=true { spawn "pamixer" "--default--source" "--toggle-mute"; }
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "volumectl"  "-u" "up"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "volumectl"  "-u" "down"; }
-    XF86AudioMute        allow-when-locked=true { spawn "volumectl"  "toggle-mute"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "volumectl"  "-m" "toggle-mute"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "volumectl" "-d" "-u" "up"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "volumectl" "-d" "-u" "down"; }
+    XF86AudioMute        allow-when-locked=true { spawn "volumectl" "-d" "toggle-mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "volumectl" "-d" "-m" "toggle-mute"; }
 
     // Brightness
-    XF86MonBrightnessUp allow-when-locked=true { spawn "lightctl"  "up"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "lightctl" "down" ; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "lightctl" "-d" "up"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "lightctl" "-d" "down" ; }
 
     Mod+C { close-window; }
 
@@ -302,6 +299,8 @@ binds {
 
     Mod+Alt+H { focus-column-left; }
     Mod+Alt+L { focus-column-right; }
+    Mod+Alt+J { focus-workspace-down; }
+    Mod+Alt+K { focus-workspace-up; }
 
     // Move window
     Mod+Shift+H { move-column-left-or-to-monitor-left; }
@@ -353,6 +352,7 @@ binds {
     Mod+T { toggle-column-tabbed-display; }
     // Floating
     Mod+W { toggle-window-floating; }
+    Alt+Tab {switch-focus-between-floating-and-tiling;}
 
     // Stacking
     Mod+Comma  { consume-window-into-column; }

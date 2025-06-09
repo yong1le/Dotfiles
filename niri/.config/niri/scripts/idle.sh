@@ -5,5 +5,7 @@ swayidle -w \
   resume 'brightnessctl -r' \
   timeout 300 '~/.config/niri/scripts/lock.sh' \
   timeout 380 '/usr/bin/niri msg action power-off-monitors' \
-  before-sleep '~/.config/niri/scripts/lock.sh' \
-  timeout 600 'systemctl suspend'
+  resume '/usr/bin/niri msg action power-on-monitors' \
+  before-sleep 'loginctl lock-session' \
+  timeout 600 'systemctl suspend' \
+  lock '~/.config/niri/scripts/lock.sh'
