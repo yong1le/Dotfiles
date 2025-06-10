@@ -20,7 +20,7 @@ spawn-at-startup "/usr/local/bin/avizo-service"
 
 //Other
 spawn-at-startup "/usr/bin/fcitx5-remote" "-r"
-spawn-at-startup "/home/yonglehe/.config/niri/scripts/idle.sh"
+spawn-at-startup "systemctl" "--user" "start" "hypridle.service"
 spawn-at-startup "/usr/bin/udiskie" "--tray"
 
 // Xwayland
@@ -92,9 +92,8 @@ output "eDP-1" {
 layout {
     gaps 5
 
-    center-focused-column "on-overflow"
+    center-focused-column "never"
     always-center-single-column
-    // empty-workspace-above-first
 
     preset-column-widths {
         proportion 0.33333
@@ -114,13 +113,18 @@ layout {
         active-gradient from="#80a4ff" to="#bbddff" angle=45
     }
 
+    shadow {
+      on
+      draw-behind-window true
+    }
+
     tab-indicator {
         place-within-column
     }
 
     struts {
-        left 5
-        right 5
+        left 10
+        right 10
     }
 }
 
@@ -194,9 +198,6 @@ window-rule {
 
 window-rule {
   match is-floating=true
-  shadow {
-    on
-  }
   border {
     active-color "#42bd5f"
   }
@@ -244,13 +245,6 @@ layer-rule {
     place-within-backdrop true
 }
 
-layer-rule {
-    match namespace="^avizo$"
-    shadow {
-        on
-        draw-behind-window true
-    }
-}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //// Binds
@@ -272,14 +266,6 @@ binds {
     Mod+Shift+W { spawn "~/.config/niri/scripts/wallpaper.sh"; }
 
     // Volume
-    // XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
-    // XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
-    // XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
-    // XF86AudioMicMute     allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
-    // XF86AudioRaiseVolume allow-when-locked=true { spawn "pamixer" "--increase" "5"; }
-    // XF86AudioLowerVolume allow-when-locked=true { spawn "pamixer" "--decrease" "5"; }
-    // XF86AudioMute        allow-when-locked=true { spawn "pamixer" "--toggle-mute"; }
-    // XF86AudioMicMute     allow-when-locked=true { spawn "pamixer" "--default--source" "--toggle-mute"; }
     XF86AudioRaiseVolume allow-when-locked=true { spawn "volumectl" "-d" "-u" "up"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "volumectl" "-d" "-u" "down"; }
     XF86AudioMute        allow-when-locked=true { spawn "volumectl" "-d" "toggle-mute"; }

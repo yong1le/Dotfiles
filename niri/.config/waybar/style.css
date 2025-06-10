@@ -1,7 +1,6 @@
 @define-color foreground rgb(255,255,255);
 @define-color background rgba(0,0,0, 0.9);
 @define-color group rgba(200,200,200,0.3);
-@define-color hover rgba(20, 20, 20, 0.5);
 
 * {
   font-size: 16px;
@@ -59,7 +58,7 @@ window#waybar {
 }
 
 #workspaces button:hover {
-  color: @group;
+  color: rgb(150,150,150);
 }
 
 #workspaces button.urgent {

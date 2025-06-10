@@ -4,12 +4,19 @@
   "position": "top",
   "reload_style_on_change": true,
   // LEFT
-  "modules-left": ["niri/workspaces"],
+  "modules-left": ["niri/workspaces", "hyprland/workspaces"],
   "niri/workspaces": {
     "format": "{icon}",
     "format-icons": {
       "social": " ",
       // Icons by state
+      "active": "",
+      "default": "",
+    },
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
       "active": "",
       "default": "",
     },
@@ -109,9 +116,9 @@
       "car": " ",
       "default": ["󰕿", "󰖀", "󰕾"],
     },
-    "on-click": "volumectl toggle-mute",
-    "on-scroll-up": "volumectl -u up",
-    "on-scroll-down": "volumectl -u down",
+    "on-click": "volumectl -d toggle-mute",
+    "on-scroll-up": "volumectl -d -u up",
+    "on-scroll-down": "volumectl -d -u down",
     "on-click-right": "XDG_CURRENT_DESKTOP=GNOME gtk-launch gnome-sound-panel.desktop",
     "smooth-scrolling-threshold": 1,
   },
@@ -119,14 +126,14 @@
     "format": "{format_source}",
     "format-source": "󰍬",
     "format-source-muted": "󰍭",
-    "on-click": "volumectl -m toggle-mute",
+    "on-click": "volumectl -d -m toggle-mute",
   },
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon}",
     "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"],
-    "on-scroll-down": "lightctl down",
-    "on-scroll-up": "lightctl up",
+    "on-scroll-down": "lightctl -d down",
+    "on-scroll-up": "lightctl -d up",
     "tooltip": true,
     "tooltip-format": "Brightness: {percent}% ",
     "smooth-scrolling-threshold": 1,
