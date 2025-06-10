@@ -94,6 +94,7 @@ layout {
 
     center-focused-column "never"
     always-center-single-column
+    default-column-display "tabbed"
 
     preset-column-widths {
         proportion 0.33333
@@ -109,8 +110,8 @@ layout {
 
     border {
         width 4
-        inactive-color "#00000000"
-        active-gradient from="#80a4ff" to="#bbddff" angle=45
+        inactive-gradient from="#5f6a80" to="#4f556b"
+        active-gradient from="#0055ff" to="#4f9aff"  angle=90 in="oklch shorter hue"
     }
 
     shadow {
@@ -120,6 +121,7 @@ layout {
 
     tab-indicator {
         place-within-column
+        hide-when-single-tab
     }
 
     struts {
@@ -132,7 +134,7 @@ layout {
 //// Animations
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 animations {
-    // slowdown 3.0
+    slowdown 2.0
     workspace-switch {
         spring damping-ratio=0.8 stiffness=600 epsilon=0.001
     }
@@ -142,11 +144,13 @@ animations {
     }
 
     window-open {
-        spring damping-ratio=0.8 stiffness=600 epsilon=0.001
+      duration-ms 250
+      curve "ease-out-quad"
     }
 
     window-close {
-        spring damping-ratio=0.8 stiffness=600 epsilon=0.001
+      duration-ms 250
+      curve "ease-out-quad"
     }
 
     horizontal-view-movement {
@@ -163,6 +167,11 @@ animations {
 
     config-notification-open-close {
         spring damping-ratio=0.8 stiffness=1000 epsilon=0.001
+    }
+
+    screenshot-ui-open {
+      duration-ms 200
+      curve "ease-out-quad"
     }
 
 }
@@ -182,9 +191,9 @@ overview {
 //// Gestures
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 gestures {
-    hot-corners {
-        off
-    }
+  hot-corners {
+      off
+  }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -199,7 +208,7 @@ window-rule {
 window-rule {
   match is-floating=true
   border {
-    active-color "#42bd5f"
+    active-gradient from="#9aff99" to="#00cc66" angle=90
   }
 }
 
@@ -229,8 +238,8 @@ window-rule {
   match is-window-cast-target=true
 
   border {
-    active-color "#fab114"
-    inactive-color "#fab114"
+    active-gradient from="#ff6961" to="#ff0000" angle=90
+    inactive-gradient from="#ff6961" to="#ff0000" angle=90
   }
 }
 
