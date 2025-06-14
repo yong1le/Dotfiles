@@ -76,8 +76,9 @@ output "Dell Inc. DELL S2722DC 72F7HD3" {
     position x=0 y=0
 }
 output "Shenzhen KTC Technology Group H24T27 0x00000001" {
-    mode "2560x1440@100.001"
+    mode "2560x1440@59.951"
     position x=2560 y=0
+    scale 1.25
 }
 output "eDP-1" {
     mode "2240x1400"
@@ -94,7 +95,6 @@ layout {
 
     center-focused-column "never"
     always-center-single-column
-    default-column-display "tabbed"
 
     preset-column-widths {
         proportion 0.33333
@@ -121,7 +121,6 @@ layout {
 
     tab-indicator {
         place-within-column
-        hide-when-single-tab
     }
 
     struts {
@@ -222,7 +221,6 @@ window-rule {
 window-rule {
   geometry-corner-radius 5
   clip-to-geometry true
-  draw-border-with-background false
 }
 
 // Block password managers from screen capture
