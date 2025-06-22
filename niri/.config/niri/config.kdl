@@ -1,5 +1,4 @@
 // Auth
-spawn-at-startup "dbus-update-activation-environment" "--all"
 spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
 // since gnome polkit go removed
 spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
@@ -24,7 +23,7 @@ spawn-at-startup "systemctl" "--user" "start" "hypridle.service"
 spawn-at-startup "/usr/bin/udiskie" "--tray"
 
 // Xwayland
-spawn-at-startup "~/Documents/Developer/Labs/xwayland-satellite/target/release/xwayland-satellite"
+spawn-at-startup "/usr/bin/xwayland-satellite"
 
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
@@ -34,6 +33,8 @@ screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 environment {
+    GTK_IM_MODULE "fcitx"
+    QT_IM_MODULE "fcitx"
     QT_QPA_PLATFORM "wayland"
     QT_QPA_PLATFORMTHEME "qt5ct"
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
@@ -200,7 +201,7 @@ gestures {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 window-rule {
-    match app-id="org.gnome.Nautilus|org.gnome.Settings|nwg-look|xdg-desktop-portal-gnome|blueman-manager|nm-connection-editor"
+    match app-id="org.gnome.Settings|nwg-look|xdg-desktop-portal-gnome"
     open-floating true
 }
 
@@ -366,6 +367,10 @@ binds {
     Mod+Equal { set-column-width "+10%"; }
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // Dynamic Cast
+    Mod+S {set-dynamic-cast-window;}
+    Mod+Shift+S {set-dynamic-cast-monitor;}
 
     // Ss
     Print { screenshot; }

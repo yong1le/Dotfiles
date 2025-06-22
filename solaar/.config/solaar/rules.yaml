@@ -2,7 +2,7 @@
 ---
 - MouseGesture: Mouse Gesture Button
 - KeyPress:
-  - Super_L
+  - [Super_L, Tab]
   - click
 ...
 ---

@@ -97,10 +97,12 @@
   },
   "network": {
     "format": "{icon}",
-    "format-disconnected": "󰤭",
-    "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-disconnected": "󰣼",
+    "format-icons": ["󰣾", "󰣴", "󰣶", "󰣸", "󰣺"],
+    "format-ethernet": "󱂇",
     "tooltip": true,
     "tooltip-format": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname}",
     "on-click": "XDG_CURRENT_DESKTOP=GNOME gtk-launch gnome-wifi-panel.desktop",
   },
   "pulseaudio": {
