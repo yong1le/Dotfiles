@@ -1,31 +1,25 @@
 %YAML 1.3
 ---
 - MouseGesture: Mouse Gesture Button
-- KeyPress:
-  - [Super_L, w]
-  - click
+- Execute: ['qdbus', 'org.kde.kglobalaccel', /component/kwin, invokeShortcut, Overview]
 ...
 ---
 - MouseGesture: Mouse Left
-- KeyPress:
-  - [Super_L, Alt_L, h]
-  - click
+- Execute: ['qdbus', 'org.kde.kglobalaccel', /component/kwin, invokeShortcut, Switch
+      One Desktop to the Left]
 ...
 ---
 - MouseGesture: Mouse Right
-- KeyPress:
-  - [Super_L, Alt_L, l]
-  - click
+- Execute: ['qdbus', 'org.kde.kglobalaccel', /component/kwin, invokeShortcut, Switch
+      One Desktop to the Right]
 ...
 ---
 - MouseGesture: Mouse Down
-- KeyPress:
-  - [Super_L, Alt_L, j]
-  - click
+- Execute: ['qdbus', 'org.kde.kglobalaccel', /component/kwin, invokeShortcut, Switch
+      One Desktop to the Down]
 ...
 ---
 - MouseGesture: Mouse Up
-- KeyPress:
-  - [Super_L, Alt_L, k]
-  - click
+- Execute: ['qdbus', 'org.kde.kglobalaccel', /component/kwin, invokeShortcut, Switch
+      One Desktop to the Up]
 ...
