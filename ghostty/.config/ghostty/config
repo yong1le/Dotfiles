@@ -19,3 +19,6 @@ cursor-invert-fg-bg = true
 
 window-save-state = always
 confirm-close-surface = false
+
+background-opacity = 0.8
+background-blur = true

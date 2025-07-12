@@ -56,6 +56,9 @@ return {
           },
         },
       },
+      explorer = {
+        disable_netrw = true,
+      },
     },
   },
 }
